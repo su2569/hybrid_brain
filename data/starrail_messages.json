@@ -1,0 +1,3100 @@
+{
+  "meta": {
+    "name": "starrail_messages",
+    "version": "1.0",
+    "language": "zh",
+    "source": "Honkai: Star Rail Wiki"
+  },
+  "samples": [
+    {
+      "type": "text",
+      "text": "Player：可你就在我旁边啊\nPlayer：你直接说不就行了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：当然，我还没和你告别呢\nPlayer：我已经跟着列车环游千星去啦\nPlayer：我在不在取决于你找我啥事儿…\nPlayer：？？？不是说有巨款吗",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：空间站里还有老头？\nPlayer：也会有人想绑架暴躁老头的吧…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：赏金几何？\nPlayer：何为水魈？\nPlayer：明德是谁？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没办法，冷眼旁观不是我的作风\nPlayer：哭哭啼啼也解决不了问题啊…\nPlayer：我啥时候有了这么多好友？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：谁是莉莉？\nPlayer：发错人了吧？\nPlayer：我是开拓者\nPlayer：所以谁是莉莉？\nPlayer：？？？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有被冒犯到，你觉得自己很幽默？\nPlayer：什么垃圾信息，手机中毒了？\nPlayer：有点好奇，你和神奇海螺是亲戚吗？\nPlayer：我就知道是刚才是诈骗…\nPlayer：「请勿回复」？我不，我就回！\nPlayer：怎么退订？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好呀，尊老爱幼是我的传统美德\nPlayer：竟然在不知道的时候赢得了老年之友的称号…\nPlayer：啥是「呜呜伯」？\nPlayer：开头两句是在糊弄我吗？\nPlayer：回了我再走\nPlayer：啥时候回我？\nPlayer：不回我我生气了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：老地方在哪儿？\nPlayer：我什么时候有3张特殊权限卡了？\nPlayer：这是什么至尊贵宾礼遇吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "脸接大招：你们这是什么群啊？\n脸接大招：你们在说谁？\n脸接大招：来个前情提要？\n脸接大招：包裹里面是什么？\n脸接大招：以私人名义买的？\n脸接大招：所以你们是说艾丝妲和阿兰串起来，中饱私囊？\n脸接大招：好像只是你们单方面的猜测，也没实锤嘛……\n脸接大招：这么劲爆的消息…是我可以免费听的吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "脸接大招：我记得你，是你拉我进的群\n脸接大招：这一切都在你的计划之中？\n脸接大招：你到底是谁？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：还真就叫理查啊？！\nPlayer：同行果然是冤家！！\nPlayer：自己动手丰衣足食",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：黑塔没责罚艾丝妲吧？\nPlayer：真是艾丝妲自掏腰包的吗？\nPlayer：「星际和平公司」到底是啥？\nPlayer：现在抱小姐大腿还来得及吗？\nPlayer：理查你们打算怎么处理？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：刚刚我拍了几下奇物，这玩意上面的裂痕就消失了。哎，说出来我自己都不信\nPlayer：刚刚我拍了几下奇物，这玩意上面的裂痕就消失了。哎，说出来我自己都不信",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有不好的预感…\nPlayer：不麻烦，我回列车了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：东西我们找到了……\nPlayer：不关我事，阿兰你加油",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：呃…我坦白，是我干的，我看它们是待机状态我就顺手点了几下\nPlayer：啊这…我也不清楚哦，我只是路过，没怎么注意",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：什么东西？\nPlayer：伦纳德是谁？\nPlayer：T",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：拿到了奇怪的东西…\nPlayer：谢谢\nPlayer：那遗器究竟是什么呢！？\nPlayer：谢谢\nPlayer：那遗器究竟是什么呢！？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不在\nPlayer：列车长的胆子也太小了\nPlayer：冷静，我这就回来\nPlayer：真的吗？我不信",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你谁啊？\nPlayer：…谜语人？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：委托？\nPlayer：[尴尬]",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是谁来着……\nPlayer：没问题，我这就去看看\nPlayer：史考特是谁啊？真不熟",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我要是不呢？\nPlayer：抱歉，您的信息发送失败，请稍后再试",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：都是我该做的\nPlayer：佩拉功不可没\nPlayer：她还好吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你哪位？\nPlayer：我教你用「红包」功能吧…\nPlayer：这是付费功能，请转200信用点",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：学得挺快啊\nPlayer：有什么事吗，头儿？\nPlayer：没问题，马上就去\nPlayer：她很坚强，会没事的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没问题，这就来\nPlayer：好，等我把手头的事忙完",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我们很快就回来\nPlayer：我们还得再待上一阵\nPlayer：我们能做些什么吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你的表情包品味……\nPlayer：消息已经传达完毕了\nPlayer：身体怎么样了？\nPlayer：一定到\nPlayer：一定到，咕咕\nPlayer：不忙我就来",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：当然有空啊，怎么啦\nPlayer：克拉拉的颜文字好可爱哦(ﾟ3ﾟ)\nPlayer：你别急，我马上过去\nPlayer：还有这种事？我来了！(☉д⊙)",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好，我马上就到\nPlayer：哦！我马上到！(☉д⊙)",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好的，马上到\nPlayer：这么突然？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你还会打扫房间？真的假的\nPlayer：怎么想起来找我，佩拉呢？\nPlayer：不喝白不喝，你别跑嗷\nPlayer：等会，什么时候啊\nPlayer：大堂旁边桌子多了去了，哪桌？\nPlayer：马上到，你先帮我点杯那个\nPlayer：？？？？？\nPlayer：姐，回话\nPlayer：没发出去吗",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我们的列车欢迎新成员吗？\nPlayer：就…我有个朋友想上车…\nPlayer：我有个朋友想喝姬子老师的咖啡！\nPlayer：她是一位心思缜密的天才机械师\nPlayer：她是个性格洒脱的摇滚明星\nPlayer：她…我好像也说不来\nPlayer：感谢姬子小姐解惑\nPlayer：我明白了，谢谢姬子老师！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：请问我们的列车欢迎新成员吗？\nPlayer：我有个朋友想上车，杨叔怎么看？\nPlayer：她是一位心思缜密的天才机械师\nPlayer：她是个性格洒脱的摇滚明星\nPlayer：她…我好像也说不来\nPlayer：感谢瓦尔特先生\nPlayer：好耶，爱你哦杨叔！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我都看到你正在输入了…\nPlayer：怎么要开走了？我还没上车啊！\nPlayer：请问我们的列车欢迎新成员吗？\nPlayer：其实，我有个朋友…\nPlayer：她是一位心思缜密的天才机械师\nPlayer：她是个性格洒脱的摇滚明星\nPlayer：她…我好像也说不来\nPlayer：没问题！\nPlayer：我尽量说服她…\nPlayer：她估计控制不住\nPlayer：明白，谢谢列车长\nPlayer：好！列车长最棒啦——",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你还是很伤心吗…\nPlayer：好啊，想聊什么？\nPlayer：我觉得帕斯卡只是个机器人吧\nPlayer：帕斯卡可能就是裂界生物吧\nPlayer：帕斯卡就是活生生的人\nPlayer：只有人类会对其它物种感同身受\nPlayer：很简单，我们的生理构造完全不同\nPlayer：人类与世间万物并无区别\nPlayer：我们诞生自同一个宇宙，也走向同样的死亡\nPlayer：我们不过都是基本粒子构成的不同事象",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：别怕，我马上就到\nPlayer：又发生什么事了？\nPlayer：好！我又来了！(☉д⊙)",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好啊，我现在就去\nPlayer：有点事，下次一定\nPlayer：它又出事了？！(☉д⊙)",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这就来\nPlayer：稍晚点到",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有一台巨大的机器人，叫「造物引擎」\nPlayer：我记得那里有一台拘束星核的装置\nPlayer：好像看到过反物质军团的冰雕\nPlayer：好像看到过很多七月三\nPlayer：没问题，我去调查看看\nPlayer：好远好麻烦啊，杨叔和姬子小姐至少给点小奖励嘛……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：哎，我就知道\nPlayer：有点意思\nPlayer：？\nPlayer：？\nPlayer：不是，你又是谁？怎么知道我联系方式的？\nPlayer：我是奉命来调查不明信号的，结果就莫名其妙联系上你了\nPlayer：不了不了，我还有事\nPlayer：那你倒是发链接啊……\nPlayer：？？？\nPlayer：？？？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：什么事？\nPlayer：呃，我不想买东西，谢谢你\nPlayer：终于找到链接了？\nPlayer：我也不是本地人啊…不了解这个\nPlayer：我帮你问问别人吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：又怎么了？\nPlayer：呃…我真没什么想买的家电\nPlayer：这回该发我链接了吧？\nPlayer：别急，我刚拜托熟人找来档案\nPlayer：这才过去多久啊？别急",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在查了在查了…等我整理一下可以吗？\nPlayer：我要受不了了！你给我耐心点！\nPlayer：这回总算有链接了……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你来得正好，我正好把手头资料整理完\nPlayer：我能屏蔽你吗……\nPlayer：福利\nPlayer：没事，我也学到了很多\nPlayer：这次我就大人不记小人过吧\nPlayer：呃，我已经有一个了\nPlayer：谢谢你，我去调查一下\nPlayer：这么巧？我就是在那里出生的\nPlayer：暂时不需要，再见\nPlayer：…受不了了，屏蔽了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：丹恒老师…\nPlayer：小青龙…\nPlayer：丹恒…\nPlayer：想不想赚钱…\nPlayer：我有一事相求…\nPlayer：我需要一张你的照片。\nPlayer：信我一次！\nPlayer：都是为了你的粉丝！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有点忙\nPlayer：至少不用应付铁卫了\nPlayer：还不错\nPlayer：所以…\nPlayer：然后…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：要再待一阵\nPlayer：就快走了\nPlayer：但说无妨，头儿\nPlayer：我讨厌被吊胃口…\nPlayer：又有架要打了？\nPlayer：裂界就是我家",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这就来。\nPlayer：还来得及吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没错，正是在下！\nPlayer：温世玲是谁？不认识。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在定位附近发现了一个奇怪的售货机，最后变成了一个扑满……\nPlayer：在定位附近发现了一个伪装成售货机的扑满",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这里的广告画确实出现了异常情况，没想到小东西还挺会躲的\nPlayer：不算是假情报，但也没有什么特殊的消息，无非是换了个东西躲，这回变成了广告画而已",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：冰天雪地的，人都快冻僵了！这次的报酬得多加点吧？\nPlayer：一切圆满完成，非常顺利。但也克服了很多困难，应该多加点报酬\nPlayer：这次它躲在雪堆里，没有什么特别的\nPlayer：它隐匿于寒冷与冰封…似乎宣告着某种宿命与预兆！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我知道你很急，但是你先别急。这回的异常情况在电影机的投影里，也算是有了点新花样\nPlayer：这次它躲在了电影机里！看了投影我才反应过来！！太神奇了！！！这就是本次的情况！！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这边放了太多杂物，我找了好半天才找到，弄得衣服上都是灰尘，你得给我加干洗费\nPlayer：我亲自出马，怎么会不顺利？就是整个过程太坎坷了，我觉得还是得再多收点费用才合理……\nPlayer：就在大衣柜里，从捉迷藏的角度来说没有太大的创新性\nPlayer：在至深至暗的尽头…没有一点光明可以留存的地方！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：很抱歉，这次并没有失败。异常状况出现在帐篷里，它的躲藏能力并没有提升，依然比较粗劣\nPlayer：已经顺利找到了，这次的异常情况就在帐篷里，找起来有点不容易",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是真的雷金吗？我现在有点怀疑你的身份，毕竟远程发短信，也看不到你的脸！\nPlayer：在你说出我们彼此设定好的暗号之前，我是不会告诉你任何情报的。\nPlayer：想不到你竟然如此有情有义，我好感动…你肯定是真雷金！\nPlayer：发生意外得加钱，应该是真货，鉴定完毕。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：还有这种好事？\nPlayer：得来全不费工夫。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：贝洛伯格的人们对我很热情，大守护者女士\nPlayer：最近一直在忙…但是很充实\nPlayer：我和佩拉正好在一起，我们一块过去",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：已经在房门前了\nPlayer：有点怕怕",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：在吗\nPlayer：？\nPlayer：？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "维尔德：请问是开拓者吗？\nPlayer：我是，您哪位\nPlayer：我不是，您找错人了\nPlayer：游戏好啊！什么游戏？\nPlayer：[疑惑]\nPlayer：[疑惑]\nPlayer：这么厉害啊\nPlayer：快说重点……\nPlayer：[赞]\nPlayer：[疑惑]\nPlayer：[震惊]\nPlayer：还有这么巧的事？我就在雅利洛-Ⅵ\nPlayer：呃呃",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：谢谢你的赞赏，乔瓦尼先生\nPlayer：谢谢，只是我们运气好而已\nPlayer：客气啥，都是我应该做的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你有什么事？说来听听\nPlayer：还有版本更新推送？\nPlayer：「托帕后援团」？我和他们打过交道\nPlayer：我知道啊，这只扑满在我手里\nPlayer：我马上到\nPlayer：稍等，我晚点到",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我和三月在为仙舟执行任务…\nPlayer：你还好吗…？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：什么情况？列车没事吧？你怎么来仙舟了？\nPlayer：你怎么来仙舟了？列车没事吧？什么情况？\nPlayer：好，我很感兴趣，详细说说",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：合成机爆炸了？\nPlayer：房门打不开了？\nPlayer：找不到帕姆了？\nPlayer：在刷花萼！\nPlayer：在做委托！\nPlayer：在…无所事事！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好看\nPlayer：不好看\nPlayer：光圈要再小一些，最好能手动控制下曝光时间\nPlayer：没什么可挑剔的\nPlayer：？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是你本人\nPlayer：不像你啊\nPlayer：[骄傲]\nPlayer：[哭]\nPlayer：[生气]",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么事了！\nPlayer：你要上哪过夜？\nPlayer：说老实话，没有。\nPlayer：有一点点，真的。\nPlayer：去树上\nPlayerAuto：[打招呼]\nPlayer：我现在过来还来得及吗？\nPlayer：来观察一下树上的丹恒\nPlayerAuto：[赞]\nPlayer：去水里\nPlayerAuto：[打招呼]\nPlayer：我现在过来还来得及吗？\nPlayer：来观察一下水里的丹恒\nPlayerAuto：[赞]",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：对不起！\nPlayer：吵醒你了吗？\nPlayer：谢谢，你别熬夜啦\nPlayer：谢谢，你没事就好",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在你眼里，我就是这样的人吗？\nPlayer：我不理解\nPlayer：……\nPlayer：明明是恐怖故事吧\nPlayer：我愿称智库是万能的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：无所谓，有啥吃啥\nPlayer：肉！给我很多肉！\nPlayer：没奶茶的我要死了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我不能收！\nPlayer：感动哭了！\nPlayer：姬子姐姐！\nPlayer：我会给姬子带咖啡豆的~\nPlayer：下次换我送！\nPlayer：可以有吗…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：看上去很好喝\nPlayer：其他人喝过了吗…\nPlayer：上次姬子也这么说…\nPlayer：有没有一种可能，我也没空\nPlayer：有没有一种可能，我在门外",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：瓦尔特先生您说\nPlayer：我也不知道\nPlayer：问问客服吧\nPlayer：瓦尔特先生想换什么头像？\nPlayer：换一个头像很重要吗？\nPlayer：该做列车内部的通讯软件了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：确实，短信突然变多了\nPlayer：确实，委托突然变多了\nPlayer：这就是前辈的经验么，瓦尔特先生！\nPlayer：这就是开拓的代价么，我愿意支付！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[震惊]\nPlayer：[赞]\nPlayer：[拒绝]\nPlayer：应该是跌宕起伏的冒险吧\nPlayer：应该是酣畅淋漓的战斗吧\nPlayer：其实我只是想把装备升满\nPlayer：我希望它不要结束\nPlayer：大家的愿望实现了\nPlayer：大家的装备升满了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：…这个问题真的要问我吗，艾丝妲小姐？\nPlayer：不想，不知道，不理解，不关心，不在乎\nPlayer：[震惊]\nPlayerAuto：现在撤回还来得及吗？\nPlayer：不如看佩佩玩飞盘\nPlayer：不如看机器人送餐\nPlayer：[好的]",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[疑惑]\nPlayer：很恐怖啊兄弟\nPlayer：说句话啊兄弟\nPlayer：啊啊啊啊啊啊\nPlayer：现在和我说话的是…\nPlayer：佩佩能解锁手机吗\nPlayer：啊啊啊啊啊啊啊啊\nPlayer：不是佩佩在自拍？\nPlayer：那现在和我说话的是谁？\nPlayer：[震惊]",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我在\nPlayer：不在\nPlayer：[疑惑]\nPlayer：……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你在哪？\nPlayer：多做作业会长高，就能早点变成大人啦\nPlayer：收手吧，虎克大人\nPlayer：不如我来教你做作业\nPlayer：遵命！漆黑的虎克大人！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我的手机发热\nPlayer：[震惊]\nPlayerAuto：[好的]\nPlayer：所以娜塔莎医生对「手机发热」有什么建议吗\nPlayer：开拓者的生活哪有容易二字\nPlayer：我的脚趾头疼\nPlayer：[震惊]\nPlayer：[好的]\nPlayerAuto：所以娜塔莎医生对「脚趾头疼」有什么建议吗\nPlayer：开拓者的生活哪有容易二字",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你肯定不紧张吧\nPlayer：是不是有点紧张\nPlayer：揉脸\nPlayer：[赞]\nPlayer：躺平\nPlayer：[赞]\nPlayer：聊天\nPlayer：[赞]\nPlayer：加油！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[比心]\nPlayer：[疑惑]\nPlayer：[拒绝]\nPlayer：看出来了，佩拉很喜欢这本书\nPlayer：有没有可能，佩拉也送我一本呢\nPlayer：一套？\nPlayer：有缘人感谢您！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不转不是人\nPlayer：如果我说不呢\nPlayer：怎么没看到红包\nPlayer：所以哪个遗物挣最多\nPlayer：[疑惑]\nPlayer：古代遗物还要排单？\nPlayer：做？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：吉姆•罗杰，水的价格，面包的味道\nPlayer：「哞哞」牛奶，奶香四溢\nPlayer：黑面包汽水冰山，很多人都在谈论它",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我想想\nPlayer：生而为人，我很抱歉\nPlayer：我听过一万首歌\nPlayer：只有这首歌俘获了我的心\nPlayer：你的歌就像\nPlayerAuto：[哭]\nPlayer：我开玩笑的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：什么意思？\nPlayer：和好了\nPlayer：没和好\nPlayer：不知道\nPlayer：[震惊]\nPlayer：[疑惑]\nPlayer：[赞]\nPlayer：…好的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[好的]\nPlayer：喜欢的饮料\nPlayer：到时候我先过来，帮你一起拿过去\nPlayer：好看的花卉\nPlayer：我也来帮你吧\nPlayer：史瓦罗先生\nPlayer：拍照就交给我吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：确定是本人吗？感觉你好像被盗号了？\nPlayer：我倒是想帮你付款，但你发的链接点不开…\nPlayer：对方拒绝接收你的消息，并已把你加入黑名单\nPlayer：放心，我怎么会点开\nPlayer：其实我有点好奇，你购物的时候会用优惠券吗…或者说，你知道什么是「优惠券」吗\nPlayer：所以发生了什么？\nPlayerAuto：[哭]\nPlayer：我也想有这种下单太快的烦恼",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：抱歉，之前比较忙，没怎么留意佩佩的动静\nPlayer：佩佩？估计它还在空间站里那几个地方转悠吧，要不然还能去哪儿\nPlayer：怎么了？\nPlayer：宠物嘛，就跟小孩一样，会不会在故意装瘸？\nPlayer：听你这描述，感觉和阿兰一样，也是伤了手？\nPlayer：你最近这么忙，是不是没怎么跟它玩？\nPlayer：或许是下意识模仿之前阿兰的样子吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：就蓝色吧？和你制服一个颜色\nPlayer：就灰色吧？和你头发一个色系\nPlayer：你发个自拍给我看看，感觉你有点不正常\nPlayer：手机还给他啦\nPlayer：别玩了艾丝妲",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：收到，这就去办\nPlayer：批准，你去办吧\nPlayer：发错人了？\nPlayer：买本随身备忘录吧？虽然不如手机方便，但这样就不会发错人了\nPlayer：用短信功能做记录的话，不会每个月消费很多信用点吗？\nPlayer：备忘都很有意思呀，继续发给我吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：干嘛？要给我发零花钱？\nPlayer：1\nPlayer：感觉你这技术也不行啊，好好的人偶都能失联\nPlayer：？？？？\nPlayer：[疑惑]",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你真的是黑塔吗？我不信\nPlayer：链接都被屏蔽了，没办法点进去\nPlayer：那种东西不能随便填写出去给别人的吧！还我个人信息！\nPlayer：你要我的个人信息做什么？那种东西不能随便泄露出去的吧？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[疑惑]\nPlayer：要这么多钱干嘛\nPlayerAuto：[哭]\nPlayer：我也没这么多钱……\nPlayer：[疑惑]\nPlayer：很可能是诈骗……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：虎克大人居然主动读书\nPlayer：《雪国冒险奇谭》？\nPlayer：是主人公到贝洛伯格之外冒险的故事\nPlayer：贝洛伯格外很危险啊\nPlayer：《贝洛伯格的音乐家》？\nPlayer：别闯祸啊\nPlayer：我们列车的智库档案吧\nPlayer：虎克大人怎么决定得这么快！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：已经好了\nPlayer：没抓到岩居蟹壳粉\nPlayer：没抓到洞螈油\nPlayer：岩居蟹壳粉和洞螈油\nPlayer：我在列车上，弄不到……\nPlayerAuto：[赞]\nPlayer：会的！谢谢娜塔！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：随时都行呀\nPlayer：[好的]\nPlayer：没事！我随时都有空，弄好了就找我吧\nPlayer：有点忙，不大方便\nPlayer：下次，我直接来诊所吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我没当过领导\nPlayer：要学会融入集体\nPlayer：有没有一种可能\nPlayer：她居然敢这么对你！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：森林吧\nPlayer：山岳吧\nPlayer：大海吧\nPlayer：是这样的\nPlayer：一切都会好起来的\nPlayer：很多人一辈子也没见过雪",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[震惊]\nPlayer：怎么就不太好了\nPlayer：那你加油……\nPlayer：[疑惑]\nPlayer：有是有\nPlayer：我们列车组前辈泡的咖啡\nPlayer：[疑惑]\nPlayer：睡觉最提神\nPlayer：那你加油……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[赞]\nPlayer：当然要来\nPlayer：？\nPlayerAuto：[哭]\nPlayer：最近有点忙\nPlayer：真没空，呜呜",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[赞]\nPlayer：买！\nPlayer：[疑惑]\nPlayer：[谢谢]\nPlayer：嘿嘿\nPlayerAuto：[疑惑]\nPlayer：这又是什么骗术\nPlayer：[哭]\nPlayer：我也想转你\nPlayer：无情的男人！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[疑惑]\nPlayer：挺好啊我觉得\nPlayer：[疑惑]\nPlayer：不太合适吧我觉得\nPlayer：[疑惑]\nPlayer：我不好说啊\nPlayer：我去洗澡了，回头聊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有空的，你说\nPlayer：她喜欢什么？\nPlayer：可以试着给她买一束花\nPlayer：可以给她买件新衣服",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生了什么\nPlayer：[疑惑]\nPlayer：我不知道啊\nPlayer：[震惊]\nPlayer：真不是我啊！好汉饶命！\nPlayer：[疑惑]\nPlayer：会把汽车改装成这样的，只有那个人了吧\nPlayer：我什么都没说……\nPlayer：我真的什么都没说……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[哭]\nPlayer：在忙\nPlayer：佩拉呢？\nPlayer：杰帕德呢？\nPlayer：佩拉杰帕德都没空吗？\nPlayerAuto：[震惊]\nPlayer：听起来也太惨了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[疑惑]\nPlayer：没有啊，怎么了\nPlayer：[震惊]\nPlayer：没问题，一定帮你保密\nPlayer：[震惊]\nPlayer：没问题，一定老实交代\nPlayer：[疑惑]\nPlayer：那干嘛全告诉我了……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我喜欢唱歌跳舞\nPlayer：我喜欢说唱\nPlayer：我喜欢运动\nPlayer：你之前有什么爱好？\nPlayer：这么文静的爱好…\nPlayer：这不像你啊…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：从来不看\nPlayer：偶尔看些外星网文\nPlayer：我博览群书\nPlayer：人家从小受的精英教育\nPlayer：万事开头难",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[疑惑]\nPlayer：克拉拉想说什么\nPlayerAuto：[疑惑]\nPlayer：我手机中病毒了？\nPlayer：[疑惑]\nPlayer：发生什么事了\nPlayerAuto：[赞]\nPlayer：克拉拉好厉害！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：(☉д⊙)\nPlayer：[震惊]\nPlayer：原来是他们，我捡到过他们的传单\nPlayer：[疑惑]\nPlayer：感觉很可疑……\nPlayer：(;´Д`)",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：当然，分别是什么样的？\nPlayer：买第一把吧\nPlayer：买第二把吧\nPlayer：小孩子才做选择\nPlayer：[疑惑]\nPlayer：不管了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我曾经在「黑塔」空间站击退过反物质军团的末日兽\nPlayer：你可以理解成长翅膀的大蜥蜴\nPlayer：我曾经在雅利洛-Ⅵ与武艺高强的戍卫官交手\nPlayer：你可以理解为罗浮的云骑统领\nPlayer：有是有，可惜都成为了我的手下败将！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：再等等猫妈妈吧，说不定是出去觅食了\nPlayer：转移到能避雨的地方吧，万一生病就麻烦了\nPlayer：把小白猫带回家，立刻成为猫奴\nPlayer：怎么了？\nPlayer：你也不容易啊\nPlayer：将军也不容易\nPlayer：安心了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[疑惑]\nPlayer：小神医请讲\nPlayer：原来如此，奇怪的知识增加了\nPlayer：琼实鸟串是什么\nPlayer：此话怎讲",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：谢谢神医！\nPlayer：啊，我自己说完都忘了\nPlayerAuto：[疑惑]\nPlayer：这不是食谱吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[疑惑]\nPlayer：我是医士还是你是医士？\nPlayerAuto：[疑惑]\nPlayer：你说的这个患者是不是你自己？\nPlayer：多运动试试？\nPlayer：早睡早起很重要！\nPlayer：有人和我说多喝奶就行……\nPlayer：嗯，你都试过了\nPlayer：懂的懂的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：友友？\nPlayer：幻戏？\nPlayer：懂了，是手游\nPlayerAuto：[哭]\nPlayer：想玩\nPlayerAuto：[疑惑]\nPlayer：上班也要玩帝垣琼玉吗\nPlayer：真的吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[赞]\nPlayer：行啊\nPlayerAuto：[哭]\nPlayer：明天有点忙\nPlayer：听着怎么有点熟悉……\nPlayer：伽梨罗在哪\nPlayer：超级大金人是什么\nPlayer：下次和你说我的故事",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：如果被看到的话\nPlayer：还是认真上班吧\nPlayer：……\nPlayer：……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么烦了\nPlayer：兢兢业业地巡逻，完成每日工作就已经相当称职啦\nPlayer：太太平平也挺好的，说明你们的巡逻颇有成效\nPlayer：乐于助人的话，来当无名客吧！\nPlayer：是文绉绉…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我听说过他的名字\nPlayer：我和他对练过几次，还算熟悉\nPlayer：彦卿是谁……\nPlayer：将军的护卫？\nPlayer：难不成他就是「剑胎武骨」\nPlayer：莫不是景元将军一手教导\nPlayer：我也愿意奉陪！\nPlayer：我和他对练过几次",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "PlayerAuto：[疑惑]\nPlayer：怎么着了？\nPlayer：碰见老师感觉是件好事？\nPlayer：黉学是什么？先生又是什么？\nPlayer：说来听听，让我也尴尬一下\nPlayer：确实尴尬",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：咱们的列车还蛮大的，将军也来坐坐吧\nPlayer：不如和符玄易位而处，由将军来当太卜\nPlayer：我看地衡司的工作好像还算清闲……\nPlayer：若是有机会，将军想去哪里呢？\nPlayer：辛苦将军了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：将军请讲！\nPlayer：彦卿小哥师从将军，他的剑术我可是听说过的\nPlayer：行是行，但……\nPlayer：那将军能否和我先对练一番？\nPlayer：坏了，露馅了\nPlayer：确实，我很强\nPlayer：将军请讲！\nPlayer：彦卿是谁？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：神策府我进得来吗\nPlayer：我不会仙舟星阵棋\nPlayer：当然可以。\nPlayer：我再想想…\nPlayer：这就来为将军分忧！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：一样的吧，我还挺喜欢现在的状态\nPlayer：不一样吧，不过现在也没什么不好\nPlayer：我也不知道，记不太清了\nPlayer：职场也是战场，走到这步不容易\nPlayer：这是你的选择，你自己满意就好\nPlayer：我没孩子，不太懂这些道理……\nPlayer：我可以理解为人父母的心情，不过也要听听孩子自己的想法",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你在哪？\nPlayer：图在哪？\nPlayer：玉界门居然能上去？\nPlayer：问题是怎么下来呢？\nPlayer：下次我自己来吧，亲眼看看\nPlayer：收不到消息也好，图个清静\nPlayer：怎么了？\nPlayer：……\nPlayer：……\nPlayer：寄！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我没听说过，最近很流行么？\nPlayer：听说有很多类型，可以推荐一下么？\nPlayer：我选竞速类\nPlayer：我选经营类\nPlayer：我选改装类\nPlayer：好，下次就去试试！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：和周围的人聊聊天吧\nPlayer：做自己的事最好，玩游戏，看书，看风景，都行\nPlayer：路上除了睡觉也没什么事可干\nPlayer：当然，我平时就喜欢这么干\nPlayer：当然不是，我从来不会这么干",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：巧了，我确实住的浥尘客栈\nPlayer：巧了，我确实住的浥尘客栈\nPlayer：总感觉不太方便，一直会被人盯着\nPlayer：这下子你也成仙舟人了\nPlayer：下次我也想住了试试看\nPlayer：我恐怕还是住不了那儿\nPlayer：我害怕！\nPlayer：我认床！\nPlayer：我有洁癖！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你去卖东西了？\nPlayer：你去买东西了？\nPlayer：可别这么说\nPlayer：可别这么说\nPlayer：可别这么说",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这是什么？\nPlayer：不要，你加我\nPlayer：这消息不会是群发的吧\nPlayer：不能拒绝吗\nPlayer：真受欢迎啊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我还是不了…\nPlayer：我先观望一下…\nPlayer：好快的转折！\nPlayer：谢谢你，我冷静了\nPlayer：耶！我抽到了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：厉害！\nPlayer：你作弊！\nPlayer：你这成就数量不对啊\nPlayer：我也喜欢挑战\nPlayer：还是休闲一点好",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：很满足\nPlayer：很空虚\nPlayer：嗯，我知道的\nPlayer：就算你这么说，我也想不起来\nPlayer：有空再聊\nPlayer：别来找我",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是你啊\nPlayer：你是谁\nPlayer：有点想你\nPlayer：真的\nPlayer：假的\nPlayer：过得很好\nPlayer：知道了\nPlayer：别管我",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么了？发生什么事了？\nPlayer：你又给我发消息了\nPlayer：没和别人一起去看电影么？\nPlayer：下次有机会就一起去看这部电影吧\nPlayer：传记片\nPlayer：动作片\nPlayer：科幻片\nPlayer：去吧\nPlayer：拜拜",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发错了？\nPlayer：打不开！\nPlayer：什么鬼…\nPlayer：你会用表情包？\nPlayer：你是刃？\nPlayer：别玩了！\nPlayer：救命\nPlayer：发点别的…\nPlayer：……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是银狼？\nPlayer：你是本人？\nPlayer：应该谢谢刃\nPlayer：其他人呢\nPlayer：不会还要换个人再来让我砍一刀吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：嗨，卡芙卡\nPlayer：嗨，刃\nPlayer：你没事吧？\nPlayer：刃没事吧？\nPlayer：看来没事\nPlayer：请不要用刃的账号发这种句子，很容易误会\nPlayer：笑死我了红红火火恍恍惚惚\nPlayer：还有事吗？没事我去洗澡了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没问题，会来的\nPlayer：忙，来不了\nPlayer：时代变了，搏击也要创新\nPlayer：用武器战斗的纯度太低了\nPlayer：加油哦！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：想吃「洞螈肉串」\nPlayer：想吃「杂菜沙拉」",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：比赛打输了吗？\nPlayer：没吃饱饭吗？\nPlayer：？\nPlayer：……\nPlayer：你还好吗？要帮忙吗？\nPlayer：孩子们还好吗？玩得开心吗？\nPlayer：加油…祝你好运……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：啊\nPlayer：发生什么事了？\nPlayer：又？\nPlayer：贝洛伯格野人？\nPlayer：？！听起来好可怕\nPlayer：哇\nPlayer：哇",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：雪地萝卜是什么？\nPlayer：冻土百合根是什么？\nPlayer：居然还能做火锅吗？\nPlayer：听起来就很赞\nPlayer：呜呜\nPlayer：错了！要饿肚子的是你！\nPlayer：听起来就很赞\nPlayer：呜呜\nPlayer：错了！要饿肚子的是你！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：交流会\nPlayer：难道是那个传说中的\nPlayer：佩拉也要参加吗？\nPlayer：摊位是什么？\nPlayer：呃，可我不是粉丝",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：您是一位优秀的上司…作为执掌太卜司的太卜，这样的职场问题难不倒你\nPlayer：这答案就挺好，太卜就直接这样回复吧\nPlayer：听上去，太卜已经有了答案，我也没帮上什么？\nPlayer：直接以青雀卜者为例呢？\nPlayer：您是一位优秀的下属…作为景元将军的幕僚，这样的职场问题难不倒你\nPlayer：这答案就挺好，太卜就直接这样回复吧\nPlayer：听上去，太卜已经有了答案，我也没帮上什么？\nPlayer：直接以景元将军为例呢？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我去找过若月老板占卜，她太准了\nPlayer：我去找过若月老板占卜，不太行，占卜结果一点都不准\nPlayer：什么「鉴爻轩」，我没去过，也不相信占卜\nPlayer：要我照顾老下属的生意吗？\nPlayer：今天的太卜那么有人情味，我都不习惯了…\nPlayer：太卜自己去照顾一下老下属的生意，也不是什么难事吧？\nPlayer：这太荒谬了吧\nPlayer：如果有一天，穷观阵让太卜辞职不干，太卜难道也照做不误么？\nPlayer：我可以理解\nPlayer：如果有一天，穷观阵让太卜辞职不干，太卜也会照做不误么？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：放心吧，太卜大人，我没有看见你发了什么\nPlayer：「我好想喝糖水呀」可不是暗示啊\nPlayer：太卜占算辛苦，喝些糖水，这有什么误会的？\nPlayer：喜欢喝糖水就直说嘛，我也喜欢，不用找什么「计算」作为借口",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：也是应急药物吗？\nPlayer：有好吃的药吗\nPlayer：不如问问万能的合成机？\nPlayer：你竟然不是万能的……\nPlayer：你一点都不记得吗？\nPlayer：既然是「知识」，那如何利用它们便取决于你的选择\nPlayer：你帮到了很多人\nPlayer：我也想什么都懂\nPlayer：虽然我也无法感同身受，但是不是有点像星核之声？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：会，经常\nPlayer：我梦到我毁灭了世界\nPlayer：我梦到我失去了同伴\nPlayer：我梦到我不是我自己\nPlayer：直到你问出这个问题前，我都没想过这种可能……\nPlayer：想过，但没有任何证据可以证明它们发生过……\nPlayer：我不知道…但我现在什么都不记得，就当它没发生过吧……\nPlayer：这是开拓教我的，没想到吧？\nPlayer：这是丹恒你教我的，没想到吧？\nPlayer：我就是这样的人，你也不是第一天认识我了\nPlayer：不会，我睡得很熟\nPlayer：怎么了？你做噩梦了？\nPlayer：我应该不会在乎这些事，过去的事和现在的我已经无关了……\nPlayer：我担不担心，和这些事是否发生过，其实没有关联……\nPlayer：我现在什么都不记得，就当它没发生过吧……\nPlayer：这是开拓教我的，没想到吧？\nPlayer：这是丹恒你教我的，没想到吧？\nPlayer：我就是这样的人，你也不是第一天认识我了\nPlayer：不管发生什么，我们现在都在列车上，放心吧！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么事了？\nPlayer：注意安全\nPlayer：所以你去的原因是……\nPlayer：都挺有意思的\nPlayer：我首推苏打豆汁儿！\nPlayer：我首推热浮羊奶！\nPlayer：我首推仙人快乐茶！\nPlayer：……\nPlayer：谢谢！\nPlayer：真的么？我没感觉\nPlayer：一定要说个喜欢的话……\nPlayer：就选苏打豆汁儿吧\nPlayer：我首推热浮羊奶！\nPlayer：我首推仙人快乐茶！\nPlayer：……\nPlayer：谢谢！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么事了？\nPlayer：唉唉唉唉唉唉\nPlayer：你亏了很多吗？\nPlayer：一定是纳努克干的！\nPlayer：也许是列车开拓了银轨，导致宇宙大盘下跌……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：最近怎么总有人被盗号？\nPlayer：多少钱？我投了！\nPlayer：你不休息的吗？\nPlayer：喜欢，不干活我连饭都吃不下\nPlayer：不喜欢，想到工作我就浑身头疼\nPlayer：我没有工作\nPlayer：列车又不发钱\nPlayer：我用爱发电！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：工作餐都有什么？\nPlayer：不是员工也可以吗？\nPlayer：谁也不能挖我的墙角\nPlayer：这样好吗？感觉会很破费……\nPlayer：还有别的福利吗？\nPlayer：列车也有列车长",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：当然记得啦！小桂子！\nPlayer：不好意思，最近遇到的人有点多，你是哪位来着\nPlayer：不好意思，不买茶叶、不买保险、什么都不买\nPlayer：我就是星穹列车的无名客啊\nPlayer：我现在四海为家\nPlayer：我其实不记得自己是从哪里来的\nPlayer：你要是遇到什么摆不平的事情，或者难缠的坏家伙，也记得来找我",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：还好啦，没遇到什么障碍\nPlayer：确实感觉到有些障碍\nPlayer：无所谓吧，反正不会长在这里住\nPlayer：多谢小桂子挂念，我早就习惯啦\nPlayer：小时候的小桂子好可怜，听得我怪心疼的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在的在的在的\nPlayer：我不太懂你们这行啊，未必帮得上忙\nPlayer：教大家仙舟文化？\nPlayer：教大家说鼠来宝？\nPlayer：教教徒手接子弹怎么样，这我就想学",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：一切都好，将军身体可好？\nPlayer：将军怎么突然想到我们了？\nPlayer：不会不会，列车可是见惯了大风大浪了\nPlayer：将军的师傅身手了得啊，在列车上投下信笺，咱们一个人都没能发现\nPlayer：我收到信后，感觉丹恒神色凝重，他没事吧？\nPlayer：将军你也请好好保重！\nPlayer：我和丹恒，还有列车上的人一定会回来看你们的！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：藿藿怎么了吗？\nPlayer：遇到什么危险了吗？在哪里，我马上过来\nPlayer：原来就只是这样而已吗？\nPlayer：我已经开始尴尬了\nPlayer：在哪个群，我去给你回复一个表情包\nPlayer：真是太好了呢\nPlayer：真是太可惜了，如果一直冷场下去就好了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：抱歉，现在才看到信息，我方便的，请讲\nPlayer：我要是说在忙呢\nPlayer：你说话太客气了，有什么事直接发就好了\nPlayer：现在帮你兑换还来得及吗？\nPlayer：那确实蛮紧急的，不然可就亏大了\nPlayer：你太客气了，帮助朋友是应该的\nPlayer：不必谢我，我又没帮上什么忙",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么事了吗？\nPlayer：没事的，开拓者已经习惯各种麻烦事了\nPlayer：你给他说，腿长在你身上，他不想去也得去\nPlayer：你这样的情况应该直接去宠物店，他们是专业的\nPlayer：你在家里自己打理如何呢？\nPlayer：笑死，尾巴大爷还是怂了\nPlayer：还得是寒鸦大人，太靠谱啦\nPlayer：回见",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：非常想！\nPlayer：请赞美我的灵魂！\nPlayer：请赞美我的仪容！\nPlayer：你随便夸！\nPlayer：停停停，说得我都不好意思了……\nPlayer：就这？我肯定比你更会夸\nPlayer：在我面前的，是一个何等了不起的灵魂！\nPlayer：完全不想！\nPlayer：…谢谢你！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：太空竞逐…是什么？\nPlayer：什么事让你这么开心？\nPlayer：帕姆也曾提到过\nPlayer：已经开始想象了\nPlayer：我希望能看到帕姆驾驶星穹列车参赛",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：松软的软质面包，口感非常香甜……\nPlayer：我想硬质面包非常适合你，口感粗粝\nPlayer：可以尝试下奶油夹心面包，我猜你没试过\nPlayer：牛奶会非常契合这种饮食主题\nPlayer：搭配一些咸的东西吃吧，比如香肠\nPlayer：硬质面包的绝佳搭档",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你要发给我什么附件啊？\nPlayer：等等等等，先停停\nPlayer：写的挺好啊，照这样继续写呗\nPlayer：写的不咋样，没头没尾没细节，这样确实会写不下去\nPlayer：为啥故事里的嫌疑人是我们几个啊？\nPlayer：最关键的问题，「海水」到底是谁啊？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这两天大概没空\nPlayer：我随时都有空\nPlayer：为什么突然找我看幻戏？\nPlayer：可以倒是可以，但兴趣这东西毕竟是吾之蜜糖彼之砒霜，不知道雪衣小姐喜欢哪种幻戏？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不同年纪有不同年纪的劳累嘛，大家阈值不一样的\nPlayer：确实，好多人就是身在福中不知福",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：可我都不知道他的样子…\nPlayer：这么快？！\nPlayer：有没有「黑塔饵」！\nPlayer：有没有「螺丝咕姆饵」！\nPlayer：我也很好奇「阮•梅饵」\nPlayer：梅花糕点？\nPlayer：是某种研究吗？\nPlayer：不会是我吧？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么了？\nPlayer：好吧，又是误触？\nPlayer：好吧，这次是谁？\nPlayer：表情包真好玩！\nPlayer：发生什么事了？\nPlayer：报告，我一点都没听懂\nPlayer：好像懂了，但又没完全懂\nPlayer：？！\nPlayer：我相信你说的，有些表情包是一种特殊的生命体\nPlayer：这怎么看都是普通的表情包，你一定在骗我",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不巧，现在不在\nPlayer：刚好就在做呢\nPlayer：这话说得也太假了吧\nPlayer：这话说得也太好听了吧\nPlayer：你还掉过别的？\nPlayer：刺绣…是你的爱好，对吧？\nPlayer：生命培育笔记？我似乎见过……\nPlayer：相位灵火？黑塔知道吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好啊，雪衣大人想聊些什么？\nPlayer：还以为判官大人您平时比较酷，不说话\nPlayer：不会是真有魔阴身吧？\nPlayer：我猜，这只是在网络上随口说说罢了\nPlayer：也许只要声称了自己有魔阴身，就可以为所欲为了\nPlayer：只是想说些自嘲性质的俏皮话吧，我看过类似的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好啊，雪衣大人想要什么建议？\nPlayer：我对自己的建议不太自信，仅供参考\nPlayer：寒鸦大人是美人，送她漂亮的衣服、或者美容产品，至少不会错\nPlayer：有时候不需要很具体礼物，只要简简单单的一句「谢谢你」就可以\nPlayer：送礼物有时需要投其所好，请问寒鸦大人平时喜欢什么呢？\nPlayer：也许这么说比较抽象，寒鸦大人需要的是「时间」\nPlayer：也许这么说比较抽象，寒鸦大人需要的是「陪伴」",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：雪衣大人，你怎么了，这是发生什么事了？\nPlayer：请将你捡到的玉兆还给失主，失主是十王司的判官雪衣\nPlayer：(;ﾟдﾟ)别走！\nPlayer：说老实话，有点不太习惯，这不是我认识的雪衣大人\nPlayer：在问我之前，雪衣大人自己又是怎么看的呢？\nPlayer：那么提出建议的藿藿，现在又是怎么说的？\nPlayer：虽然怪怪的，但是感觉继续用也不是不行\nPlayer：请不要继续用这些颜文字了，真的很出戏",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我的口才足够好了\nPlayer：但我完全不会啊\nPlayer：对不起，我自闭\nPlayer：辩论就是和对方辩驳争论，简称辩论\nPlayer：辩论就是努力让对方生气\nPlayer：辩论就是互相阴阳怪气\nPlayer：技术是中立的\nPlayer：技术是一把双刃剑，既可以用它来行善，也可以用它来作恶\nPlayer：技术不是中立的\nPlayer：有些技术从自身来说就是善的，比如延长寿命的技术\nPlayer：我还一句话都没说！\nPlayer：你在胡说八道\nPlayer：超脱语言层面？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：第一次听到有人向我提这样的要求\nPlayer：请为列车设计一把武器\nPlayer：武器在哪里？\nPlayer：你说的那些材料在哪里呢\nPlayer：如何让列车变成不依赖外部能源的永动机\nPlayer：我瞎出的题……\nPlayer：怎么了？\nPlayer：别让列车长听到了，生气的列车长很可怕\nPlayer：我会把这些想法都向列车长转达的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：啊？好突然\nPlayer：我喜欢数学\nPlayer：好冷的笑话\nPlayer：我喜欢物理学。\nPlayer：有点吓人\nPlayer：我喜欢哲学\nPlayer：明白了\nPlayer：我仔细考虑一下\nPlayer：你也知道难听啊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：罗浮仙舟会使用穷观阵对未来进行预测\nPlayer：星核猎手好像也有这种能力\nPlayer：很多事情我都不记得了……\nPlayer：还可以这样吗？\nPlayer：那我要开始大胆预测了！\nPlayer：能够在不同的世界里独自流浪，应该有很强的实力吧\nPlayer：如果一直像这样充任旁观者的角色，感觉生活会很平淡\nPlayer：像这样一直在银河中流浪会遇到很多危险\nPlayer：所以这份记忆的主人是谁？她拥有的未来是什么样的？\nPlayer：还没有回答我的问题！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：比如说？\nPlayer：虽然我还没有去过几个世界，但无名客确实是会向所到之处施以援手的人\nPlayer：这些传说都很华丽，但我们的日常生活大部分时候是平淡的\nPlayer：我们都践行着「开拓」的理念，这是无名客前进的动力\nPlayer：应该是一代又一代无名客的传承，有人走了，但将「开拓」的火种传递到了下一代\nPlayer：应该是列车的慷慨，只要有人愿意一同踏上奇旅，列车的大门就会为其开启\nPlayer：忆者的生活是什么样的？\nPlayer：意念穿行，听起来很酷！\nPlayer：听起来有点平淡……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好像听人给我科普过\nPlayer：还是第一次听说诶\nPlayer：嗯？怎么突然聊起这个来了？\nPlayer：没想到你还懂这些香薰之类的东西",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？\nPlayer：老朋友？哪位？\nPlayer：真抱歉，我没有朋友\nPlayer：我有票了，不买票啊\nPlayer：没票可以找我买，要多少有多少\nPlayer：有点兴趣，仔细说说！\nPlayer：我注册完了！\nPlayer：这不是诈骗吗！\nPlayer：谢了，对骗子不感兴趣\nPlayer：算了，我就信老朋友一回\nPlayer：这不还是诈骗吗！\nPlayer：别装了，花火\nPlayer：你放心大胆地来，下次还不知道是谁骗谁\nPlayer：求求你别再来了！跟愚者扯上关系准没好事……\nPlayer：老朋友？我们见过面么？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你谁？\nPlayer：花火？又来？？\nPlayer：我还是怀疑你是花火\nPlayer：你用的帕也太多了帕！比真正的帕姆都多帕！\nPlayer：帕姆会制裁所有擅闯引擎室的人帕！\nPlayer：除了无名客和被邀请的客人外，没人能闯进列车！\nPlayer：哦！亲爱的列车长大人！\nPlayer：其实引擎室里藏着的……\nPlayer：其实列车长你就是假面愚者！\nPlayer：列车上的所有人都是列车长一个人变出来的\nPlayer：花火，露馅了\nPlayer：你放心大胆地来，下次还不知道是谁骗谁\nPlayer：求求你别再来了！跟愚者扯上关系准没好事……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你好\nPlayer：你是哪位？\nPlayer：？？？？？\nPlayer：燃烧可还行，我是垃圾焚化炉是吧？\nPlayer：垃圾桶发短信和我互诉衷肠…这是什么剧情展开？\nPlayer：花火，你又想搞什么名堂？\nPlayer：算我求你了，下次演点好的吧……\nPlayer：再见……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：东西太多放不下啦？\nPlayer：这样的客人会送你糖果，有种反差的美\nPlayer：能是能，但会长蛀牙！小孩子要多注意牙齿才行\nPlayer：是呀！因为你太优秀了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：列车上应有尽有，什么都不用带\nPlayer：手机、信用点、球棒！是不是很实用？\nPlayer：要不跟我们一起走？就明天！\nPlayer：其实你也可以在酒店度假\nPlayer：独自旅行不害怕吗，万一遇到坏人怎么办？\nPlayer：到时记得发照片给我\nPlayer：这片雪原在星球雅利洛Ⅵ，贝洛伯格的城镇外，随时都能去哦",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你在哪？我去你那边\nPlayer：快跑！！！\nPlayer：人没事就好，细说黑影\nPlayer：然后…人是否还在？\nPlayer：黑影就被揍了一顿？\nPlayer：不用谢，我也遇到过\nPlayer：咳咳，开玩笑的！当然是假的！\nPlayer：加油！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：试试就原地蒸发？\nPlayer：「原地蒸发」这个名字…像是不存在的调饮\nPlayer：请举例说说调饮口味的独特性\nPlayer：说说「流亡与欢宴」\nPlayer：说说「隐匿的才华」\nPlayer：好好好，我这就来品味人生！\nPlayer：这不就是我现在的人生！还要得着特地来吗",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你在说什么…嗷？\nPlayer：呃…手机还好吗？\nPlayer：确实头藤\nPlayer：能按坏手机的宠物…想看看它的样子\nPlayer：能搞坏手机，说不定它智商很高\nPlayer：像是一部是机械狗为主角的电影剧本\nPlayer：宾果！因为它什么都能学会！不管是该学的还是不该学的\nPlayer：噼咔！取自噼咔白葡萄汽水！一看就是你养的狗\nPlayer：这家伙",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：别叹气，会变老的\nPlayer：唉……\nPlayer：唉……\nPlayer：我只是担心你心情不好\nPlayer：可能现实太苦了，所以宁愿待在梦里\nPlayer：他选择了这样的活法，这也算是另一种人生\nPlayer：是个深奥的话题…我脑子有点痒\nPlayer：条条大路通罗马，船到桥头自然直！\nPlayer：你今天好像特别健谈",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么是你？！\nPlayer：你还活着？\nPlayer：后会有期，希望还能再见\nPlayer：等你回来再一起算账\nPlayer：别回来了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：见你没事，我也放心了\nPlayer：之前你去哪儿了？\nPlayer：走好，可算结束了\nPlayer：好啊，开始吧\nPlayer：无所谓啦\nPlayer：那就再来一次\nPlayer：来个大的！\nPlayer：看来运气还不错\nPlayer：这总不能输吧！\nPlayer：赢的太快了吧\nPlayer：后来怎么样了\nPlayer：我早就发现你是故意输的，你怎么可能这么背\nPlayer：输得开心吧？我又被你骗了\nPlayer：还是算了吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么？是要给我买吗\nPlayer：那我选一个吧\nPlayer：那就「地平线」系列睡衣吧\nPlayer：那就「黑夜钻石」系列手套吧\nPlayer：那就「无人飞行」系列风衣吧\nPlayer：我全都要\nPlayer：不用了，我都不感兴趣\nPlayer：和我有关么？我完全不感兴趣",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我很好，你呢？最近忙不忙？\nPlayer：哇！大明星给我发消息了！不胜荣幸！\nPlayer：是怎么样的音乐？\nPlayer：我好像有印象\nPlayer：你的歌也很美妙，有种鼓动人心的力量\nPlayer：这么棒的音乐，以后请多多给我推荐！\nPlayer：我也想写歌！\nPlayer：谢谢知更鸟小姐！我怎么会介意呢！\nPlayer：谢谢知更鸟小姐！我会尽力抽出时间的！\nPlayer：谢谢知更鸟小姐！这下大家都要激动得睡不着了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：只要活着，就有机会\nPlayer：这不太好说，具体问题得具体分析\nPlayer：发生什么事了吗？\nPlayer：我印象很深刻，这是一个悲伤的故事\nPlayer：完全没印象了\nPlayer：怎么了\nPlayer：是小鸟有动静么\nPlayer：快点回我消息吧，求求了\nPlayer：我会记住今天的！真是令人记忆深刻的一天\nPlayer：小鸟也很开心，或许它也有自己的愿望呢",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好耶！一起可可爱爱！\nPlayer：让您破费了！\nPlayer：请给杨叔最可爱的！\nPlayer：相信我！大家肯定会喜欢的！\nPlayer：厨师小帽是…\nPlayer：这家店居然连棒球棍都有？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？干嘛呢这是\nPlayer：？怎么突然骂人\nPlayer：？喵喵喵\nPlayer：懂了，合着我是赶上直播了\nPlayer：…你这误触率也太高了\nPlayer：喵喵喵喵喵\nPlayer：呃呃，虽然你人设就是法外狂徒\nPlayer：说起来你怎么老是发语音",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：说话说话\nPlayer：这啥，发错人了？\nPlayer：这能忍？坐标发我，我立即传送\nPlayer：听起来就很惬意，羡慕\nPlayer：还没听你说起过呢\nPlayer：男人哭吧哭吧不是罪",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不对劲，你们这是什么货啊\nPlayer：哪里搞的，快点交出来！\nPlayer：太可疑了，赶紧让我处理掉！\nPlayer：那我可要报警了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：显示发送失败了，看不到……\nPlayer：是什么？好急\nPlayer：原来拍了那么多张？表情不一样吗？\nPlayer：太好了，我要统统存下来！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：放心交给我吧\nPlayer：怎么不问银狼？她一定有不少点子吧\nPlayer：抱歉，我和她不熟……\nPlayer：就从这三种里挑也没问题\nPlayer：口红是个不错的选择\nPlayer：大衣是个不错的选择\nPlayer：墨镜是个不错的选择\nPlayer：不过匹诺康尼的东西不便宜，你的钱包还好吗？\nPlayer：星核猎手还招人吗\nPlayer：其实我也有星穹列车的福利……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：失眠时有过\nPlayer：我每天早起，没想到吧\nPlayer：我不用睡觉，没想到吧？\nPlayer：听起来很不错，下次带上我\nPlayer：可是，我起不来\nPlayer：一大早我很忙的，四点就要训练\nPlayer：区区虫子有什么好怕的\nPlayer：我见不得虫子，看见了就想死\nPlayer：你的绝招不会是那个吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你居然有我好友！\nPlayer：可以！但要给我奖励！\nPlayer：我对首饰一窍不通……\nPlayer：珠宝商店？但你为何会选择它呢\nPlayer：富商的宝库？应该是「慈玉典押」的抵押品吧\nPlayer：是不是在路边捡的？\nPlayer：你把星球制成了饰品？这么可怕？\nPlayer：那列车是不是也会被你做成水晶摆件？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：向上管理我最在行！\nPlayer：知道！不就是有事找上级，没事把自己的事找给上级做嘛\nPlayer：那翡翠女士的管理风格呢？\nPlayer：不好说…感觉不会被「向上管理」\nPlayer：公司人均工作狂的原因找到了\nPlayer：石心十人也要打磨自己吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我没有孩子，恐怕回答不了你的问题\nPlayer：我就是孩子，请尽管问\nPlayer：吃饱穿暖家庭和乐！就像咱列车组一样\nPlayer：没有烦恼，无忧无虑！\nPlayer：我也不知道\nPlayer：孩子们的愿望？要我帮忙准备什么吗？\nPlayer：你居然会去福利院？\nPlayer：是的…有关「慈玉典押」的故事我没少听",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你好！\nPlayer：完全没想到\nPlayer：你在其中功不可没！\nPlayer：我也是其中的一部分！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：想去！\nPlayer：你不去吗？\nPlayer：感觉是黑暗料理……\nPlayer：你现在还会做饭么？\nPlayer：这也是「虚无」的影响？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你做了那么惊天动地的事，想不出名也难啊\nPlayer：是不是有什么误会……\nPlayer：签名？我也想要！\nPlayer：感谢！我会告诉大家的！\nPlayer：没想到你这么了解\nPlayer：我就知道……\nPlayer：需要帮忙么？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：走！人多好哇！\nPlayer：浓茶？红油？泡椒？能吃？\nPlayer：不会要排个十年八年的吧\nPlayer：看样子是没抢到，有那么多人想吃吗？\nPlayer：如果我说我可以呢？\nPlayer：对不起，我实在消受不起\nPlayer：你还能用手机？听说你受伤了\nPlayer：真的？你眼睛没事吗？\nPlayer：真的？害我白担心了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好的，大夫，请给我一剂「参苓正气散」\nPlayer：没错，因为我进行了变态辣挑战\nPlayer：你也…那你现在肯定和我一样",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：知道！星槎海码头！\nPlayer：它肯定把桌腿当磨牙棒了吧\nPlayer：把桌腿啃断了？老板要谛听赔钱吗\nPlayer：好奇！是什么口味的？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我不对劲。你要做什么？\nPlayer：没有，我看谁都像正常人\nPlayer：你要哪种不对劲的？我认识很多，随便给你抓一个聊聊\nPlayer：你很急吗？\nPlayer：你说你等得差不多了，那爷爷怎么说？\nPlayer：别给自己太大压力了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是球棒\nPlayer：因为它是球棒，不是剑\nPlayer：你真能听到剑说话？\nPlayer：直说吧老师，我家孩子有什么问题",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你已经开始了\nPlayer：然后呢？成了吗？\nPlayer：我也听饿了！给我也带点！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？\nPlayer：来练，啥都能练\nPlayer：来！\nPlayer：嗯…难不成是请我当人肉沙包？\nPlayer：我打飞霄？\nPlayer：急急急急急急\nPlayer：好像有很多不得了的东西",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？\nPlayer：来喝，啥都能喝\nPlayer：咖！来点提提神！\nPlayer：算了，怕睡不着\nPlayer：姬子的咖啡给我喝出了内伤，暂时不要了\nPlayer：急急急急急急\nPlayer：喝这么多？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？\nPlayer：你终于放假了？\nPlayer：来玩，啥都能玩\nPlayer：星穹列车队必赢！\nPlayer：将军也会参加？\nPlayer：所以奖品是什么？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：说得好！至理名言！\nPlayer：怎么了？\nPlayer：念这个真的管用吗？\nPlayer：太可怕了，居然有这种事……\nPlayer：还是星穹列车好啊……\nPlayer：建议正面出击，直接摊牌\nPlayer：建议从长计议，不要被有心人陷害了\nPlayer：作为银河球棒侠，建议使用物理手段！直接，快捷，高效！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：养生，狠狠养生！\nPlayer：十万个是否有些太多了\nPlayer：首先，我不喜欢养生\nPlayer：到达陌生的星球时常常水土不服\nPlayer：会在旅途中被莫名其妙的怪物打伤\nPlayer：我没有困扰！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：熏，一直熏！\nPlayer：可惜了，我不太习惯熏香的味道\nPlayer：那我就代大家谢过了！\nPlayer：好像还没说到我\nPlayer：我喜欢苏打豆汁儿的香味！\nPlayer：我喜欢机巧鸟的味道！\nPlayer：一时想不到什么，我再考虑一下",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不是我，我没有，别瞎说\nPlayer：你跟踪我！\nPlayer：我不是，我没有，别瞎说\nPlayer：你又是做什么工作的？\nPlayer：？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你辞职了？\nPlayer：怎么？你也想抢劫列车？\nPlayer：你要上我们列车休息？\nPlayer：飞霄将军真好\nPlayer：保洁？谁？你？\nPlayer：那你直接来吧，我们很需要\nPlayer：你这是要抢我们列车长的饭碗\nPlayer：那你直接来吧，帕姆会欢迎你的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我的上司是谁？\nPlayer：我们是扁平化管理\nPlayer：行刺？！我为什么要行刺列车长？\nPlayer：太乱了\nPlayer：汇报？\nPlayer：这个思路太强了！佩服\nPlayer：太怪了！你是怎么接受这个建议的？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你居然还在匹诺康尼？\nPlayer：还没有被蕉灭吗！\nPlayer：发生了什么？\nPlayer：原来你不是天下第一！\nPlayer：F•E•S？敢情你在漫展呢！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：比肩纳努克，「毁灭」全世界\nPlayer：三天三夜，每天练到三更半夜，就行了\nPlayer：原来是宇宙新真言\nPlayer：以阁下的押韵实力，评委分分钟为你痴迷\nPlayer：你可不是鼠雀之辈，豪杰从不趁人之危！\nPlayer：终见缭乱•忍者无言以对！\nPlayer：我怀疑对方乃故意难为！\nPlayer：停！再押我要晕了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没想到你还有这个技能！\nPlayer：球棒•忍者来也！\nPlayer：破规•忍言？规则就是用来打破的？\nPlayer：规则是用来打破的\nPlayer：气氛已经烘托到位，合演，开场！\nPlayer：这样我就能一个打八个了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：实力越大，烦恼越多\nPlayer：要我帮忙吗\nPlayer：成为列车组成员，在别人眼里你就时刻光彩夺目\nPlayer：走到界域定锚旁边，刷地一下就变成新的了，简称「刷新」\nPlayer：不好意思，球棒侠天生丽质，不用额外打理",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：天才果然无所不能\nPlayer：你恢复得这么好，疗效肯定不错\nPlayer：腹肌撕裂者•暴虐挑战！\nPlayer：仙舟第十套广播体操！\nPlayer：阮•梅拉10分钟暴汗热舞！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：老板大气！\nPlayer：我吃，大吃特吃！\nPlayer：岩明估计会说，小妮子，真有你的！\nPlayer：梦茗肯定会请你去喝茶\nPlayer：燕翠大娘收到了你送的庖刀，肯定要给你做一道「红油乱斩牛杂」",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：完成一日三餐\nPlayer：睡觉，并且一定是晚睡\nPlayer：当然是为列车长按摩\nPlayer：想听一些睡前歌曲，不然容易失眠\nPlayer：每天都会发生不少开拓趣闻，你可以听我唠嗑\nPlayer：还是为列车长按摩吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：太有品了！\nPlayer：留声机中也有匹诺康尼的音乐\nPlayer：《野火》吧，想听到不一样的改编\nPlayer：《在银河中孤独摇摆》，这一首你肯定很熟悉\nPlayer：其实我都可以，都想听",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没想到你还爱吃这些！\nPlayer：这位更是重量级\nPlayer：期待强强对决的那一刻\nPlayer：左青龙，右白虎，少吃碳水化合物！\nPlayer：你太客气了\nPlayer：我已经馋了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是谁？\nPlayer：问这种问题，感情淡了\nPlayer：模拟宇宙缺人了？\nPlayer：度假中，勿扰\nPlayer：听不懂，当面说\nPlayer：救我！黑塔！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：介绍一下？\nPlayer：不感兴趣\nPlayer：那部「尼卡多利鏖战粉霞天女」…会上映吗？\nPlayer：我特别爱看这些！\nPlayer：全银河的审美一致！\nPlayer：偶尔也要放松下",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这也是一种角色扮演\nPlayer：他们怎么偷穿我的衣服\nPlayer：我也来参加！我演我自己\nPlayer：我适合穿什么？\nPlayer：来点大英雄穿的！\nPlayer：想试试你那件的同款，喜欢",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：等等，大地兽什么？\nPlayer：没有热辣红油浴我不是很认可\nPlayer：每天都去？\nPlayer：不怕被泡发吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：马上来！\nPlayer：爆米花？\nPlayer：减脂期，抱歉\nPlayer：我懂了，这就是缇宝列车！\nPlayer：欢迎以后来列车做客！\nPlayer：列车上也有三小只\nPlayer：大房间的浴缸不输黄金浴池，来泡澡！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：那我就是灰色毛豆\nPlayer：黄金裔能吃吗\nPlayer：我懂了，你是红苹果布丁挞\nPlayer：那么，怎么测呢？\nPlayer：我要创造缇宝！\nPlayer：我要创造星琼！\nPlayer：我要创造信用点！\nPlayer：如果有机会选择，想踏上星穹列车吗？\nPlayer：如果有机会选择，想当列车的敌人吗？\nPlayer：如果有机会选择，你想喝列车上的咖啡吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是缇宝老师们！\nPlayer：是种子！\nPlayer：是我的斗志！\nPlayer：是「时间」，对吗？\nPlayer：缇安老师……\nPlayer：生命和时间……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我们也不会辜负你\nPlayer：放心，我会转告他们\nPlayer：什么时候再见",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：一言为定\nPlayer：什么时候再见",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：那老师妙算无遗\nPlayer：一言为定\nPlayer：你已经在大气层了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：风堇，我们已经成功了\nPlayer：什么时候能再见面",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：赛飞儿，你是英雄！\nPlayer：什么时候能再见面\nPlayer：那就亲自来道歉",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：圣杯战争还没结束？\nPlayer：我就知道，你不会这么快离开的！\nPlayer：Archer和Lancer，大家都看过了\nPlayer：对不起！我不是故意要让Archer和Lancer看到的\nPlayer：富有智慧\nPlayer：魔性\nPlayer：可爱动人\nPlayer：那我可以拿去给其他人炫耀下",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我明明亲眼看见你消失的\nPlayer：你们不是都消失了吗？\nPlayer：我屯了两年半的垃圾啊！全没啦！\nPlayer：你没看到什么不该看的吧？\nPlayer：你有没有看到我掉进床底的5星琼？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：伙伴，我们看到了你为世界燃起的光\nPlayer：我们还会再见吗？\nPlayer：我替你看了，是个好结局！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我听见了，很美的歌声\nPlayer：等我们，等和所有人再见时\nPlayer：什么时候能再见",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：翁法罗斯，不会忘记你的姓名\nPlayer：这么大方？\nPlayer：说好了，银河再见！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：当然会是我们赢啦！\nPlayer：我现在就要看！\nPlayer：还会再见么？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：大家都要好好的！\nPlayer：新世界见，期待！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我也来\nPlayer：这是哪？很危险的样子\nPlayer：摇我去测试吗？\nPlayer：我怎么去？\nPlayer：有多有趣值得黑塔女士亲自下场？\nPlayer：你买了仿品？\nPlayer：粉丝万万没想到碰到真品了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：多少报酬？我可不是什么单都接\nPlayer：又要测什么？我现在报价可涨了\nPlayer：是买了多少衣服？送我一件\nPlayer：我是开拓者，送我\nPlayer：人偶们也要换衣服？\nPlayer：坏了，人偶的衣服都比我多了\nPlayer：哪儿？空间站？艾丝妲知道吗？\nPlayer：给人偶买了一座空间站衣橱？艾丝妲知道吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：第三日健身计划（完成请打勾）\\n营养补充（√）\\n充分热身（）\\n肩+手臂（）\\n下肢训练（）\\n记得喝水（√）\nPlayer：好的，开练！\nPlayer：好久不见，迈德漠斯！\nPlayer：还得是你，悬锋孩子王！\nPlayer：我没听错吧，挺举…啥？\nPlayer：小菜一碟，我每天打卡",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：吃的大厨，我什么都吃\nPlayer：大厨，能把你发的所有菜品都吃了吗\nPlayer：有请万师傅炒！\nPlayer：生拌鹿心？\nPlayer：碳烤蜥蜴腿？\nPlayer：很重口吗？\nPlayer：就爱吃点重口的\nPlayer：来点正常的食物\nPlayer：不是怪味的我不吃",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：终于，又见面了！\nPlayer：好久不见，遐蝶\nPlayer：真的是你吗？\nPlayer：给我摸摸！\nPlayer：终于实现心愿了！\nPlayer：一个叫蝶糕糕，一个叫蝶飞飞\nPlayer：说好话，说坏话\nPlayer：其实，我也有取名困难症",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这次是什么样的新故事？\nPlayer：有我的戏份吗？\nPlayer：是这么个「童话」故事？那么吓人？\nPlayer：别说，还挺萌的\nPlayer：那么哪里可以安静？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：那还用说，我必须是阿基维利\nPlayer：我是纳努克，封你做绝灭大君\nPlayer：我是阿哈，哈门！\nPlayer：不该是机器头吗？\nPlayer：莫名很合适\nPlayer：是只很好的贪饕",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？\nPlayer：我有问题，用哪三个字可以回答一切疑问？\nPlayer：老师，是你点我的名，我没问题！\nPlayer：那刻夏老师，你的小秘密是？\nPlayer：请生成一张那刻夏老师的照片。内容为：那刻夏老师骑着大地兽，攻打悬锋城的宝贵影像\nPlayer：我！不！知！道！\nPlayer：这对吗？\nPlayer：老师救救我，快收了这神通吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么事了？\nPlayer：堇宝堇宝堇宝堇宝——\nPlayer：我一切都好！\nPlayer：爱睡爱吃不爱动…我还有救吗医师？\nPlayer：无心工作，怎么治？\nPlayer：我马上就来！\nPlayer：妙手回春术！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这只小鸟伙食真好！让我摸摸\nPlayer：哪里来的小鸟这么圆，拿来给我我帮你养\nPlayer：但是我看到了天空，也很漂亮哦\nPlayer：我已经看到啦，你的形容很有画面感呀\nPlayer：让小伊卡表演一下温柔的闪电！\nPlayer：好！一言为定！\nPlayer：不错过任何风堇！\nPlayer：一起去看知更鸟小姐的演唱会！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？？？\nPlayer：发生什么了，朋友\nPlayer：开外挂？\nPlayer：原来是防诈宣传\nPlayer：对你也有用？\nPlayer：有这种好东西？多来点\nPlayer：别想骗我，朋友\nPlayer：懂了，即刻加入欢愉命途\nPlayer：多谢赛飞儿大姐头！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：奶奶好\nPlayer：我也没看见\nPlayer：也许在浴池？\nPlayer：奶奶，这些名字您别太当真\nPlayer：饭桌够坐吗？我可以背个长桌来\nPlayer：大锅饭！包饺子！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：白厄，又见面了！\nPlayer：发生什么了？\nPlayer：快说话，好急\nPlayer：终将升起的烈阳——\nPlayer：水彩画家，可以提高色彩搭配能力\nPlayer：狗狗训练师，我觉得你非常有天赋",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：当然记得，但现在我建议你自己看\nPlayer：要不你自己看吧，特别有趣，不忍心剧透\nPlayer：我还没看\nPlayer：太不像话了！\nPlayer：好，就交给你写了！\nPlayer：给读者留下想象空间，这是一种写作手法\nPlayer：强推三月之前写的推理短篇\nPlayer：强推遐蝶老师的同人文\nPlayer：翁法罗斯的阅读物，也有不少惊世之作",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：太好了，又能听到你的歌声了\nPlayer：前面忘了，后面忘了\nPlayer：想听《使一颗心免于哀伤》，我发个音频给你！\nPlayer：想听星间旅行！我给你示范一下：\nPlayer：噔！噔噔噔噔↗噔→噔↓噔↓噔↗，噔！噔噔噔噔↗噔↘噔↗↗↗↗",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：感谢，有心了！\nPlayer：我大喝特喝！\nPlayer：我可以喝吗？\nPlayer：那我的呢？\nPlayer：这些奇奇怪怪的配方，你跟我们姬子姐一定会很有话聊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？那我要用火车头\nPlayer：◯✘◯\nPlayer：原来是表情棋吗！\nPlayer：✘✘✘\\n✘✘✘✘✘\\n   ✘✘✘\nPlayer：◯◯◯◯◯◯◯\nPlayer：我没招了，投降",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你一个人吗？准备去哪儿玩？\nPlayer：准备去哪儿玩？\nPlayer：请登上星穹列车\nPlayer：我都可以，毕竟之前也经常旋转跳跃，然后高空降落进入一个世界\nPlayer：说来话长…我经常通过高空降落的方式进入一个世界\nPlayer：请珍爱生命！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：醒醒——\nPlayer：现在几点就开始梦游啦？\nPlayer：朋友，记得切号\nPlayer：那就展开讲讲吧\nPlayer：我身正不怕影子斜\nPlayer：好了，看来我们需要一点「忘却」的力量\nPlayer：是不是很酷？\nPlayer：唉，本想默默付出，还是被发现了\nPlayer：睡吧，三月七，梦里可以许愿\nPlayer：好的，长夜月",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我睡着了\nPlayer：我也睡不着\nPlayer：其实…你猜对了……\nPlayer：放心，我有上帝视角，你就是完整的你\nPlayer：我懂了，现在是幻想时刻，该睡了\nPlayer：别忘了，你还是星穹列车剑首三月七\nPlayer：放心吧，没事的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：丹恒老师，小猫开心的时候怎么说话？\nPlayer：丹恒老师，小狗无聊的时候怎么说话？\nPlayer：叽里咕噜",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你说睡哪儿？\nPlayer：以后还会有不同的力量吗？\nPlayer：火中洗澡，顶级桑拿\nPlayer：冰敷美容，极致瘦脸\nPlayer：雷光发电，列车永动\nPlayer：你还有什么我们不知道的生活习惯\nPlayer：火中洗澡，顶级桑拿\nPlayer：冰敷美容，极致瘦脸\nPlayer：雷光发电，列车永动",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我们一定能重逢\nPlayer：什么时候再见？\nPlayer：约好了，一起看星星",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：谢谢你，昔涟\nPlayer：你的心意，我收到了\nPlayer：我会好好保存！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我也要进群\nPlayer：什么时候能再聊天",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在哪儿呢？是本人吗？\nPlayer：你在哪儿呢？咱没见着啊？\nPlayer：妈\nPlayer：我该知道吗？\nPlayer：要不您猜猜我今年几岁？\nPlayer：美丽的，无与伦比的那种美丽\nPlayer：无论何时都能支持我的决定的\nPlayer：陌生的，忽远忽近的，却总在关键时刻出现在记忆中的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：倒要听听黄泉有什么可能她自己都不知道的秘密\nPlayer：她可能只是饿了，你不知道她会做饭吧\nPlayer：你当时真的混进星核猎手了吗？我表示怀疑\nPlayer：你数学不好，不是有56个吗？\nPlayer：我想知道你不为人知的秘密\nPlayer：现在大家都知道了，想听你喊一下这个口号\nPlayer：真是知道了一个好小众的秘密！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：爽。甚至无需动手，盯着他们就好\nPlayer：很遗憾，我心无波澜，没有感情\nPlayer：按部就班地来\nPlayer：要加入我们吗？反正你也背叛「毁灭」了\nPlayer：你还会回到「毁灭」吗？二度背叛怎么不算是一种背叛呢\nPlayer：你清醒一点啊！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你谁？谁给我关注的？\nPlayer：（还以为她账号肯定被封了）\nPlayer：我支持火花！\nPlayer：对手的对手就是朋友，我支持霹雳机铠！\nPlayer：什么东西，退订！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：什么合作？我很贵的\nPlayer：找我老板去，我老板帕姆\nPlayer：叫你老板来，我可是VVVIP客户\nPlayer：我的人脉，你的人脉？我的朋友，你的朋友？\nPlayer：和你合作我有什么好处？\nPlayer：二相乐园就有我的人脉，都是大腕\nPlayer：推荐一个游戏黑洞吧，上节目会很有效果\nPlayer：我没有人脉，不如你自己把金花、木花、水花、土花都叫来吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：原来你也……\nPlayer：你到底还有多少小号！\nPlayer：鉴于你有前科——什么菇？没有病毒吧？\nPlayer：听起来是门赚钱的地道生意，让我入股\nPlayer：我账号被骚扰了啊！\nPlayer：手下饶菇啊！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我接！\nPlayer：可是我本来就不擅长打牌\nPlayer：我必将活用\nPlayer：苏打梅粉，输得没法吗……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么算出来的？\nPlayer：明日卦象呢？爻大师，也能帮我算算吗？\nPlayer：爻老板好强的算力\nPlayer：好新奇的卜卦方式\nPlayer：我观「爻」字…竟有四笔！\nPlayer：我观太阳东升西落……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：大睡一觉，虽然脑袋空空的，但梦里什么都有\nPlayer：出门闲逛，花钱消费，对自己好点\nPlayer：活络筋骨——强身健体，出门旅游，或者\nPlayer：这真的是在休息吗？\nPlayer：你还是太想赢了\nPlayer：谛听的天干地支？它们还好吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：「健康炒米」无烟无油无添加剂，营养但寡淡\nPlayer：很难推荐…我喜欢吃的好像也没什么营养\nPlayer：我以为你只爱香蕉\nPlayer：怎么培养？我也想健康管理！\nPlayer：多好的保姆型助手啊！\nPlayer：七天换粮法，学习了！\nPlayer：你倒是比较像他的主人",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：原来给书带货还得会量子速读？\nPlayer：这是给书带货的委托吗？\nPlayer：饥肠辘辘的受害者潜入他人厨房准备饱餐一顿，不巧与察觉到异响的屋主人迎面撞上，被屋主击倒\nPlayer：屋主饿得不行，因着急食用了变质的食物而身亡，『啪』的一声倒在了地上\nPlayer：夜里…厨房…吃饭…『啪』的一声……\nPlayer：也是一种推理书吧，能不能学到真东西另说",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：同意！小狗拯救世界！\nPlayer：你养狗了？送我摸摸\nPlayer：不好意思，我是猫派\nPlayer：有没有可能，狗不是名词？\nPlayer：我看明明是你更需要它\nPlayer：要不你养只狗吧，省得整天吸别人家的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：绯英！你还在呀！你在哪里呢\nPlayer：绯英！你现在在哪里呢？\nPlayer：我今年才三岁，距离十七岁还有十四年\nPlayer：放心，我会帮你催更的！\nPlayer：放心，我会帮你兜售点子的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：多谢狼尊！其实……\nPlayer：多谢狼尊！狼尊抢的哪一场？其实……\nPlayer：帮我付款了吗？狼尊太大方了！其实……\nPlayer：手速太强了，怎么练的\nPlayer：这就是狼尊的手速吗？\nPlayer：来都来了，能帮我在超市抢个鸡蛋吗？\nPlayer：？？？\nPlayer：没帮我付钱啊！\nPlayer：我缺的是票吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：来，怎么玩？\nPlayer：经典模式\nPlayer：我要第一个登上星穹列车！当列车长！\nPlayer：『没有勇气踏出第一步』\nPlayer：惊喜模式\nPlayer：谢邀，刚出生，我要迎战纳努克\nPlayer：『没有勇气踏出第一步』\nPlayer：我要重开！\nPlayer：你的「剧本」又是什么？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有八卦说，狼尊和阿哈打过一局\nPlayer：有八卦说，星核猎手收留了一个荒废星球上的所有流浪猫\nPlayer：敢情是艾利欧全肯定啊你们！\nPlayer：还有八卦说，星穹列车是星核猎手的债主\nPlayer：有八卦说，星穹列车是星核猎手的债主\nPlayer：钓鱼成功…那我们是不是说过，会定期向你们讨债？\nPlayer：还有八卦说，星核猎手收留了一个荒废星球上的所有流浪猫，是真的吗？\nPlayer：有八卦说，星核猎手收留了一个荒废星球上的所有流浪猫\nPlayer：有八卦说，狼尊和阿哈打过一局，是真的吗？\nPlayer：你赢了吗？\nPlayer：还有八卦说，星穹列车是星核猎手的债主\nPlayer：有八卦说，星穹列车是星核猎手的债主\nPlayer：钓鱼成功…那我们是不是说过，会定期向你们讨债？\nPlayer：还有八卦说，狼尊和阿哈打过一局，这是真的吗？\nPlayer：有八卦说，星穹列车是星核猎手的债主\nPlayer：钓鱼成功…那我们是不是说过，会定期向你们讨债？\nPlayer：还有八卦说，狼尊和阿哈打过一局，这是真的吗？\nPlayer：还有八卦说，星核猎手收留了一个荒废星球上的所有流浪猫，是真的吗？\nPlayer：有八卦说，星核猎手收留了一个荒废星球上的所有流浪猫\nPlayer：还有八卦说，狼尊和阿哈打过一局，这是真的吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：太好了，流梦礁一定会重回正轨的\nPlayer：对无名客来说，这不算什么\nPlayer：原来加拉赫先生还有这样的一面！\nPlayer：现在他们的梦想都实现了，但他们却没能亲眼看见……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你好啊，大毫先生！\nPlayer：你好你好，地衡司这边又有什么新任务？\nPlayer：是三月开启推理模式，对一个行商的行踪来历大猜特猜，结果一个靠谱答案都没有的那一回？\nPlayer：记不得了…\nPlayer：列车团当真是卧虎藏龙！\nPlayer：…这也能蒙对？\nPlayer：所以那人到底犯了啥事儿？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：遵命\nPlayer：求我啊～\nPlayer：……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：遵命\nPlayer：求我啊～\nPlayer：……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好的\nPlayer：害怕",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：距离我们上一次说再见好像没有过去很久吧？\nPlayer：唔…确实感觉过了挺久，都有点忘记帕姆长什么样子了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：出门在外，轻车从简\nPlayer：穷，买不起",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：普普通通的水平啦，大概也就列车排个第三吧\nPlayer：经历了这么多事，想要没有成长也是很困难的事情吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：很感兴趣，请问是什么活动呢？\nPlayer：满足外客梦想，在仙舟上吃好喝好的体验活动？\nPlayer：说实话，我对这种事情不感兴趣，另寻高明吧\nPlayer：了解了，等之后我有空了就去找檀檀吧\nPlayer：这种流量统计用什么机器就能做到吧，非要用人工来做吗？\nPlayer：有好事的时候没有想起我，这个时候反倒想起我了吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：梅姐出了事故，我在帮她联系亲属\nPlayer：没有什么事，不用担心，不过今天可能不会来了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：请帮我转接人工客服，谢谢\nPlayer：没事，我想我找错人了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：遭遇后方超速的星槎，梅姐从星槎里被甩出来了\nPlayer：梅姐遭遇了一点点儿星槎的交通事故，现在正等待救助\nPlayer：我只是天舶司临时派到这里的测速员而已\nPlayer：我只是个路过的开拓者罢了，你也不必记住\nPlayer：我叫开拓者",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：丹鼎司的医者到达了事故现场，已经把梅姐及时带走了\nPlayer：我尝试着联系一下，不用抱太大的希望",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你已经到丹鼎司了吗，天舶司这边有些问题想问问梅姐\nPlayer：你已经见到梅姐了吗，天舶司这边有些问题想问问梅姐\nPlayer：我在事故现场找到了她的笔记，然后找到了你的联系方式",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你们是雇佣关系，一分钱一分服务。你们之间能够建立健康的关系当然好，但是这段关系不应该影响雇佣服务中的价码\nPlayer：我认为金钱也许能够给雇佣服务标的出最公平的价码，但是这些金钱来来去去，转瞬即逝\nPlayer：我就只是一个外人，在你们的关系里，我的意见并不重要",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没有听说过，很有意思吗？\nPlayer：我很感兴趣，把链接发一个给我，我来鉴赏一下\nPlayer：科员有什么意思，我只关心美丽狐仙，请见面细说\nPlayer：非要我回空间站一趟才说吗？我的时间非常值钱\nPlayer：您呼叫的用户当前正忙，有空的话我会来的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：什么线下工作人员，根本不在宣夜大街，他们都躲哪去了？\nPlayer：我知道你很急，但是先别急，我也很急，我找不到线下工作人员\nPlayer：要是我有会员账号，我早就问了，还有这些弯弯绕绕？把账号给我！\nPlayer：我都忙了这半天你才告诉我",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：真的假的，你不会是什么高仿账号吧？\nPlayer：放心吧小姐姐，我是绝对不会说出去的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：虽然这么说可能很突然，但能麻烦你骗我点钱吗？\nPlayer：姐姐，能麻烦你给我打点信用点吗？孩子没钱吃饭了\nPlayer：这应该就是所谓概率学奇迹，「缘分」\nPlayer：其实我是通过朋友找到你的……你应该听你的经纪人说起过了吧？\nPlayer：早就走进了啊，快些走进啊！\nPlayer：抱歉，我心里这样的位置已经被人占座了唷",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你打字咋这么快？\nPlayer：常回家去看看吧，这样也算是一直在陪伴着他了\nPlayer：如果身体不舒服，压力太大，就多喝点热水\nPlayer：你打字咋这么快？\nPlayer：真是一个善良懂事的小狐人姑娘呀\nPlayer：如果觉得身体不舒服，压力太大，就多喝点热水\nPlayer：你打字咋这么快？\nPlayer：我也想帮助你们，确实应该买点儿茶叶\nPlayer：如果觉得身体不舒服，压力太大，就多喝点热水\nPlayer：[转账]5000万\nPlayer：[转账]5000万\nPlayer：[转账]2亿\nPlayer：[转账]2亿",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是谁啊？为什么会有我的联系方式\nPlayer：难道说你是那位卖茶叶的黛青小狐狸？\nPlayer：行啊，我也想和你见上一面\nPlayer：良心不安，不会吧。我看你其实是害怕了，涉案金额超出预期了是吧？\nPlayer：这点儿小钱而已，不用还了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：任何一家健康的企业都不会搞这么鬼鬼祟祟的收货方式\nPlayer：「尘寰相见，好礼相送」…这个接头暗号好熟悉。\nPlayer：你说了这么多义正辞严的话，结果还是得我讲，又不是你讲\nPlayer：你这是完全坏掉了啊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：但我不是仙舟人，不方便插手公务\nPlayer：我只是个化外民，可能帮不上忙……\nPlayer：忙\nPlayer：我是可疑人士？\nPlayer：呃…懂了，所以要我做什么？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：了解，谢谢你\nPlayer：知道了。我们等一下就来",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：初次见面时…你指的是什么事？\nPlayer：你太客气了，只是举手之劳\nPlayer：应该谢谢丹恒，是他发现了你\nPlayer：好，我这就过来\nPlayer：还有礼物？太不好意思了\nPlayer：可以邮寄给我吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在，什么事？\nPlayer：我已经走了\nPlayer：刚才怎么不说？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么大事了？\nPlayer：悠着点，慢慢说？\nPlayer：……啊？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？？？？？？\nPlayer：真好啊……\nPlayer：大家都特别着急……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：感觉挺好，列车已经平稳到站了！\nPlayer：感觉还没缓过来…不过列车已经平稳到站了！\nPlayer：我都没发现还有这种事儿！\nPlayer：但霸主小得可以藏在维利特的铠甲里\nPlayer：最巨型的那个居然是小弟\nPlayer：就像你看到「美」的事物吧\nPlayer：突然想起来他好像提过曾经想做个飞行员",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是谁？梁沐，我对这个名字没有什么印象\nPlayer：什么事情？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：随便吃点零食\nPlayer：好累，懒得吃晚饭了\nPlayer：这句话这么耳熟…喔，你拿我当你的聊天陪练呢？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我打算去空间站里随便整点炒饭\nPlayer：今天没胃口，不想吃\nPlayer：哇哦，真的吗？然后呢？\nPlayer：…我怎么教你来着，你又忘词了？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我还没吃呢！\nPlayer：我不知道吃什么好\nPlayer：因为我选择困难症发作了\nPlayer：我不饿，不想吃晚饭\nPlayer：我能教的都教完了，我感觉你可以出师了\nPlayer：聊天是一门学问，你要学的东西多着呢",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：对的，我在迴星港，正好来这边办点事\nPlayer：你怎么知道的！夕葵小姐不会在跟踪我吧！\nPlayer：「你们」？还有谁也在这里吗？\nPlayer：这艘星槎坠毁在哪里？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你认识采翼吗？据说是令堂以前最好的朋友\nPlayer：景元提到了一个叫「采翼」的人，说你和她很熟悉\nPlayer：稍后见\nPlayer：一会儿见",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：大善人？听上去不像是在夸奖我的话呀\nPlayer：别绕弯子了，你是有事才来找我的吧？\nPlayer：这样一位勇敢善良、助人为乐的开拓者，除了我还能有谁呢？\nPlayer：那么，请问你有什么事情需要麻烦我呢？\nPlayer：这样子，你现在撤回，我们就当无事发生\nPlayer：不记得了\nPlayer：似乎是有这么一个学徒来着，我有些印象",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你又活过来了？\nPlayer：手机又有信号了？\nPlayer：我们抓住了卡芙卡，但过程太顺利了，有些奇怪\nPlayer：我们抓住了卡芙卡，然后去了太卜司\nPlayer：抓住卡芙卡时，她就一个人，咋了？\nPlayer：他跑了，在哪不知道\nPlayer：等等，你那边到底什么情况？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：退订\nPlayer：什么短信这么长，你发错人了吧？\nPlayer：你从哪里拿到了我的联系方式？\nPlayer：那是你们的宝箱，所以呢？\nPlayer：你说那是你的宝箱，你在箱子上写着你的名字吗\nPlayer：我看这些装置放在路边，也没有人要啊，你饶了我吧\nPlayer：「枘凿六合」可以继续玩，但是你们的宝箱还可以继续拿吗？\nPlayer：你们这种做法就是在敲诈！我还要告你们呢！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：男\nPlayer：女\nPlayer：不能用男女来判断我的性别\nPlayer：1～100岁\nPlayer：101～500岁\nPlayer：500岁以上\nPlayer：我知道什么是「枘凿六合」\nPlayer：我不知道什么是「枘凿六合」\nPlayer：什么六合，我第一个字就不认识\nPlayer：你们摆在路边，然后我看到了，这就是我了解它的方式\nPlayer：是朋友推荐我的\nPlayer：我是通过「枘凿六合」的官方账号得知的\nPlayer：可能是营销账号，蹭你们的流量\nPlayer：可能是高仿的官方账号，你们被人冒充了\nPlayer：非常困难\nPlayer：难度适中\nPlayer：非常简单\nPlayer：简直是大师的杰作，天才的想法\nPlayer：只能说有点意思，除此之外，我不好评价\nPlayer：完全是在浪费我的宝贵时间",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我当然是因为「枘凿六合」太有趣了才玩下去的嘛！\nPlayer：我本来是想拒绝的，但是你们宝箱里给的奖励实在太多了\nPlayer：我如果不继续玩下去，你们不是要去地衡司告我吗，我怕了\nPlayer：你们的「枘凿六合」这么有意思，怎么可能只有我一个人完成，我不信\nPlayer：你们不是擅长敲诈吗，你可以去告他们呀，你不会只敲诈我吧？\nPlayer：什么？！只有我费了那么多功夫完成了所有的挑战，我真是个大冤种\nPlayer：不是很想要成为你们那个秘社的终身社员，称号就还是算了吧\nPlayer：可是我已经给你们填过问卷了\nPlayer：直接说吧，我们在哪里见面",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：确实太突兀了，往路边一放就想让人玩，挺没道理的\nPlayer：你们的「枘凿六合」这装置也没法包装啊\nPlayer：简单，我随随便便就给你包装了\nPlayer：考虑到扮演感，可以试试「怪谈调查」的路线\nPlayer：考虑到宏大的世界观，可以试试「灾难题材」\nPlayer：考虑到高人气，可以试试「拟人化」",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么了？\nPlayer：列车的来意这么难以理解吗？人就不能为了完成某些善举而行动？\nPlayer：列车的来意这么难以理解吗？人就不能为了完成某些善举而行动？\nPlayer：追求长生，在仙舟是绝对禁止的事情吧\nPlayer：星核可是带来毁灭的种子，列车怎么会渴望星核？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：那东西，想必就是…建木的根须吧？\nPlayer：那东西，想必就是…建木的根须吧？\nPlayer：停云小姐，这样做岂不是违犯了仙舟禁令\nPlayer：这果实一旦吃下，恐怕不是长命千岁，而是…不久就要被云骑正法了\nPlayer：那…停云小姐有没有…留一颗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：卡芙卡…你怎么还在罗浮？\nPlayer：你说你是卡芙卡？证据呢？\nPlayer：别白费心思了，我不会理你的\nPlayer：你在哪？给我坐标\nPlayer：你死心吧，卡芙卡，我不会来的\nPlayer：我这个号还要用呢，以后别联系了\nPlayer：好吧\nPlayer：随你便",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：多保重，卡芙卡\nPlayer：谢谢，别再联系了\nPlayer：又要发送错误了吧？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "丹恒：你们和云骑军在一起做什么？\n丹恒：你们在「太真丹室」那边做什么？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：对，是我\nPlayer：我都这么有名了？\nPlayer：先说清楚什么事\nPlayer：无事不登三宝殿",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你说的这个，我也听不懂啊……\nPlayer：心理咨询的话，我收费很贵的！\nPlayer：您呼叫的用户不在服务区\nPlayer：你有找过青雀跟你交流灵感吗？\nPlayer：青雀和忙，就像鱼和熊掌\nPlayer：那个，我最近，刚巧也抽不出时间",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你的星槎设计是完成差不多了吗？\nPlayer：说实话，我就像是在监督你工作一样\nPlayer：你这个人的癖好多少是有些奇怪，这种要求，我这辈子都没听过\nPlayer：如果只是骂几句就能激励人实现梦想，那宇宙里此刻已经堆满了实现的白日梦",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我算看明白了，你为什么在工造司里两百年没能出师\nPlayer：不用抱歉，要做成任何一件有价值的工作就是这么难\nPlayer：其实你完全用不着这么逼自己",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：铖杰师傅是谁啊，没有印象\nPlayer：对不起，我不认识\nPlayer：想起来了，但是我们有一段时间没联系了\nPlayer：我们有一段时间没联系了\nPlayer：铖杰让我等他消息，然后他就再也没有任何消息传来",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：要是完成了就是一段佳话，可惜没能实现\nPlayer：天赋平平的学徒哪有那么容易实现恩师夙愿呢，这种情况太过理想了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：别说的好像只有我在找一样啊，你们完全不找吗？\nPlayer：放心交给我吧，肯定能帮你们找回来",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你们难道不应该反思一下，自己真的有在找吗？\nPlayer：放心交给我吧，肯定给你们全部找回来",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：特别顺利，顺利到有些难以置信了\nPlayer：非常顺利，我现在已经是药王秘传的成员了\nPlayer：举手之劳而已\nPlayer：有什么需要我重点关注的吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没错，就是我把所有机巧鸟找回去\nPlayer：你搞错人了，我不知道什么「{TEXTJOIN#24}」的事情\nPlayer：你为什么要给这些机巧鸟添加智能呢？\nPlayer：因为你拒绝和他们联系，所以他们才会费这么大劲儿让我联系你\nPlayer：所以智能不是重点，能说话才是重点\nPlayer：所以你其实是个家里蹲，突然心血来潮，想和人说话，才这么做的\nPlayer：所以，你现在还是不能和别人面对面，不能出门的状态吗？\nPlayer：几百年没有和任何人见面，有点难以置信\nPlayer：每个人都有自己的难处，就算现在没办法出门，只要好好生活就行\nPlayer：不必强求自己，用打字的方式交流就已经很不错了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：偏偏这个时候？\nPlayer：之前工造司出了点麻烦",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：稍等一下，我这就来\nPlayer：现在来找你吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：稍等一下，我这就来\nPlayer：现在有些忙，不太方便",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：什么事？\nPlayer：没错，举手之劳而已\nPlayer：我记不太清了？是惹出什么麻烦了？还是…你们打算表彰好人好事呢？\nPlayer：龙女？谁？不认识",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不在，我是帕姆\nPlayer：在的，怎么了？\nPlayer：之前在神策府，你怎么不求她？\nPlayer：确实值得去问问，搞不好能探到你丢失的记忆\nPlayer：没问题，我们太卜司见。\nPlayer：我也要跟着一起去吗？是这样的，不是怕麻烦哈，毕竟是你的私事…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在啊\nPlayer：您好，您所呼叫的用户不在贝洛伯格服无\nPlayer：呃，怎么还拉了个群\nPlayer：行啊，你们说吧\nPlayer：您好，您所呼叫的用户暂时无法接替\nPlayer：细说\nPlayer：行，马上就来\nPlayer：什么事搞得这么神秘……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：还有点事没处理\nPlayer：在路上了在路上了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么了？\nPlayer：确实\nPlayer：啊？\nPlayer：啊？\nPlayer：客气什么",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：邀请我？这么郑重？\nPlayer：该不会担心仙舟上有人对你不利，想请我当你的保镖吧？\nPlayer：好啊，需要我的话，我随时都在\nPlayer：感觉这似乎是个正儿八经的外交场合啊，我一定得在场吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：收到了\nPlayer：收到了\nPlayer：我一定来！\nPlayer：不好意思，这次可能没空……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：能不能告诉我托帕去哪了\nPlayer：别复读了，快告诉我托帕去哪了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么了吗？\nPlayer：布洛妮娅说的对，最好别惹他们\nPlayer：不能任由他们欺负矿民，得拿起武器反抗\nPlayer：挺住，我们这就过来",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：越详细越好。\nPlayer：你们起冲突了？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：抱歉，我们没能说服托帕\nPlayer：公司恐怕不会就这么停手",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[图片]\nPlayer：这照片拍得不错吧？\nPlayer：感觉拍得不是很好看…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[图片]\nPlayer：不用谢\nPlayer：不用谢",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[图片]\nPlayer：刚才被叮叮车撞飞了\nPlayer：刚刚正在战斗\nPlayer：刚刚太沉迷于拍照了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[图片]\nPlayer：我的拍照技术是不是进步了很多？\nPlayer：这些照片的内容都很有趣",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[图片]\nPlayer：看起来没什么区别啊\nPlayer：时过境迁，物是人非…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[图片]\nPlayer：确实很可爱\nPlayer：就是有点烦人",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[图片]\nPlayer：我的拍照技术是不是进步了很多？\nPlayer：这些照片的内容都很有趣\nPlayer：是我特地拍的桑博",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[图片]\nPlayer：我的拍照技术是不是进步了很多？\nPlayer：这些照片的内容都很有趣",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：[图片]\nPlayer：我的拍照技术是不是进步了很多？\nPlayer：这些照片的内容都很有趣\nPlayer：是我特地拍的桑博",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：就在身上\nPlayer：没收到过\nPlayer：什么包裹？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不好意思，现在才腾出空来\nPlayer：差点忘了给你们回报情况了，抱歉\nPlayer：为什么？你这么一说我反而有点不敢加入了……\nPlayer：怎么又是我？你们地衡司是没人了吗？就算我想帮你，我也不会啊？\nPlayer：内部瓦解，怎么瓦解？就算我想帮你，我也不会啊？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：希露瓦大姐，我想搞些自动机兵…\nPlayer：难道就没有办法了吗？\nPlayer：我懂，铁卫当然不会把一台运作良好的机兵卖给我",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：就是想让你当众道歉，还要学狗叫的那个？\nPlayer：没有什么印象了，你是说公司的业务员？\nPlayer：马上就来",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：欢迎新人加入，进群先发红包\nPlayer：坏了，天舶司的人进群了\nPlayer：遵命\nPlayer：我现在就去",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：欢迎新人加入，进群先发红包\nPlayer：这个群是末位淘汰制，现在要赶走一个人。认识大家，我很开心",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：真是好漫长的旅程啊，这一路走过来，真是让人感慨万千\nPlayer：这场战争结束以后，我就要回老家结婚了\nPlayer：不见不散\nPlayer：我必然迟到",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：哇哦\nPlayer：完全没有想到呢\nPlayer：我们竟然赢了？不敢相信\nPlayer：这还不快说谢谢驭空姐！\nPlayer：公司那么大，怎么可能算是商铺呢？\nPlayer：这么说的话，岂不是小少爷也加入商会了？\nPlayer：我马上到\nPlayer：我一定会鸽，咕咕",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我们刚才已经回收一个了\nPlayer：你别催我啊，你再催我，我不干了\nPlayer：我很擅长恋爱话题，你随便问吧\nPlayer：我不擅长恋爱话题，你还是问问别人吧？\nPlayer：你到底送了什么？\nPlayer：可能静斋只是不想要你这个贵重的礼物\nPlayer：这东西哪儿买的聪哥…\nPlayer：你的购物审美令我心碎…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：收到，我这就出发拦截\nPlayer：你高低得给我点加班费\nPlayer：大诗人的水平，很难一蹴而就的吧\nPlayer：都什么年代了还在用传统的方式写诗，你不一样，你都实现了工业化创作，有了技术壁垒，还不是随便碾压他\nPlayer：仙舟的物流这么方便，自己下单买呗？\nPlayer：行吧，行吧，我已经习惯帮人跑腿了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我在，您请讲\nPlayer：夕葵小姐一声令下，刀山火海，我在所不辞\nPlayer：忙肯定可以帮，关键是看价钱\nPlayer：我也不擅长操作机巧鸟啊……\nPlayer：这才认识没几天，就唐突获得了你的信任，让我心有不安……\nPlayer：我什么时候接受过军事训练……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：看来十王司并不像他们吹的那么无所不知嘛\nPlayer：我以为我们该聊的已经聊完了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你真够胆\nPlayer：我以为我说的很清楚了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "丹恒：不必担心，我只是暂时离开一会儿看看风景。\n丹恒：不必担心，我只是去见了几个老朋友。\n丹恒：不必担心，我把信处理掉了。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是来取我首级的吗？\nPlayer：什么首级，怪吓人的……\nPlayer：平日里经过也没少听先生表演，没想到您能有求于我，不胜荣幸\nPlayer：先生应该清楚，时间就是金钱",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：又是模拟宇宙？\nPlayer：模拟宇宙更新了？\nPlayer：切割？截取？\nPlayer：能不能说明白些\nPlayer：双倍数据？\nPlayer：双倍掉落？\nPlayer：可以一直保留这个功能吗？\nPlayer：可以调成三倍吗？十倍也可以",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：又是模拟宇宙？\nPlayer：模拟宇宙更新了？\nPlayer：还是上次那个功能？\nPlayer：切割？截取？\nPlayer：能不能说明白些\nPlayer：这对话好熟悉，以前是不是也发生过？\nPlayer：双倍数据？\nPlayer：双倍掉落？\nPlayer：可以一直保留这个功能吗？\nPlayer：可以调成三倍吗？十倍也可以\nPlayer：如果给我一次十倍",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是不是有一个赛季通行证，要做一堆任务才能得到它们？\nPlayer：是不是有一个随机卡池，需要花费信用点来抽取它们？\nPlayer：是不是现在的游戏内容还不完整，需要购买拓展包才能得到它们？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：又跑去绥园干什么？对了，你身体没问题吗？\nPlayer：桂乃芬现在不是应该在医馆吗？小小岁阳，休想再让我上当！\nPlayer：上回去绥园惹出来的麻烦还不嫌大吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：先不要进太卜司，那儿可能有危险\nPlayer：青雀，你一定要看住门，别让任何人进入太卜司，也别让任何人出去",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：@藿藿\nPlayer：也许寒鸦大人能找到她\nPlayer：@藿藿\nPlayer：我马上就过来",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：忙上忙下都没见你帮把手，我确实有够辛苦的！\nPlayer：你不是被分配了其他工作么？现在有时间来关心我啦？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：难道说又有事情找我？\nPlayer：地衡司为什么找我，我没有犯事吧？\nPlayer：我知道持明族的云吟法术能够隐匿身形，不会是这个吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：阮•梅？\nPlayer：为什么是好消息？\nPlayer：我能见一见她吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：……\nPlayer：……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "脸接大招：细说？\n脸接大招：…她不是已经到了吗\n脸接大招：没事。早晚会有其他大人物来的\n脸接大招：这就是认真干活的下场",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "脸接大招：这剧情有点眼熟。\n脸接大招：说起来…「猹里猹气」这ID略眼熟，莫非和「瓜田里猹」有什么关系？\n脸接大招：你们在生什么气？\n脸接大招：追什么责？\n脸接大招：就是这个味儿！\n脸接大招：你好急啊…\n脸接大招：你说得对！\n脸接大招：……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好久不见。\nPlayer：能赊账吗？\nPlayer：还得是您。\nPlayer：帮我找找这群人之间的关联。\nPlayer：你也对管理层不满？\nPlayer：你倒是活得通透。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有结果了？\nPlayer：说说看。\nPlayer：……什么？\nPlayer：……辛苦了。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么说？\nPlayer：什么意思？\nPlayer：相位穿梭……\nPlayer：足够了，谢谢。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是啊，没错，我做的\nPlayer：不知道，没听过，别问我",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是啊，没错，我做的\nPlayer：不知道，没听过，别问我",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我需要你的帮助。\nPlayer：你知道「冥火大公」阿弗利特吗？\nPlayer：空间站遇上了麻烦，和他有关。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：大家好，我是新人开拓者，很高兴认识大家\nPlayer：你们这是什么群啊\nPlayer：我要退群，我要退群\nPlayer：？？？\nPlayer：快让我回去\nPlayer：哦哦哦\nPlayer：我马上就去「罗浮杂俎」上看看",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：急急急，那么请问在哪里可以看得到呢？\nPlayer：我的通讯列表里怎么又多了个发奇怪小广告的人？\nPlayer：肯定又是装神弄鬼一场虚惊，视频到了最后多半会把「闹鬼」的原因推给磁场扰动或是谁在恶作剧\nPlayer：我很感兴趣，你不要走，我马上就来找你\nPlayer：其实我不感兴趣\nPlayer：呵，多半是新型的诈骗手法",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我们刚到港口，别急\nPlayer：我们到了，不过在这附近没看到人影啊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：呃，你们之间究竟发生了什么，能细说吗\nPlayer：我听得云里雾里的，有没有前情提要啊\nPlayer：你这也是为她好嘛，情有可原，等她成熟点了就会明白的，你别太自责了\nPlayer：年轻人有点浮躁也是常有的事，是要磨炼一下才好",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我把它们安置在空间站了\nPlayer：就知道你还关心它们\nPlayer：不用谢\nPlayer：我什么时候会忘记你？\nPlayer：对了，那个石膏头",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你这不是被讹上了嘛，好倒霉啊…\nPlayer：这说明小桂子你火了\nPlayer：你已经飘了\nPlayer：我也已经飘了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好耶\nPlayer：我偏要在这里歪楼\nPlayer：共赏",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：每次看到神君出现，都觉得好帅\nPlayer：我已经看了太多遍，已经看腻了\nPlayer：藿藿不必勉强，要是不同意可以讲出来\nPlayer：你们总得问问尾巴吧，尾巴怎么说",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我也注意到了！\nPlayer：这就是旅途的收获吧！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：艾丝妲怎么样了？\nPlayer：我是说她的安全…\nPlayer：可惜没能找到「相位灵火」。\nPlayer：还得感谢拉帝奥先生。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：什么忙？\nPlayer：你得说清楚是什么忙？有前情提要吗？\nPlayer：为什么是我？艾丝妲你自己来不是更好吗？\nPlayer：明明空间站里还有这么多闲着的科员，非得喊我去……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没有诶，它现在不是一直在主控舱段吗？\nPlayer：你怎么会这么问？我喊它，它连爪子都不肯抬，怎么会主动来找我\nPlayer：奇物被盗了？安保系统该加钱升级了，站长！\nPlayer：为什么你会派佩佩来找我，失窃的事不该去问防卫科吗？\nPlayer：这种事就交给我好了，小事一桩\nPlayer：有种突如其来的熟悉感，开局一人一狗……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：快看！\nPlayer：当然不是！你怎么会这么想\nPlayer：这小家伙是阮•梅女士创造的生命体，生来就这么可爱",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：看，很像你！\nPlayer：眼睛很像！\nPlayer：气质很像！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这是阮•梅女士的造物…遇到了一个很像你的家伙\nPlayer：你看一眼嘛！\nPlayer：连性格都和你很像哦！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你所创造的生命，长得很像你…像是奇迹\nPlayer：你问的是我的近况吗？挺好的\nPlayer：你问的是它们的近况吗？挺好的\nPlayer：可是…它们都很想见你，你真的不考虑回来看看吗？\nPlayer：好，我答应你",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：看，很像你！\nPlayer：应该不会吧，你看它的爪子也不好拿牌啊\nPlayer：帝垣琼玉有在空间站流行开来吗？它应该不会打吧？具体我也不是很清楚。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：看看\nPlayer：？\nPlayer：？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：遇到了一个长得有点像克拉拉的小可爱！\nPlayer：好说，有机会的话…下次一定！\nPlayer：可以是可以，不过它不是宠物啦，它有自主意识，得问问它的意见才行",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：惊了，遇到个很像你的小生命\nPlayer：……\nPlayer：得了吧，它有自主意识的，它哪儿都不愿意去，只想留在空间站",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：太好了，阮•梅女士，我正好有事想找你\nPlayer：巧了嘛这不是，我正想找阮•梅女士聊聊呢，没想到被我赶上了\nPlayer：你有什么想对它们说的吗？\nPlayer：所以你想回来看看它们吗？\nPlayer：[叠高高]\nPlayer：[递茶]",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：佩佩跟你夸我？它是怎么夸的？\nPlayer：哎呀，多大点事，不用跟我客气，能帮到你就行\nPlayer：有多神奇？\nPlayer：我这就去。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你怎么知道我要给你发照片的\nPlayer：能不能帮我发给卡芙卡？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：噢，你说藤萝饼啊。她确实挺像黑塔的，就连性格都一样\nPlayer：是，但没你说的那么绝对…就好像你在街上和路人撞衫，是有些相似，但不是完全一致\nPlayer：太是了！我觉得简直一模一样好吗？我愿称之为迷你黑塔女士！还有迷你阮•梅女士！\nPlayer：做事风格跟黑塔似的…\nPlayer：我这就去。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么了？\nPlayer：喂喂",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：听起来有点可疑…\nPlayer：是谁捐赠给你的？\nPlayer：你怎么知道我会感兴趣？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：毕竟是在梦里\nPlayer：调查有些进展",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我到了\nPlayer：在路上了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：嘁，仙舟龙尊这么多，你是哪位啊，报个大名上来，说不定我认识呢？\nPlayer：噢！原来是你小子啊，缺钱就直说啊，我们俩谁跟谁啊，用不着这么客套\nPlayer：「流落在外」？噢，我有点头绪了，别急，我去问问当事人\nPlayer：五万信用点太少了吧，复兴持明族要请客吃饭的，开销很大，这点钱真的够用吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：刚刚收到一条信息\nPlayer：刚刚收到一条消息\nPlayer：放心，我那么机智，当然没有\nPlayer：没有，不过我差点就信了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：「表演赛」是什么意思？\nPlayer：啥意思？打假拳是吧？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：那只岁阳已经离开仙舟了\nPlayer：不过，我抓住另一只危险的岁阳，打算带回镇妖塔",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我现在不在，怎么啦，出什么事了\nPlayer：不愧是防卫科的负责人，我才刚回来，这你就知道了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：宠物？我可喜欢小动物了，这就去看看\nPlayer：没啥兴趣…开拓者也是很忙的，哪有时间去看宠物",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：咱俩关系这么好，就不用跟我客气了，你说是吧，阿兰大哥？\nPlayer：从某种意义上说，空间站也算是我的半个家了，能帮到空间站就好，不必客气",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：她们俩在这里一唱一和就是想找人闲聊呢\nPlayer：这里是捉鬼小队群\nPlayer：我看这俩人只是闲得慌想找人聊天，藿藿不必理会她们俩\nPlayer：我也想闲聊，我们一起狠狠地闲聊\nPlayer：好耶",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不太理解\nPlayer：就像是听下雨的声音解压一样，这也是类似的解压方法\nPlayer：这说明藿藿很可爱，我要是在附近，也会抓一把糖让你收下的\nPlayer：藿藿你一直盯着星槎看，看起来非常可怜",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我我我\nPlayer：我是不是来得有些晚\nPlayer：小桂子——\nPlayer：那你完了，我已经用小本本记下来了\nPlayer：没事没事，我完全不介意\nPlayer：不如两杯都给我吧，这样就不用选择了\nPlayer：不行，我不能要啊，这是你们俩的\nPlayer：好耶",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：之前就听说了小桂子很火，其实我没有什么感觉\nPlayer：会不会是素裳你听错了，他们其实在谈论其他人，比如「贵奶粉」？\nPlayer：难道说这就是名人吗？\nPlayer：啊？！\nPlayer：素裳你啊什么啊？你不是知道吗\nPlayer：很喜欢主播的一句话：啊？！\nPlayer：抱歉，我平时也不看直播\nPlayer：我看了直播，小桂子就是这么说的\nPlayer：我看了直播，小桂子没有说过",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我的脑子里已经有画面了\nPlayer：不愧是素裳，轻松地做到了藿藿做不到的事\nPlayer：藿藿变成了社牛，我怎么会做这样的梦\nPlayer：你们懂的，强迫内向的人变外向，如同赶鸭子上架\nPlayer：藿藿，每个人都有改变自己的时刻，也许就是现在！\nPlayer：啊这\nPlayer：看来藿藿去不了，这顿饭我去吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我这边调查结束了\nPlayer：我这边调查结束了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我们答应你的合作请求\nPlayer：好好好\nPlayer：哥，理性消费\nPlayer：就这？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：天天喊我测试模拟宇宙，结果发新书都不告诉我是吧？这么生分，哎，心寒了\nPlayer：她好美\nPlayer：我不是问这个啊！！！\nPlayer：我不是问商务合作的事，只是恰好看到\nPlayer：我想问这书什么时候出版\nPlayer：卡了？你的人偶是不是信号不好\nPlayer：…这明明就是自动回复吧\nPlayer：我在模拟宇宙待久了，对宇宙规则产生了一些感悟，想跟你聊聊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：T\nPlayer：拒收！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：遇到了一点麻烦…\nPlayer：咦…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：现在的诈骗短信都这么没水准了吗……\nPlayer：我都不知道自己身上有污染源，你怎么知道的？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我在匹诺康尼的梦境里遇到了一个叫查德威克的老人\nPlayer：好笑的点在哪里？\nPlayer：好笑的点在哪里？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我其实没做什么\nPlayer：他已经不在梦境里了\nPlayer：我很快就到",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是送给列车长的礼物，拆开看看吧\nPlayer：匹诺康尼特产什锦糖，每颗味道都不一样",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是送给留守小队的礼物，看家辛苦啦\nPlayer：我特意从梦里弄出来的匹诺康尼特产，快打开尝尝！\nPlayer：味道如何？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是送给瓦尔特先生的礼物，一直以来辛苦啦\nPlayer：据说这款糖果的设计很特别，瓦尔特先生可以尝尝味道",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：只是稍微出了点力，小事一桩你别在意\nPlayer：没办法，「无名客」的大名你听过吧？要没两手，怎么敢出去闯荡呢",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是黑天鹅？\nPlayer：怎么了？\nPlayer：当然可以！\nPlayer：你怎么不自己去？\nPlayer：在梦境贩售店，爱德华医生手上\nPlayer：被我偷了塞在苏乐达瓶子里扔了\nPlayer：你很奇怪…忆者怎么会遗忘记忆？\nPlayer：你放心大胆地来，下次还不知道是谁骗谁\nPlayer：求求你别再来了！跟愚者扯上关系准没好事……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么了？\nPlayer：这一幕似曾相识…\nPlayer：照这么说，你也可能是花火假扮的。\nPlayer：一些独特的语言习惯，比如发短信加不加句号\nPlayer：一些独特的动作习惯，比如喜欢照镜子之类的\nPlayer：应该足够了\nPlayer：感觉还不太够\nPlayer：啊？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：1\nPlayer：2\nPlayer：怎么只能给好评？\nPlayer：特殊内容？\nPlayer：我读了会出事吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是有一些奇怪的内容，好像不只是动画故事\nPlayer：没发现，感觉就是一些儿童故事而已\nPlayer：不知道啊，我一个字都没看过",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？\nPlayer：啥玩意啊？\nPlayer：滴答滴答！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我以前就想这么做了。\nPlayer：我以前就想这么做了。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：直到最后，也不知道他老板有什么把柄。\nPlayer：明明只是盘磁带，手法却这么残忍。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：等你破了案，庆功宴记得第一个叫我。\nPlayer：凶手手段很毒辣，调查的时候一定要注意安全。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这是专程寄给我的礼物。\nPlayer：包裹上有写收件人是谁吗？是开拓者吗？\nPlayer：马上就回去了，已经到界域定锚了\nPlayer：没问题，要是列车长也不明白呢？\nPlayer：其实我早就看到包裹了，列车长的消息不及时啊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：说说好消息\nPlayer：说说坏消息\nPlayer：？？？你怎么也在群里",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？？？我没拉你进群啊\nPlayer：我就知道事情没那么简单……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：出事了朋友们\nPlayer：假面愚者全责\nPlayer：？？？我没拉你进群啊\nPlayer：行，那你说吧\nPlayer：你还敢进群？？？\nPlayer：……\nPlayer：有这耐心干什么不好…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：哇，不愧是我\nPlayer：玩这么几关就超过99.99％的人了？\nPlayer：？\nPlayer：？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不是说封闭了吗\nPlayer：为什么推荐这个\nPlayer：不玩\nPlayer：这条款听着怪怪的\nPlayer：拍出来的东西都是你们的？\nPlayer：太长了，没看懂\nPlayer：？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你有给她发信息吗？我也没见着她\nPlayer：我正打算去找她，换句话说，我也还没见着她\nPlayer：三月七？我们这儿从来没有一个叫三月七的人啊？\nPlayer：首先声明一点，我不是三月的监护人\nPlayer：孩子不努力，找家长也没用呀",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怀炎将军将一柄叫做孤云的剑赠给了罗浮\nPlayer：她和我约好了，在确认情况前，不会对孤云出手。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么事了？\nPlayer：该不会是那把剑出了什么问题吧？\nPlayer：所以我成嫌疑人了吗？\nPlayer：昨天还叮嘱公输师傅，让他好好保管，他知道吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：那个…你之前说的什么专项委托，我全部搞定了…还有别的什么事吗？\nPlayer：简简单单啦，对我来说小菜一碟，算不得什么\nPlayer：这个…也不是靠我一个人完成的呀，我还有很多朋友愿意来帮忙\nPlayer：当然没有，一点小事，不至于…你看我连发型都没乱，轻轻松松\nPlayer：我身子骨好得很，你别担心啦",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：礼品！\nPlayer：有事故？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：真的吗？\nPlayer：哇——\nPlayer：还真不是\nPlayer：你太过奖了\nPlayer：搞什么？\nPlayer：是匹诺康尼以前的事情吧\nPlayer：是那位哈努努的经历吧\nPlayer：当然是小小哈努兄弟的故事！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这就结束了？\nPlayer：没后续了吗？\nPlayer：你是什么人？\nPlayer：你到底想说什么？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在的\nPlayer：暂时不在\nPlayer：明白了\nPlayer：了解了，我会帮忙的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不用谢我\nPlayer：可观的收益？\nPlayer：是新游戏哦？\nPlayer：我玩腻了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：那当然！\nPlayer：这不还是在给你们打白工吗？！\nPlayer：太好了，狠狠玩\nPlayer：还让我来打白工",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：大眼仔，你谁啊？\nPlayer：梦境不梦境的先放一边…首先，你为什么会有我的手机号？\nPlayer：卖点是「绝望感」？谁会喜欢这种东西啊？\nPlayer：这位「神秘的合作者」为什么指名道姓要我去帮助她？\nPlayer：这位「神秘的合作者」究竟是谁？\nPlayer：抱歉，眼下可能不方便",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么？是又发现了什么适合我的梦境吗？\nPlayer：卖点是「绝望感」？谁会喜欢这种东西啊？\nPlayer：这位「神秘的合作者」为什么指名道姓要我去帮助她？\nPlayer：这位「神秘的合作者」究竟是谁？\nPlayer：抱歉，眼下可能不方便",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：人在罗浮，刚到星槎海\nPlayer：你消息灵通啊！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：当然记得！见证你成为列车第一剑豪！\nPlayer：我们不是来参加演武仪典的嘛？\nPlayer：感谢三月女侠！就知道你最靠谱了！\nPlayer：后台有什么好看的？总觉得观众还是要和选手保持一定距离",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：为什么不给卢卡发短信，而是给我发短信？\nPlayer：好的没问题，但是找他去太卜司干什么",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：本来一直没空的，刚才突然变得有空了\nPlayer：你找我，那我肯定有空啊\nPlayer：卢卡刚才被淘汰了，我突然闲下来了\nPlayer：没事的，比赛有胜负很正常的啦\nPlayer：体育新闻应该已经报道了，你没看吗？\nPlayer：我们在哪里见面？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：以后终于可以领工资了？棒！\nPlayer：餐车的菜单要更新了？终于等到今天了！\nPlayer：我坦白，丹恒的肩颈按摩仪是我借走的\nPlayer：以后终于能达成信用点自由了？\nPlayer：嘁，才5%而已嘛\nPlayer：是时候让所有人臣服\nPlayer：是时候让所有人臣服",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：对，是我本人。什么情况？\nPlayer：呃，号码没错，我就是开拓者。请问你是哪位？\nPlayer：什么包裹？\nPlayer：？谁又送我礼物了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：刚刚收到一个礼物，寄到「{TEXTJOIN#87}」上来了\nPlayer：啊？那我就不客气地收下了！\nPlayer：？？？还有这种好事\nPlayer：我觉得…还是送给帕姆比较合适吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么事了\nPlayer：这么快就输得一干二净了？\nPlayer：你人在哪？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：喂\nPlayer：行不行啊，我真的很赶时间\nPlayer：情况真的很紧急",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我体验完了，这大堂经理果然没那么好当\nPlayer：我体验完了，这大堂经理果然没那么好当",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：家人们…我中奖了！\nPlayer：家人们，我搞到了一台电视机\nPlayer：好吧…既然你们觉得不合适，那我不摆就是了帕！这下总行了帕\nPlayer：（图片）[哭哭]",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：感觉还可以。不算特别惊艳，但也肯定不算差。\nPlayer：还挺有意思的，你们再接再厉。\nPlayer：就游戏质量而言，有这时间我真不如玩点别的……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我将带头冲锋！\nPlayer：话说，姬子小姐在忙什么呢",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我将带头冲锋！\nPlayer：话说，姬子小姐在忙什么呢",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？还有高手\nPlayer：姐\nPlayer：烟花，爽！\nPlayer：展开讲讲\nPlayer：我要下线了，改天吧\nPlayer：按了，狂按\nPlayer：太可疑了！我不会按的\nPlayer：我根本没收到按钮！\nPlayer：那么，是什么呢\nPlayer：好好好，我先放一个耳朵在这里\nPlayer：啊？\nPlayer：什么意思？\nPlayer：然后呢？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：喂喂喂？滴答滴答滴！说话说话！\nPlayer：？\nPlayer：…什么意思？整得挺神秘的\nPlayer：这情节我好像在电视里看过…按照剧情发展，你该不会是什么「吹奏部」部长吧？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是\nPlayer：否\nPlayer：你猜？\nPlayer：是\nPlayer：否\nPlayer：我是深度测试用户，还是「秘社终身社员」！\nPlayer：我知道什么是「枘凿六合•Remake」\nPlayer：我不知道什么是「枘凿六合•Remake」\nPlayer：不就是「枘凿六合重制版」吗？为什么要非要用「Remake」\nPlayer：非常困难\nPlayer：难度适中\nPlayer：非常简单\nPlayer：是不是奖励给的比以前少了？你这样留不住老玩家\nPlayer：我最大的疑惑是，这里是十王司幽囚狱，这里也能有魔方？\nPlayer：「枘凿六合」为什么还要出续作呢？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：「枘凿六合•Remake」天下第一！\nPlayer：闲着也是闲着，在监狱散步的时候顺便解开的\nPlayer：我有很多疑惑，你说要全收集之后才来联系我\nPlayer：这是在说你们这破游戏太阴间了，玩起来像坐牢一样吗？\nPlayer：你们的市场部门也不会投放？\nPlayer：难不成十王司给你们这破游戏提赞助了？\nPlayer：你是做游戏还是做贼？\nPlayer：我早就知道，你们把魔方摆得到处都是，迟早是会被抓走的\nPlayer：说吧，我们在哪里见面",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：找到你要的作曲灵感了\nPlayer：说出来你可能不信\nPlayer：挺离谱的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么回事？\nPlayer：要不你先说说？\nPlayer：等等",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？？？\nPlayer：…………\nPlayer：既然筑梦学院让你来参加乐队\nPlayer：别担心，我是乐队经理",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：感觉挺活泼的，很难想象这是雪衣大人\nPlayer：感觉说不出来为什么，总有有些怪怪的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：车厢炸了！帕姆，快空投点吃的下来！\nPlayer：终于摆脱列车了！永别了，牢笼！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：方便，有事请说\nPlayer：可能不太方便，有要紧事吗？\nPlayer：让我猜猜，是不是三月七又惹事了？\nPlayer：何止是「虽有曲折」，简直是「非常曲折」\nPlayer：你这个说法也太概括了，把最重要的演武仪典给省略了\nPlayer：当然可以，在哪里见面？\nPlayer：三月、丹恒他们怎么说？\nPlayer：不见不散\nPlayer：我可能会晚点到，咕咕咕…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我和乱破到排练室了，你们根本不在，都躲哪去了？\nPlayer：迟到的人要负责搬乐器哦",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这下成最后的忍者了\nPlayer：（做法）啊啊，回来吧…魂兮归来（转圈圈）…魂兮归来",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你们那边有进展吗？\nPlayer：@契@电子小垃圾@缭乱•忍侠",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这个群就这样，各聊各的\nPlayer：既然有这么多粉丝，要不下次开付费直播吧？\nPlayer：是啊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我只是个测试人员，不负责动脑子。\nPlayer：马上学，我这人最好学了。\nPlayer：那个，咱俩认识吗？\nPlayer：你就是螺丝咕姆说的那个合作伙伴？\nPlayer：我见过很多人，如果螺丝咕姆说他们是自己的合作伙伴。\nPlayer：他对你的评价很高。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你不是要退出乐队吗？\nPlayer：当然可以\nPlayer：那旮沓贼冷",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：已经逛得差不多了，还遇到了不少有意思的人和事\nPlayer：已经逛得差不多了，还遇到了不少有意思的人和事",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你偷偷参加演武仪典了？怎么不告诉我？\nPlayer：你这新装甲挺别致啊？从哪儿挖出来的？\nPlayer：我还以为是你的新装备呢，原来是有人冒充你啊！\nPlayer：对嘛！我就知道肯定是有奇怪的人冒充你！\nPlayer：放心好了，卢卡会帮你教训他们的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：应战！必须应战！\nPlayer：参加正式比赛已经让我们精疲力竭了，实在没心力参加什么「邀请赛」\nPlayer：出现了没听说过的名词\nPlayer：卢卡想拒绝吗？还是去问问具体情况？\nPlayer：看来你的知名度再度上了一个台阶…公司多半是要找你代言他们的产品\nPlayer：公司的水太深，我觉得避免和他们扯上关系比较好",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：发生什么事了？\nPlayer：小桂子这是要来替你家裳裳报仇了吗？\nPlayer：倒也不奇怪，毕竟在网上你永远不知道和你对话的是不是人\nPlayer：别人怎么想我们管不着，你可别信啊\nPlayer：你的心意我会带到的，回见",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：现在比较闲，随时可以聊天的哦\nPlayer：要是对话不太长的话，可以稍微聊会\nPlayer：可怜的孩子，怎么在梦里也赢不了呢？\nPlayer：这就是精神压力很大的具象表现哦\nPlayer：彦卿知道匹诺康尼吧，去那里做些击败对手的美梦吧\nPlayer：什么意思，你是来找我寻仇来了？\nPlayer：我承认，你在梦中遇到的对手，都是我指使的\nPlayer：我…应该暂时还没有影响他人梦境的能力\nPlayer：我已经完全明白了，你找我就是想让我来指点你一二\nPlayer：你也别这么着急，等你觉得自己有所成长之后，我们再来试试身手吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：准备好干一番大事了！\nPlayer：睡眠质量有点差\nPlayer：原来是你啊，我还以为…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：要跃迁了，对吧？\nPlayer：喂喂",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：当然是真的，我委托高手，这点事项压根不在话下\nPlayer：假的，一眼终端数据混乱\nPlayer：哎，其实我都懒得看\nPlayer：哈哈，谢谢，你们的好意我心领了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：财富学院的课上，遇到了个专门替人签到的皮皮西\nPlayer：筑梦学院的课上，旁边的学生在画钟表小子同人漫画\nPlayer：谐乐学院的课可有意思了，满教室都是玩角色扮演的！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你们好~\nPlayer：各位同学好，我叫开拓者，来自星穹列车的体验生。平时的爱好是玩以太战线，未婚，资产保密，还请各位多多关照。\nPlayer：初次见面～☆*:.｡. o（≧▽≦）o .｡.:*☆——这里是开拓者，也可以叫我银•河•球•棒•侠（摆出炫酷的姿势）！是萌萌新生一枚捏，欢迎扩列，请大家多多指蕉~",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有什么好消息吗？\nPlayer：不会是坏消息吧…\nPlayer：最近有点忙",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：小事，交给我吧\nPlayer：又要帮人干杂活了？\nPlayer：能得到阿格莱雅女士的指名",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：说吧，打怪还是打人？\nPlayer：你怎么知道我快闲出霉了？\nPlayer：记得你们也会预言来着？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这羊头是挺有意思，别吊胃口了，我们直接碰头吧\nPlayer：别浪费你的流量了 我不是目标用户\nPlayer：演化神秘学是啥 类似生物进化论吗",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：当然没问题，我可是聊天小能手\nPlayer：抱歉，我现在有点忙……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：听起来像是艾丝妲的手笔，她那么财大气粗，里面都有些什么？\nPlayer：神奇…今天是什么特殊节日吗？怎么突然就有人送礼了\nPlayer：啊？为什么给我？这么突然\nPlayer：？？？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在抓放生帮？\nPlayer：退休了还这么忙啊？\nPlayer：你等我，我马上到\nPlayer：眼下有点事，等会就去",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：111收到\nPlayer：你说话怎么文绉绉的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：在，怎么了？\nPlayer：在，在睡大觉\nPlayer：是好事吗？是的话就在\nPlayer：都是小事，咱们仨指定嘎嘎乱杀\nPlayer：哦？\nPlayer：当然是为了用半神的力量拯救世界\nPlayer：呃，为了权力和地位？\nPlayer：一个猜想，不一定对\nPlayer：别慌，干就完了\nPlayer：终于懂了，有人这是输不起了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你让我去哪？你是树庭那个受损的衣匠吗？\nPlayer：你是树庭那个受损的衣匠？伤那么重还能发短信啊",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你三我七？\nPlayer：宝箱？马上到。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么回事？\nPlayer：？？？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是谁，我们认识吗？\nPlayer：你的名字好文艺，但不如银河球棒侠霸气。\nPlayer：公司对你这么上心，看来塔米拉你火了啊。\nPlayer：你现在是大明星了，待遇当然不一样，这就叫人红是非多。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：姬子！瓦尔特！看我看我！能看到我发的消息吗？！\nPlayer：姬子！瓦尔特！快来救我！翁法罗斯要完蛋了！\nPlayer：帮帮我，界域定锚，我也想去空间站看看会议记录",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你还好意思说，你那个成绩一眼假，明明都输给我了，还好意思挂在榜上\nPlayer：我 开拓者对天发誓，我没有开挂！如果我开了，我现在去流梦礁\nPlayer：刃不是有驾照吗？\nPlayer：你的驾驶技术也挺不错的，你教他吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：还好吧，不算太忙\nPlayer：忙不忙取决于你说什么事\nPlayer：我倒是愿意帮忙\nPlayer：可以啊，佩佩真有上进心，我就喜欢和佩佩玩",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：艾丝妲你发的这都是什么玩意？我看不懂啊\nPlayer：佩佩！佩佩你上大号说话，别玩艾丝妲的手机\nPlayer：啊\nPlayer：不用，没出啥事",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：丹克西也没说这么快就要往外发啊，我都没来得及写记者发言稿\nPlayer：你们说的都对。多夸点，我爱听",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？我有买保险吗？赔了多少？\nPlayer：这比赛总算靠谱了一次",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：别装了，我知道是你，花火\nPlayer：我想想，被我炸飞的…我懂了，你是花火吧，那些娃娃就是你放的吧，它们都长那样了，你休想抵赖",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：他还是那么爱指指点点。\nPlayer：他又有什么高见？\nPlayer：这些话就不用转述了。\nPlayer：还是赶紧进入正题吧。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：话说这个实验现在算是结束了吗？有没有什么后续计划之类的消息\nPlayer：什么实验经费，该不会又是你自掏腰包给我发奖金吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：抱歉，我没能找到他\nPlayer：要不先别找了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我没事，其实是有只小大地兽\nPlayer：我没事",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是有点想你了，你在哪儿呀\nPlayer：别开玩笑啦，又不是永别\nPlayer：我们完成使命了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不过是些战斗挑战，凭我的身手，轻轻松松就通关了\nPlayer：不要笑挑战有点太不好笑了，我全程板着脸就打完了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：奇美拉对战，实力说话\nPlayer：我才刚打完定级赛，还是个新人\nPlayer：认真起来的丹恒，想想都感觉强得可怕\nPlayer：好啊，我也要拿出全部本事来应战！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：…什么礼物？\nPlayer：怎么了？\nPlayer：…花姐又是谁？\nPlayer：花火又来了？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：无法预测的造物之舞台，挺有意思的\nPlayer：不就是小动物跑来跑去嘛，我见过的可太多了\nPlayer：劳动就该有回报，这是我的正当权利\nPlayer：感谢，我会全部搬空的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：…她还好吗？\nPlayer：谁？\nPlayer：我能和她聊聊吗？\nPlayer：什么时候可以再见面？\nPlayer：恭喜",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我现在需要一个大大的拥抱\nPlayer：怎么都沉默了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没想到小小的造物比赛，竟是如此藏龙卧虎之地\nPlayer：不要让排名异化了选手们的努力呀\nPlayer：实不相瞒，那个点心到底是什么味道，我也很好奇\nPlayer：答应我，永远不要停下来啊！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有什么特殊情况吗？\nPlayer：有看到一个粉头发的学生吗？\nPlayer：有看到一个戴眼镜的男老师吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：干得好！\nPlayer：有什么新情报？\nPlayer：狸猫？\nPlayer：…你没事吧？\nPlayer：别嚣张！\nPlayer：正赶来收拾你呢！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "姬子：@开拓者 @三月七 还好吗？\n姬子：@开拓者 @三月七 还好吗？\n姬子：丹恒那边怎么样？@丹恒",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：姬子姐！有麻烦了！\nPlayer：姬子姐！有麻烦了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：姬子，学校这边出事了！\nPlayer：姬子，学校这边出事了！\nPlayer：「火花」…是花火失控的虚拟外形\nPlayer：「火花」…是花火失控的虚拟外形",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有是有\nPlayer：《浮脂记事》是什么\nPlayer：啊？你找错人了吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：杨叔，你在哪？见到姬子姐了吗？\nPlayer：当时我夹在这父女俩之间…紧张又尴尬，脚指头都快在地上抠出第二个绘世学院来了\nPlayer：当时我夹在这父女俩之间…紧张又尴尬，脚指头都快在地上抠出第二个绘世学院来了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你现在忙吗？我有点事想找你帮忙\nPlayer：我还没说要干什么呢！行动力这么强的吗？\nPlayer：怎么一言不合就要线下见面，干啥啊？找我寻仇吗？\nPlayer：好的，我们等你",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你是谁啊？\nPlayer：你就是「千禧杀手」吧？\nPlayer：你就是那个医生，「因巡」吧？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：停不下来一点\nPlayer：求？求也得排队\nPlayer：你的被害人们也这样请求过你吧？你放过他们了吗？\nPlayer：舆论已经失控了，凭我个人是阻止不了的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：艾丝妲，我在二相乐园@门附近见到了佩佩，但是……\nPlayer：艾丝妲！速来二相乐园@门附近！佩佩出狗命了！\nPlayer：拜托了拜托了，快回我消息吧！\nPlayer：怎么不回消息？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：有个关于十五年前《请变幸福吧》节目组调查的新需求\nPlayer：没人接吗？我没记错的话，季度考核快到了吧？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：愚者在愚者的酒馆里？来了\nPlayer：千万别等我，我不一定来的",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你这么老实，我不太习惯，没有圈套吧？\nPlayer：我比你更加神秘，我不确定什么时候到，你等着吧。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：雪衣大人！没想到会收到你的消息！\nPlayer：确实很久没有联系了\nPlayer：没问题，判官大人请说吧！\nPlayer：我正好闲逛到这个漫展附近，就收到了你的消息…你不会在跟踪我吧？\nPlayer：太巧了，我就在漫展这\nPlayer：这是小事，就放心交给我吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：嗯嗯，我都看过！\nPlayer：不好意思，我没看过\nPlayer：你是喜欢麦卡托吗？\nPlayer：你是不喜欢薇克丝吗？\nPlayer：我要说那是椅子斯基本人画的呢？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：特别周边？\nPlayer：不是，你这客人是谁啊\nPlayer：我车厢里塞不下周边了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "银狼：谁啊？\n银狼：卡芙卡吗？\n银狼：蠢货\n银狼：TD\n银狼：哈哈哈哈哈，好好笑哦",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "{NICKNAME}：你可算来了\n{NICKNAME}：差点忘了你\n{NICKNAME}：你只说了坏消息，那好消息呢？\n{NICKNAME}：她的能力已经开始到处传播了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：所以还是上次那位？\nPlayer：是不是又留了什么信？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：原来，被打败后还会被公屏处刑？\nPlayer：紧张起来了！我现在的排名在哪里？\nPlayer：封了我100年？等我解禁都第几届了？你们必须给我个理由\nPlayer：我真没时间陪你闹了，转人工，给我转人工！\nPlayer：她现在才来，有点晚了吧？\nPlayer：别装了银狼，你黑了异常防御部的号？\nPlayer：银狼？\nPlayer：还在吗？喂喂喂？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你真是来得及时啊！\nPlayer：我就说嘛，这种关键时刻怎么能少得了你。\nPlayer：我已经迫不及待准备和你们一起痛揍混蛋老骰了！\nPlayer：我已经迫不及待准备和你们一起痛揍混蛋老骰了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：找刃神器？这是要我自己往刀口上撞吗？\nPlayer：这是要我往刀口上撞，才找得到他吗？\nPlayer：不是我拍麻的，全都是银狼干的\nPlayer：不好意思，把你腿拍麻了，但银狼全责\nPlayer：你在忙什么呢？秘密任务？\nPlayer：没事就不能找你玩吗？难道…你在做什么秘密任务？\nPlayer：不让我问，就更好奇了……\nPlayer：我之前看到……\nPlayer：是「仙舟第一杀手」的任务吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好快的更新，比我的游戏版更还快\nPlayer：有多减震？我试试\nPlayer：是紧张刺激的监控锁敌环节吗？\nPlayer：你又在做任务吗？是紧张刺激的监控锁敌环节吗？\nPlayer：放心，我不发语音。\nPlayer：你在偷看芝麻酥吗？\nPlayer：你偷看猫糕多久了？\nPlayer：猫猫糕呀！早说嘛\nPlayer：你有给它们取名字吗？\nPlayer：它们也有点像你呢，我是说很有脾气这点",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：受宠若惊啊！细说怎么想的？\nPlayer：终于要和我叙旧了吗？\nPlayer：高精力星际旅行，需要一个可以随时随地，能立马哄我入睡的「哄睡机」\nPlayer：想要点不太日常的东西\nPlayer：我不挑，你随便造！\nPlayer：可以加点白噪音，入睡更快\nPlayer：可以加点物理助眠功能？按摩，拍拍枕头什么的？\nPlayer：可以加点带人声的摇篮曲？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：不行，请尊重列车长的肖像权\nPlayer：当然，等下\nPlayer：你不是出发去异世界了吗？\nPlayer：凛，你走了吗？\nPlayer：能成为你的朋友，我很高兴，凛。\nPlayer：能和你并肩作战，是我的荣幸，御主。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：？？？问过我的意见了吗\nPlayer：？？？干嘛\nPlayer：？？？感叹号好多，吵到我眼睛了\nPlayer：王请息怒，是他们没眼光\nPlayer：金箔冰淇淋就算了，后面那几个是什么我请问了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：太丰盛了，大爱狼尊！\nPlayer：居然还有我的份？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这算什么好消息，我花钱的时候都是遵守基本法的\nPlayer：将第一个好消息放在这里…意思是还有第二个？\nPlayer：来了来了，刚出门，在路上了\nPlayer：等等我，我还要好一会",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：见！\nPlayer：「也」的意思是你也在？\nPlayer：好的，不见不散",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你怎么知道我在找她？\nPlayer：其实我在找的人是你…\nPlayer：人怎么会这么多…我们还方便在这里见面吗？\nPlayer：人怎么会这么多…我们还方便在这里见面吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我正要找你呢，你短信就来了\nPlayer：那真的太好了，希望一切都顺利\nPlayer：为这件事忙前忙后，真是辛苦你了\nPlayer：我也完全理解了，做这些确实是值得的\nPlayer：我还是不理解\nPlayer：说得真好，很有文采\nPlayer：怎么突然大发感慨",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：别太拼了\nPlayer：好，我会继承你的遗志\nPlayer：…还活着吗？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：列车长怎么会对姬子不放心！\nPlayer：难道说！插画版是姬子的亲笔绘作？\nPlayer：真的是「普通的」修车日记吗？\nPlayer：无感智驾适合我，下次换我来开星穹列车！\nPlayer：姬子的驾驶风格是什么样的呢？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：我乃全车唯一未成年，送我！\nPlayer：我想想…三月肯定会喜欢，丹恒应该不会拒绝，老日也很精致，杨叔也有头发……\nPlayer：咱们一家人可以轮流享受首席设计师服务，一起美发！\nPlayer：好想看姬子的发型宇宙！有照片吗！\nPlayer：姬子姐有推荐发型吗？我也想把头上这玩意变一变\nPlayer：等等，什么什么费？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：好呀，谁来掌勺！我吗？还是姬子姐？\nPlayer：好呀！姬子姐掌勺，我来帮忙试吃\nPlayer：上次姬子姐露一手后，我们可没少往卫生间跑，就当运动了！\nPlayer：修理列车和修炒菜机的原理共通在…？\nPlayer：原来是这个「露一手」，不愧是我们的修理达人姬子老师！\nPlayer：我也要修列车…不是，我也要修炒菜机吗…不是，它们的原理共通在…？\nPlayer：也就是说，只要我学会了修炒菜机，就会修星穹列车了……\nPlayer：也就是说，只要我学会了修炒菜机，就会修星穹列车了……",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：都什么时候了，还搞这个…\nPlayer：都什么时候了，还搞这个…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：让我猜猜，又有什么「惊喜」发生了是吧？\nPlayer：让我猜猜，又有什么「惊喜」发生了是吧？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：他表示愿意投「入画」一票\nPlayer：他表示愿意投「入画」一票",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：谢谢大家坚持到现在\nPlayer：谢谢大家坚持到现在",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：也谢谢你们\nPlayer：太客气了，都是为了银河！\nPlayer：星核？\nPlayer：怎么了？\nPlayer：别担心，没事的\nPlayer：我会走一步看一步的，别担心",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：归寂？怎么又是你？\nPlayer：你的计划落空了，我们把你打败了！\nPlayer：虽然你收不到信息，但…为什么要这么做？\nPlayer：你一定猜得到我想问什么",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：太谢谢你了，帮大忙啦！\nPlayer：知更鸟小姐太伟大了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：哇，恭喜！祝贺你梦想成真！\nPlayer：太厉害了！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：放心吧，我会担起责任的。\nPlayer：我…我不知道该做些什么…",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：别急，翡翠女士给我们准备了一间新的办公室，就在指针塔\nPlayer：别急，翡翠女士给我们准备了一间新的办公室，就在指针塔",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：亚婆离似乎遇到了麻烦\nPlayer：亚婆离似乎遇到了麻烦",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：给我看饿了，想来两串鱿鱼\nPlayer：这音乐真香…不是，这鱿鱼真好听\nPlayer：听听列车跃迁时的轰鸣\nPlayer：听听起床的铃声吧\nPlayer：听听我的灵魂唱腔吧",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：Robin，Nibor是哪位音乐博主，好难猜啊！\nPlayer：恭喜我发现宝藏新人博主\nPlayer：Nibor飞行鸦？星期日音乐玩得不错啊！\nPlayer：可以试试和其他博主的跨领域合作\nPlayer：可以测评一些小众的音乐器材。比如…用气球做打击乐？\nPlayer：可以拍一个用各种乐器翻弹知更鸟的歌的视频",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：吃得好素，怎么没有一点肉！\nPlayer：原来保护嗓子要吃这些吗，好讲究！不愧是大明星！\nPlayer：小鸟养小鸟，心暖暖的\nPlayer：小鸟养的小鸟，一定长成大肥啾了吧！\nPlayer：啊…不要难过，说不定是因为它开始向往自由飞翔的生活\nPlayer：虽然是有些突然…但你也在期待着它再次飞向天空的这一天吧？\nPlayer：小鸟开始了它新的鸟生和冒险！它也一定不会忘记你",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你的避暑方式是不是很费信用点？\nPlayer：穿少一点吗？首先，我缺一套泳装\nPlayer：要这么热血沸腾吗？感觉后续要喝上十杯极致冰爽的汽水降火\nPlayer：光是看字我就出汗了，你得赔我一杯极致冰爽的汽水降火\nPlayer：弥补童年缺憾的时候到了！走！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这心率不对吧！别吓我啊砂金！坚持住，我这就来！\nPlayer：这心率不对吧？！砂金——————我来救你了！\nPlayer：这心率不对吧？公司呢！存护呢！琥珀王！母神呢！救救啊\nPlayer：还要我救吗？救吧？救吗？救吧…？\nPlayer：一会20，一会180，我怎么觉得更像我的心率呢\nPlayer：50米都是警报海难的程度了！你心率都一会20一会180了！\nPlayer：冲浪心率能一会20一会180吗？！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：红色！\nPlayer：蓝色！\nPlayer：毁灭吧！我出剪刀！\nPlayer：那你不是逢赌必应，不怕欺负小孩吗？\nPlayer：难怪你来问我，你来赌那不完全没悬念\nPlayer：自己的零食？\nPlayer：建筑沙堡的塑料铲子？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：珠珠鱼很可爱吧！\nPlayer：恭喜真珠女士获得「珠珠鱼」新形态！\nPlayer：专门来和我说，你看起来很开心嘛！\nPlayer：拼豆！你也喜欢拼豆吗？\nPlayer：同好？原来是拼豆的同好吗！\nPlayer：别太爱了！为了让珠珠鱼席卷手作界，你的速度已超过99.9%的用户。\nPlayer：为了让珠珠鱼走向世界，你的速度已超过99.9%的用户。",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：这是你的副业吗？\nPlayer：废物？哪里有废物？人可以回收吗？\nPlayer：真羡慕你的爱好……\nPlayer：和你们工作狂拼了\nPlayer：修复万物不如行万里路，暂停工作！去旅行！",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：怎么了？欲言又止可不是你的风格\nPlayer：你在深度思考中吗？\nPlayer：艺术还是太难懂了\nPlayer：艺术还是太好懂了\nPlayer：我这是触发什么了？住脑，住脑！\nPlayer：坏了坏了，这下好了，真珠坏了",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：没有看成演出是挺可惜的，能不能有下次演出的票呢？\nPlayer：实不相瞒，回去之后我一直在搜开幕演出的录播视频\nPlayer：太棒了，那么在哪里能看到呢？\nPlayer：已经迫不及待了\nPlayer：等我忙完之后就去看",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：是啊，真没想到\nPlayer：它不是二相乐园的古籍吗\nPlayer：…你监视我？\nPlayer：在田先生？",
+      "domain": "starrail_messages"
+    },
+    {
+      "type": "text",
+      "text": "Player：你消息怎么这么灵通？这件事刚结束不到一分钟，你就知道了？\nPlayer：开心吧？终于能看我笑话了？\nPlayer：帮我？怎么突然这么好心？",
+      "domain": "starrail_messages"
+    }
+  ]
+}
