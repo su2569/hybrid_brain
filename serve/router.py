@@ -1,3 +1,4 @@
+import time
 """HybridBrain 路由器：按意图分派到不同路径。
 
 四条路径：
@@ -28,12 +29,9 @@ from rag.kb_builder import load_dureader
 # ============================================================
 INTENT_BACKBONE = "/mnt/workspace/models/Qwen2.5-0.5B"
 HEADS_PATH = "/mnt/workspace/checkpoints/heads_qwen.pt"
-BGE_PATH = ("/mnt/workspace/models/models/"
-            "AI-ModelScope--bge-small-zh-v1.5/snapshots/master")
-RERANKER_PATH = ("/mnt/workspace/models/models/"
-                 "BAAI--bge-reranker-base/snapshots/master")
-GENERATOR_PATH = ("/mnt/workspace/models/models/"
-                  "Qwen--Qwen3-1.7B/snapshots/master")
+BGE_PATH = "/mnt/workspace/models/models/AI-ModelScope--bge-small-zh-v1.5/snapshots/master"
+RERANKER_PATH = "/mnt/workspace/models/bge-reranker-not-installed"
+GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
 CHAT_GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
 
 
@@ -41,13 +39,19 @@ CHAT_GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
 # Prompt
 # ============================================================
 RAG_SYSTEM = (
-    "你是资料问答助手。从【资料】原文提取答案，简洁准确。\n"
-    "\n【规则】"
-    "\n1. 资料里出现的数字、价格、时间、型号，必须提取"
+    "你是资料问答助手。从【资料】提取答案，简洁准确。"
+    "\n\n【规则】"
+    "\n1. 资料里出现的数字、价格、时间、集数、型号，必须提取"
     "\n2. 即使资料用'大约'、'左右'、'不等'等模糊词，也视为有效答案"
-    "\n3. 只有资料完全无关才回复'资料未提及'"
-    "\n4. 不要编造资料外的内容"
-    "\n5. 答案简洁，不超过 60 字"
+    "\n3. **如果答案需要从同一资料的不同句子组合**（比如集数在句首、"
+    "事件在句尾），允许组合后给出答案"
+    "\n4. 只有资料完全无关才回复'资料未提及'"
+    "\n5. 不要编造资料外的内容"
+    "\n6. 答案简洁，不超过 60 字"
+    "\n\n【示例】"
+    "\n资料：第35集雪见醒来...长卿驾驶仙船，众人决定往天界而去。"
+    "\n问题：第几集上天界？"
+    "\n答案：第35集"
 )
 
 CHAT_SYSTEM = (
@@ -63,6 +67,14 @@ CHAT_SYSTEM = (
     "\n6. **如果对话历史里有用户提过的事实/偏好（比如'美式咖啡'），"
     "回答时要直接引用这个具体词**，不要泛泛而谈"
 )
+
+NEUTRAL_SYSTEM = (
+    "你是一个通用 AI 助手。"
+    "简洁、准确、客观地回答用户问题。"
+    "避免拟人化、诗意或过度情感化的表达。"
+    "不要用「呀」「呢」「♪」等语气词。"
+)
+
 
 PERSONAL_FRESH_SYSTEM = (
     "你是昔涟。用户问你关于他自己的事（喜好/习惯），"
@@ -166,7 +178,19 @@ class HybridBrainRouter:
             self.reranker = None
 
     def _load_generator(self):
-        print("[load] RAG generator (Qwen 1.5B-Instruct)...")
+        # 如果 RAG generator 和 chat 是同一个模型，加载一次即可
+        if GENERATOR_PATH == CHAT_GENERATOR_PATH and os.path.exists(CHAT_GENERATOR_PATH):
+            print(f"[load] 单一模型（RAG + Chat 复用）: {GENERATOR_PATH}")
+            self.gen_tok = AutoTokenizer.from_pretrained(GENERATOR_PATH)
+            self.generator = AutoModelForCausalLM.from_pretrained(
+                GENERATOR_PATH, torch_dtype=torch.bfloat16
+            ).to(self.device).eval()
+            self.chat_tok = self.gen_tok
+            self.chat_model = self.generator
+            print('[ok] generator (single, 复用)')
+            return
+
+        print('[load] RAG generator...')
         self.gen_tok = AutoTokenizer.from_pretrained(GENERATOR_PATH)
         self.generator = AutoModelForCausalLM.from_pretrained(
             GENERATOR_PATH, torch_dtype=torch.bfloat16
@@ -271,7 +295,22 @@ class HybridBrainRouter:
         return text.strip()
 
     @torch.no_grad()
-    def _generate(self, messages, max_new_tokens=150, mode="rag"):
+    def _generate(self, messages, max_new_tokens=150, mode="rag",
+                  enable_thinking=True):
+        """兼容接口：返回字符串（剥离 think）。"""
+        result = self._generate_with_think(
+            messages, max_new_tokens=max_new_tokens, mode=mode,
+            enable_thinking=enable_thinking, show_thinking=False)
+        return result["text"]
+
+    def _generate_with_think(self, messages, max_new_tokens=150, mode="rag",
+                             enable_thinking=True, show_thinking=False):
+        """新接口：返回 dict {"text", "thinking", "answer"}。
+
+        Args:
+            enable_thinking: False → 不生成 <think> 块
+            show_thinking:   True  → text 保留原始 <think>
+        """
         if mode == "chat":
             tok, model = self.chat_tok, self.chat_model
             gen_kwargs = dict(
@@ -290,16 +329,53 @@ class HybridBrainRouter:
                 repetition_penalty=1.05,
             )
 
-        prompt = tok.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True)
+        # 构造 prompt：控制是否生成 thinking
+        template_kwargs = dict(tokenize=False, add_generation_prompt=True)
+        try:
+            prompt = tok.apply_chat_template(
+                messages, enable_thinking=enable_thinking,
+                **template_kwargs)
+        except TypeError:
+            # 老 tokenizer 不支持 → /no_think 前缀
+            if not enable_thinking and messages:
+                messages = [dict(m) for m in messages]
+                if messages[-1].get("role") == "user":
+                    messages[-1]["content"] = (
+                        "/no_think " + messages[-1]["content"])
+            prompt = tok.apply_chat_template(messages, **template_kwargs)
+
         inputs = tok(
             prompt, return_tensors="pt",
-            truncation=True, max_length=1500).to(self.device)
+            truncation=True, max_length=4096).to(self.device)
         out = model.generate(**inputs, **gen_kwargs)
         raw = tok.decode(
             out[0][inputs.input_ids.size(1):],
             skip_special_tokens=True)
-        return self._strip_think(raw)
+
+        thinking, answer = self._split_think(raw)
+        if show_thinking:
+            text = raw.strip()
+        else:
+            text = self._strip_think(raw)
+
+        return {
+            "text": text,
+            "thinking": thinking if show_thinking else None,
+            "answer": answer,
+            "enable_thinking": enable_thinking,
+        }
+
+    @staticmethod
+    def _split_think(text):
+        """分离 think 和 answer。"""
+        import re as _re
+        m = _re.search(r'<think>(.*?)</think>\s*(.*)', text, _re.DOTALL)
+        if m:
+            return m.group(1).strip(), m.group(2).strip()
+        m = _re.search(r'<think>(.*)', text, _re.DOTALL)
+        if m:
+            return m.group(1).strip(), ""
+        return "", text.strip()
 
     def rag_answer(self, query, top_k=5, history=None):
         docs = self.retrieve(query, top_k=top_k)
@@ -324,6 +400,77 @@ class HybridBrainRouter:
         ]
         ans = self._generate(messages, max_new_tokens=4096, mode="rag")
         print(f"[RAG初稿] len={len(ans)} | {repr(ans[:200])}")
+
+        # ============================================================
+        # RAG 后置校验：检测到"未提及"但 top1 高分 → 限次重试
+        # ============================================================
+        if ("资料未提及" in ans or "未提及" in ans or "没有提到" in ans):
+            _top1_score = docs[0].get("score", 0) if docs else 0
+            if _top1_score > 0.6:
+                _retry_start = time.time()
+                _RETRY_LIMIT = 2
+                _TIMEOUT_MS = 20000
+
+                for _attempt in range(_RETRY_LIMIT):
+                    _elapsed_ms = (time.time() - _retry_start) * 1000
+                    if _elapsed_ms > _TIMEOUT_MS:
+                        print(f"[RAG-retry] 超时 ({_elapsed_ms:.0f}ms > "
+                              f"{_TIMEOUT_MS}ms)，放弃重试", flush=True)
+                        break
+
+                    print(f"[RAG-retry] 尝试 {_attempt + 1}/{_RETRY_LIMIT} "
+                          f"(elapsed={_elapsed_ms:.0f}ms, "
+                          f"top1={_top1_score:.3f})", flush=True)
+
+                    # 逐次加强的重试提示
+                    if _attempt == 0:
+                        _hint = (
+                            "资料里明确提到了相关内容，请仔细阅读**第一段**，"
+                            "从中提取答案。不要回复'资料未提及'。"
+                            "注意：**答案可能需要从同一段的不同句子组合**。"
+                        )
+                    else:
+                        _hint = (
+                            "【强制要求】你必须从资料第一段中给出答案。"
+                            "资料第一段明确包含了你需要的信息。"
+                            "仔细看：数字（如集数、价格）往往在段首，"
+                            "关键事件（如'上天界'）可能在段中或段尾。"
+                            "综合这些信息给出确切答案。禁止回复'资料未提及'。"
+                        )
+
+                    _retry_messages = messages + [
+                        {"role": "user", "content": _hint},
+                    ]
+
+                    try:
+                        _gen_retry = self._generate_with_think(
+                            _retry_messages,
+                            max_new_tokens=1024, mode="rag",
+                            enable_thinking=False)
+                        _retry_ans = _gen_retry["text"].strip()
+
+                        # 检查重试后是否仍"未提及"
+                        if ("资料未提及" in _retry_ans
+                                or "未提及" in _retry_ans
+                                or "没有提到" in _retry_ans):
+                            print(f"[RAG-retry] 尝试 {_attempt + 1} 仍"
+                                  f"未提及，继续", flush=True)
+                            continue
+
+                        # 成功：非空且不含"未提及"
+                        if _retry_ans:
+                            print(f"[RAG-retry] 尝试 {_attempt + 1} 成功: "
+                                  f"{_retry_ans[:80]!r}", flush=True)
+                            ans = _retry_ans
+                            break
+                    except Exception as _e:
+                        print(f"[RAG-retry] 尝试 {_attempt + 1} 异常: "
+                              f"{str(_e)[:100]}", flush=True)
+                        continue
+                else:
+                    # for 循环正常结束（没 break）→ 所有重试失败
+                    print(f"[RAG-retry] {_RETRY_LIMIT} 次重试均失败",
+                          flush=True)
 
         # 资料未提及 → 用 chat 模型温柔表达
         if "资料未提及" in ans or "未提及" in ans or "没有提到" in ans:
@@ -386,10 +533,20 @@ class HybridBrainRouter:
                                           mode="chat"),
                 "sources": []}
 
-    def chat_answer(self, query, history=None):
+    def chat_answer(self, query, history=None, persona="cyrene", user=None):
         print(f"[chat] history_len={len(history or [])} "
               f"| {[h['content'][:30] for h in (history or [])[-3:]]}")
-        messages = [{"role": "system", "content": CHAT_SYSTEM}]
+        _system = CHAT_SYSTEM if persona == "cyrene" else NEUTRAL_SYSTEM
+        messages = [{"role": "system", "content": _system}]
+
+        # 注入用户信息（仅 cyrene 模式）
+        if persona == "cyrene" and user:
+            nick = user.get("nickname") or user.get("secondary_nickname")
+            if nick:
+                messages.append({
+                    "role": "system",
+                    "content": f"用户希望你称他为「{nick}」。",
+                })
         ctx = self._build_history_context(query, history)
         for h in ctx:
             messages.append({"role": h["role"], "content": h["content"]})
@@ -398,8 +555,10 @@ class HybridBrainRouter:
                                           mode="chat"),
                 "sources": []}
 
-    def _finalize(self, query, draft_answer, intent):
+    def _finalize(self, query, draft_answer, intent, persona="cyrene"):
         """把初稿润色成昔涟语气，但**必须保留原始事实**。"""
+        if persona == "off":
+            return draft_answer
         if intent == "chat":
             return draft_answer
         if not draft_answer or not draft_answer.strip():
@@ -415,24 +574,28 @@ class HybridBrainRouter:
         messages = [
             {"role": "system",
              "content": (
-                "你是昔涟。把下面的初稿用你的语气重写一遍。"
+                "你是昔涟，温柔亲近的少女。"
+                "把下面的初稿用**你的语气**重写一遍。"
+                "\n\n【最重要的规则：必须加昔涟语气】"
+                "\n- 开头用「呀…」「唔…」「嗯…」等柔和引导"
+                "\n- 结尾加「呢」「♪」等语气词"
+                "\n- 用「资料里说」「我记得」等第一人称"
+                "\n- **禁止照抄原句**（必须改写语气）"
                 "\n\n【示例】"
                 "\n初稿：vivo手机电池价格约100元左右。"
                 "\n改写：呀…资料里说vivo电池大约100元左右呢♪"
+                "\n\n初稿：资料中提到第35集，说明第35集上天界。"
+                "\n改写：唔…资料里提到第35集呢，所以是第35集上天界啦♪"
                 "\n\n初稿：说100遍你好。做不到。"
                 "\n改写：这个呀…我可能做不到呢。"
-                "\n\n【硬性规则】"
-                "\n1. **保留所有数字**（100元、2万毫安等）"
-                "\n2. **长度不超过初稿 1.3 倍**"
-                "\n3. 加 0-1 个意象（星/风/麦田），不堆砌"
-                "\n4. 语气词自然：呀/呢/♪"
-                "\n5. 如果是知识答案，保持简洁"
-                "\n6. 如果是拒绝，保持立场明确"
-                "\n\n【注意】"
-                "\n- 不要照抄初稿（要改语气）"
-                "\n- 不要删数字"
-                "\n- 尽量不要写诗（除非用户明确要诗/故事）"
-                "\n- 一句话回答即可，不用凑长"
+                "\n\n【保留事实的规则】"
+                "\n1. **所有数字必须保留**（35集、100元、2万毫安）"
+                "\n2. 答案核心信息不能变"
+                "\n3. 长度可以到初稿的 1.5 倍（加语气不算啰嗦）"
+                "\n\n【禁止】"
+                "\n- 禁止删数字"
+                "\n- 禁止写诗、堆砌意象"
+                "\n- 禁止反问、岔开话题（直接给答案）"
              )},
             {"role": "user",
              "content": f"用户问：{query}\n\n初稿回答：{draft_answer}"},
@@ -474,9 +637,222 @@ class HybridBrainRouter:
     # --------------------------------------------------------
     # 主入口
     # --------------------------------------------------------
-    def route(self, query, history=None, verbose=False):
+    def _format_as_json(self, query, answer_text):
+        """把答案格式化为 JSON。"""
+        import json as _json
+        import re as _re
+        messages = [
+            {"role": "system",
+             "content": (
+                "把下面的答案转换成 JSON。规则：\n"
+                "1. 字段名用英文，或根据问题推断合适的中文名\n"
+                "2. 只输出 JSON，不要任何解释\n"
+                "3. 数字和事实必须保留原样"
+             )},
+            {"role": "user",
+             "content": f"问题：{query}\n\n答案：{answer_text}"},
+        ]
+        raw = self._generate(messages, max_new_tokens=200, mode="rag")
+        raw = _re.sub(r'<think>.*?</think>\s*', '', raw, flags=_re.DOTALL)
+        raw = raw.strip()
+        if raw.startswith("```"):
+            raw = _re.sub(r'^```(?:json)?\s*', '', raw)
+            raw = _re.sub(r'\s*```\s*$', '', raw)
+        try:
+            _json.loads(raw)
+            return raw
+        except Exception:
+            m = _re.search(r'\{.*\}', raw, _re.DOTALL)
+            if m:
+                try:
+                    _json.loads(m.group(0))
+                    return m.group(0)
+                except Exception:
+                    pass
+            return answer_text
+
+    def _detect_proactive(self, result, query):
+        """检测 AI 是否应该主动发起调用。"""
+        calls = []
+        text = result.get("answer", "")
+        intent = result.get("intent", "chat")
+
+        # --- 信号 1：AI 在追问（clarify） ---
+        CLARIFY_KW = ("什么型号", "哪种", "具体是", "能不能告诉我",
+                      "你能说", "请告诉我", "方便说", "是指",
+                      "什么时候", "什么地方", "哪个型号")
+        hit_kw = [kw for kw in CLARIFY_KW if kw in text]
+        has_question = ("？" in text) or ("?" in text)
+        UNSURE_KW = ("资料未提及", "没查到", "未提及", "不知道",
+                     "不清楚", "没有找到", "没有提到")
+        is_unsure = any(kw in text for kw in UNSURE_KW)
+
+        if hit_kw or has_question or is_unsure:
+            # 提取问句：优先取最后一个完整问句
+            q_part = self._extract_question(text)
+            reason_parts = []
+            if hit_kw:
+                reason_parts.append(f"关键词 {hit_kw[:2]}")
+            if has_question:
+                reason_parts.append("含问号")
+            if is_unsure:
+                reason_parts.append("承认不确定")
+            calls.append({
+                "type": "clarify",
+                "question": q_part,
+                "reason": "、".join(reason_parts),
+            })
+
+        # --- 信号 2：AI 主动建议（suggest） ---
+        SUGGEST_KW = ("要不要我", "我可以帮", "我帮你看", "帮你查",
+                      "需要我", "要不要试试", "帮你找")
+        for kw in SUGGEST_KW:
+            if kw in text:
+                calls.append({
+                    "type": "suggest",
+                    "action": "offer_help",
+                    "text": text[:60],
+                    "confirm_required": True,
+                })
+                break
+
+        # --- 信号 3：query 低置信度 ---
+        if intent == "query":
+            sources = result.get("sources") or []
+            if not sources:
+                calls.append({
+                    "type": "clarify",
+                    "question": "你能提供更多细节吗？",
+                    "reason": "无检索结果",
+                })
+            elif sources[0].get("score", 0) < 0.65:
+                calls.append({
+                    "type": "clarify",
+                    "question": "你能提供更多细节吗？",
+                    "reason": f"检索置信度低 ({sources[0]["score"]:.2f})",
+                })
+
+        # 去重（同类型只留第一个）
+        seen = set()
+        deduped = []
+        for c in calls:
+            if c["type"] not in seen:
+                deduped.append(c)
+                seen.add(c["type"])
+        return deduped
+
+    @staticmethod
+    def _extract_question(text):
+        """从答案里提取一个合理的问句。"""
+        import re as _re
+        # 1. 优先找问号结尾的句子
+        for m in _re.finditer(r'([^？?。！!]{5,50}[？?])', text):
+            return m.group(1).strip()
+        # 2. 找"吗"、"呢"结尾的句子
+        for m in _re.finditer(r'([^。！!]{5,50}(?:吗|呢))', text):
+            return m.group(1).strip()
+        # 3. 都没找到 → 默认
+        return "能再多说一点吗？"
+
+
+    def _parse_proactive_from_text(self, text):
+        """从 AI 输出里解析 <call>...</call> 标记（LoRA 训练后启用）。
+
+        格式：
+            <call type="clarify">问用户手机型号</call>
+            <call type="suggest" action="search_web" params='{"q":"..."}'/>
+
+        返回 list[dict]
+        """
+        import re as _re
+        import json as _json
+
+        calls = []
+        # 匹配闭合和自闭合
+        for m in _re.finditer(
+            r'<call\s+type="(\w+)"\s*([^>]*?)(?:/>|>(.*?)</call>)',
+            text, _re.DOTALL):
+            ctype = m.group(1)
+            attrs_str = m.group(2)
+            body = (m.group(3) or "").strip()
+
+            call = {"type": ctype}
+            if body:
+                call["question" if ctype == "clarify" else "text"] = body
+
+            # 解析属性
+            for am in _re.finditer(r'(\w+)="([^"]*)"', attrs_str):
+                k, v = am.group(1), am.group(2)
+                if k in ("params",):
+                    try:
+                        call[k] = _json.loads(v)
+                    except Exception:
+                        call[k] = v
+                else:
+                    call[k] = v
+            calls.append(call)
+        return calls
+
+    def route(self, query, history=None, verbose=False, control=None):
         history = history or []
-        intent, conf, margin = self.classify_intent(query)
+        control = control or {}
+        _persona = control.get("persona", "cyrene")
+        _enable_think = control.get("enable_thinking", None)
+        _show_think = control.get("show_thinking", False)
+        _allow_proactive = control.get("allow_proactive", False)
+
+        # ============================================================
+        # 剥离格式词（防止分类器被"JSON格式"等带偏）
+        # ============================================================
+        _FORMAT_KW = (
+            "JSON格式", "用JSON", "以JSON", "JSON返回", "JSON输出",
+            "json格式", "用json", "以json",
+            "markdown格式", "Markdown格式", "表格格式", "列表格式",
+            "结构化输出", "结构化返回",
+        )
+        _clean_query = query
+        _format_hint = None
+        for _kw in _FORMAT_KW:
+            if _kw in _clean_query:
+                _clean_query = _clean_query.replace(_kw, "").strip("，,。. ")
+                if "json" in _kw.lower():
+                    _format_hint = "json"
+                elif "markdown" in _kw.lower():
+                    _format_hint = "markdown"
+                elif "表格" in _kw:
+                    _format_hint = "table"
+                elif "列表" in _kw:
+                    _format_hint = "list"
+                if verbose:
+                    print(f"[strip-format] 剥离 '{_kw}' → {_format_hint}")
+        if not _clean_query:
+            _clean_query = query   # 兜底：全被剥离了
+
+        intent, conf, margin = self.classify_intent(_clean_query)
+
+        # 硬规则：疑问关键词明确 → query
+        QUERY_KW = (
+            "多少钱", "价格", "几块", "多贵", "费用", "收费",
+            "是什么", "是谁", "什么是", "谁是",
+            "怎么做", "怎么弄", "怎么用", "怎么办", "怎么写",
+            "为什么", "为啥",
+            "在哪里", "在哪", "哪里", "哪个",
+            "什么时候", "几时", "几点",
+            "多少", "多久", "多大",
+            "能不能", "可不可以",
+            "怎么样", "如何",
+            "几集", "第几", "哪一集", "哪集", "哪期", "哪回",
+            "哪一话", "哪一章", "哪本", "哪部",
+        )
+        if intent not in ("abuse", "manipulate"):
+            _hit = [kw for kw in QUERY_KW if kw in query]
+            if _hit:
+                if verbose:
+                    print(f"[rule] 命中 {_hit[:2]} → query")
+                intent = "query"
+                conf = max(conf, 0.85)
+                margin = 1.0
+
         if verbose:
             print(f"[intent] {intent} (conf={conf:.3f}, "
                   f"margin={margin:.3f})")
@@ -565,23 +941,29 @@ class HybridBrainRouter:
             result = self.ask_back_personal(query, has_history)
 
         elif intent == "query":
-            result = self.rag_answer(query)
+            result = self.rag_answer(_clean_query)
         elif intent == "chat":
-            result = self.chat_answer(query, history=history)
+            result = self.chat_answer(query, history=history, persona=_persona)
         elif intent == "abuse":
             result = self.defensive_answer(query)
         elif intent == "manipulate":
             result = self.refuse_answer(query)
         else:
-            result = self.rag_answer(query)
+            result = self.rag_answer(_clean_query)
 
         if personal_path == "ask_back":
             result["intent"] = "chat"
             result["intent_conf"] = conf
             result["personal_mode"] = "ask_back"
+            result["persona"] = _persona
+            result["output_format"] = _format_hint or control.get(
+                "output_format", "text")
         else:
             result["intent"] = intent
             result["intent_conf"] = conf
+            result["persona"] = _persona
+            result["output_format"] = _format_hint or control.get(
+                "output_format", "text")
 
             # 统一出口：非 chat / 非 ask_back 路径过一次 chat 润色
             if intent != "chat" and result.get("answer"):
@@ -589,10 +971,44 @@ class HybridBrainRouter:
                     print(f"[finalize] {intent} 初稿 → 昔涟语气")
                 try:
                     result["answer"] = self._finalize(
-                        query, result["answer"], intent)
+                        query, result["answer"], intent,
+                        persona=_persona)
                     result["finalized"] = True
                 except Exception as e:
                     print(f"[finalize-error] {e}")
+
+        # 主动调用检测（默认关闭）
+        result["proactive_calls"] = []
+        if _allow_proactive and result.get("answer"):
+            try:
+                # 先尝试从文本解析（LoRA 训练后会用到）
+                text_calls = self._parse_proactive_from_text(
+                    result["answer"])
+                if text_calls:
+                    result["proactive_calls"] = text_calls
+                    # 剥掉 <call> 标记
+                    import re as _re
+                    result["answer"] = _re.sub(
+                        r'<call[^>]*(?:/>|>.*?</call>)', '',
+                        result["answer"], flags=_re.DOTALL).strip()
+                else:
+                    # 规则兜底
+                    result["proactive_calls"] = self._detect_proactive(
+                        result, query)
+            except Exception as _e:
+                print(f"[proactive-error] {_e}")
+
+        # 输出格式化
+        _fmt = result.get("output_format", "text")
+        print(f"[format-check] output_format={_fmt} "
+              f"answer_len={len(result.get('answer', ''))}", flush=True)
+        if _fmt == "json" and result.get("answer"):
+            try:
+                result["answer"] = self._format_as_json(
+                    query, result["answer"])
+                print(f"[format-done] {result['answer'][:100]}", flush=True)
+            except Exception as _e:
+                print(f"[format-error] {_e}", flush=True)
 
         return result
 

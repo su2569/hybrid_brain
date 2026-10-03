@@ -1,0 +1,92 @@
+"""HybridBrain FastAPI 服务。"""
+import os
+import sys
+import time
+from contextlib import asynccontextmanager
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+
+from serve.schemas import ChatRequest, ChatResponse, Source, HealthResponse
+
+
+# ============================================================
+# 全局单例（启动时加载，避免每次请求重载模型）
+# ============================================================
+_state = {"router": None, "load_time": None}
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # 启动前自检
+    try:
+        from serve.preflight import check_all
+        check_all(strict=False, verbose=True)
+    except Exception as e:
+        print(f"[preflight] 自检异常: {e}")
+
+    print("[startup] 加载 HybridBrainRouter...")
+    t0 = time.time()
+    from serve.router import HybridBrainRouter
+    _state["router"] = HybridBrainRouter()
+    _state["load_time"] = time.time() - t0
+    print(f"[startup] 加载完成，耗时 {_state['load_time']:.1f}s")
+    yield
+    print("[shutdown] 清理...")
+    _state["router"] = None
+
+
+app = FastAPI(title="HybridBrain", version="0.1.0", lifespan=lifespan)
+
+
+# ============================================================
+# API
+# ============================================================
+@app.get("/health", response_model=HealthResponse)
+def health():
+    r = _state["router"]
+    if r is None:
+        raise HTTPException(503, "模型未加载")
+    return HealthResponse(status="ok", kb_size=len(r.kb_passages))
+
+
+@app.post("/chat", response_model=ChatResponse)
+def chat(req: ChatRequest):
+    r = _state["router"]
+    if r is None:
+        raise HTTPException(503, "模型未加载")
+
+    t0 = time.time()
+    history = [m.model_dump() for m in req.history]
+    result = r.route(req.query, history=history)
+
+    # 只返回 top-3 source，避免响应过大
+    sources = [
+        Source(passage=s["passage"][:500], score=s["score"])
+        for s in result.get("sources", [])[:3]
+    ]
+
+    print(f"[chat] {time.time()-t0:.2f}s | "
+          f"intent={result['intent']} | q={req.query[:30]}")
+
+    return ChatResponse(
+        answer=result["answer"],
+        intent=result["intent"],
+        intent_conf=result["intent_conf"],
+        sources=sources,
+    )
+
+
+# ============================================================
+# Web UI
+# ============================================================
+app.mount("/static", StaticFiles(directory="serve/static"), name="static")
+
+
+@app.get("/", response_class=HTMLResponse)
+def index():
+    with open("serve/static/index.html", encoding="utf-8") as f:
+        return f.read()
