@@ -6,11 +6,11 @@ from dataclasses import dataclass
 class Config:
     # ===== 模型规模（M0 起点）=====
     vocab_size: int = 61050
-    d_model: int = 768
-    n_heads: int = 12
-    n_layers: int = 12
-    n_kv_heads: int = 4
-    max_seq_len: int = 512
+    d_model: int = 512
+    n_heads: int = 8
+    n_kv_heads: int = 2
+    n_layers: int = 15
+    max_seq_len: int = 256
     dropout: float = 0.0
     rope_theta: float = 1000000.0
     rmsnorm_eps: float = 1e-6
@@ -32,25 +32,25 @@ class Config:
     n_predict_tokens: int = 16
 
     # ===== 训练 =====
-    batch_size: int = 8
-    lr: float = 3e-4
+    batch_size: int = 64
+    lr: float = 3e-6
     weight_decay: float = 0.01
-    warmup_steps: int = 2000
+    warmup_steps: int = 0
     max_steps: int = 100_000
-    grad_clip: float = 1.0
+    grad_clip: float = 0.5
     bf16: bool = True
 
     # ===== 数据 =====
     data_dir: str = "data"
-    lccc_path: str = "LCCC/raw/LCCC-base_train.json"
+    lccc_path: str = "data/lccc_50k.json"
     lccc_max_samples: int = 500_000
     cyrene_path: str = "data/cyrene_clean.json"
     cyrene_weight: float = 0.10
     val_ratio: float = 0.02
 
     # ===== 存储 =====
-    ckpt_dir: str = "checkpoints"
-    log_dir: str = "logs"
+    ckpt_dir: str = "/mnt/workspace/checkpoints"
+    log_dir: str = "/mnt/workspace/logs"
     save_every: int = 1000
     eval_every: int = 500
 

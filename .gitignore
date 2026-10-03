@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# 备份
+*.bak
+*.bak_*
+*.bak2
+*.bak3
+*.bak4
+*.bak5
+*.py.bak*
+
+# 大文件
+models/
+checkpoints/
+data/cyrene_lora/
+data/translated/
+*.pkl
+*.pt
+*.safetensors
+
+# 日志
+*.log
+logs/
+
+# 环境
+.venv/
+venv/
+.env
+
+# 归档
+_archive/
