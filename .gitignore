@@ -33,3 +33,7 @@ venv/
 
 # 归档
 _archive/
+
+# 备份文件
+*.old
+app.py.old
