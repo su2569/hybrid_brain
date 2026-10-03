@@ -30,6 +30,8 @@ INTENT_BACKBONE = "/mnt/workspace/models/Qwen2.5-0.5B"
 HEADS_PATH = "/mnt/workspace/checkpoints/heads_qwen.pt"
 BGE_PATH = ("/mnt/workspace/models/models/"
             "AI-ModelScope--bge-small-zh-v1.5/snapshots/master")
+RERANKER_PATH = ("/mnt/workspace/models/models/"
+                 "BAAI--bge-reranker-base/snapshots/master")
 GENERATOR_PATH = ("/mnt/workspace/models/models/"
                   "Qwen--Qwen3-1.7B/snapshots/master")
 CHAT_GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
@@ -153,6 +155,16 @@ class HybridBrainRouter:
         self.kb_embs = torch.from_numpy(embs).float()
         print("[ok] KB 编码完成")
 
+        # 加载 reranker
+        if os.path.exists(RERANKER_PATH):
+            print(f"[load] BGE-reranker...")
+            from sentence_transformers import CrossEncoder
+            self.reranker = CrossEncoder(RERANKER_PATH, max_length=512)
+            print("[ok] reranker")
+        else:
+            print(f"[warn] {RERANKER_PATH} 不存在，跳过 reranker")
+            self.reranker = None
+
     def _load_generator(self):
         print("[load] RAG generator (Qwen 1.5B-Instruct)...")
         self.gen_tok = AutoTokenizer.from_pretrained(GENERATOR_PATH)
@@ -218,15 +230,33 @@ class HybridBrainRouter:
     # --------------------------------------------------------
     # 检索
     # --------------------------------------------------------
-    def retrieve(self, query, top_k=5):
+    def retrieve(self, query, top_k=5, rerank=True):
+        # 1. BGE 召回
         q_emb = self.bge.encode([query], normalize_embeddings=True)
         q_emb = torch.from_numpy(q_emb).float()
         sims = (q_emb @ self.kb_embs.T).squeeze(0)
-        top = sims.topk(top_k)
+        recall_k = 20 if (rerank and self.reranker) else top_k
+        top = sims.topk(recall_k)
+        cand_idx = top.indices.tolist()
+
+        # 2. reranker 精排
+        if rerank and self.reranker and len(cand_idx) > top_k:
+            pairs = [(query, self.kb_passages[i]) for i in cand_idx]
+            scores = self.reranker.predict(pairs)
+            order = sorted(range(len(cand_idx)),
+                           key=lambda k: -scores[k])[:top_k]
+            return [
+                {"passage": self.kb_passages[cand_idx[k]],
+                 "score": float(scores[k]),
+                 "bge_score": float(sims[cand_idx[k]].item())}
+                for k in order
+            ]
+
+        # 3. 无 reranker
         return [
             {"passage": self.kb_passages[i],
              "score": sims[i].item()}
-            for i in top.indices.tolist()
+            for i in cand_idx[:top_k]
         ]
 
     # --------------------------------------------------------
