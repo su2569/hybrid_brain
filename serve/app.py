@@ -142,6 +142,8 @@ def _call_router(internal: dict, verbose=True):
             internal["query"],
             history=internal.get("history"),
             control=internal.get("control"),
+            user=internal.get("user"),
+            query_ts=internal.get("query_ts"),
         )
     except TypeError:
         # 老 router 不支持 control 参数 → 退回

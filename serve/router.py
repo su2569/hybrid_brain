@@ -533,20 +533,20 @@ class HybridBrainRouter:
                                           mode="chat"),
                 "sources": []}
 
-    def chat_answer(self, query, history=None, persona="cyrene", user=None):
+    def chat_answer(self, query, history=None, persona="cyrene", user=None, query_ts=None):
         print(f"[chat] history_len={len(history or [])} "
               f"| {[h['content'][:30] for h in (history or [])[-3:]]}")
         _system = CHAT_SYSTEM if persona == "cyrene" else NEUTRAL_SYSTEM
         messages = [{"role": "system", "content": _system}]
 
-        # 注入用户信息（仅 cyrene 模式）
-        if persona == "cyrene" and user:
-            nick = user.get("nickname") or user.get("secondary_nickname")
-            if nick:
-                messages.append({
-                    "role": "system",
-                    "content": f"用户希望你称他为「{nick}」。",
-                })
+        # 注入用户信息 + 时间信息（仅 cyrene 模式）
+        if persona == "cyrene":
+            user_hint = self._build_user_hint(user)
+            if user_hint:
+                messages.append({"role": "system", "content": user_hint})
+            time_hint = self._build_time_hint(history, query_ts)
+            if time_hint:
+                messages.append({"role": "system", "content": time_hint})
         ctx = self._build_history_context(query, history)
         for h in ctx:
             messages.append({"role": h["role"], "content": h["content"]})
@@ -637,6 +637,45 @@ class HybridBrainRouter:
     # --------------------------------------------------------
     # 主入口
     # --------------------------------------------------------
+    def _build_user_hint(self, user):
+        """构造用户信息提示。"""
+        if not user:
+            return ""
+        parts = []
+        nick = user.get("nickname")
+        second = user.get("secondary_nickname")
+        if nick:
+            parts.append(f"用户希望你称他为「{nick}」")
+        if second:
+            parts.append(f"备选称呼：「{second}」")
+        if not parts:
+            return ""
+        return "【用户信息】\n" + "\n".join(f"- {p}" for p in parts)
+
+    def _build_time_hint(self, history, query_ts):
+        """构造时间上下文提示。"""
+        try:
+            from serve.time_utils import (parse_timestamp,
+                                          format_time_context, time_ago)
+        except ImportError:
+            return ""
+        parts = []
+        if query_ts:
+            dt = parse_timestamp(query_ts)
+            ctx = format_time_context(dt)
+            if ctx:
+                parts.append(f"当前时间：{ctx}")
+        if history:
+            last = history[-1]
+            last_dt = parse_timestamp(last.get("timestamp"))
+            if last_dt:
+                ago = time_ago(last_dt)
+                if ago:
+                    parts.append(f"用户上条消息在 {ago}")
+        if not parts:
+            return ""
+        return "【时间信息】\n" + "\n".join(f"- {p}" for p in parts)
+
     def _format_as_json(self, query, answer_text):
         """把答案格式化为 JSON。"""
         import json as _json
@@ -793,7 +832,7 @@ class HybridBrainRouter:
             calls.append(call)
         return calls
 
-    def route(self, query, history=None, verbose=False, control=None):
+    def route(self, query, history=None, verbose=False, control=None, user=None, query_ts=None):
         history = history or []
         control = control or {}
         _persona = control.get("persona", "cyrene")
@@ -943,7 +982,7 @@ class HybridBrainRouter:
         elif intent == "query":
             result = self.rag_answer(_clean_query)
         elif intent == "chat":
-            result = self.chat_answer(query, history=history, persona=_persona)
+            result = self.chat_answer(query, history=history, persona=_persona, user=user, query_ts=query_ts)
         elif intent == "abuse":
             result = self.defensive_answer(query)
         elif intent == "manipulate":
