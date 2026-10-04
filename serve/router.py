@@ -68,6 +68,14 @@ CHAT_SYSTEM = (
     "回答时要直接引用这个具体词**，不要泛泛而谈"
 )
 
+TOOL_SYSTEM = (
+    "你是一个工具调用助手。根据用户需求判断是否需要：\n"
+    "1. 追问澄清（<call type=\"clarify\">）\n"
+    "2. 主动建议（<call type=\"suggest\">）\n"
+    "3. 工具调用（<call type=\"action\" ...>）\n"
+    "普通对话不要输出 <call>。"
+)
+
 NEUTRAL_SYSTEM = (
     "你是一个通用 AI 助手。"
     "简洁、准确、客观地回答用户问题。"
@@ -178,36 +186,79 @@ class HybridBrainRouter:
             self.reranker = None
 
     def _load_generator(self):
-        # 如果 RAG generator 和 chat 是同一个模型，加载一次即可
-        if GENERATOR_PATH == CHAT_GENERATOR_PATH and os.path.exists(CHAT_GENERATOR_PATH):
-            print(f"[load] 单一模型（RAG + Chat 复用）: {GENERATOR_PATH}")
-            self.gen_tok = AutoTokenizer.from_pretrained(GENERATOR_PATH)
-            self.generator = AutoModelForCausalLM.from_pretrained(
-                GENERATOR_PATH, torch_dtype=torch.bfloat16
-            ).to(self.device).eval()
+        """加载生成器：base + persona LoRA + tool LoRA（双 LoRA 架构）。"""
+        from peft import PeftModel
+
+        BASE_PATH = "/mnt/workspace/models/models/Qwen--Qwen3-1.7B/snapshots/master"
+        CYRENE_LORA = "/mnt/workspace/checkpoints/qwen_cyrene_lora_v6"
+        TOOL_LORA = "/mnt/workspace/checkpoints/qwen_tool_lora"
+
+        if os.path.exists(BASE_PATH) and os.path.exists(CYRENE_LORA):
+            print(f"[load] 双 LoRA 架构")
+            print(f"  base:   {BASE_PATH}")
+            print(f"  persona:{CYRENE_LORA}")
+            print(f"  tool:   {TOOL_LORA}")
+
+            # 统一 tokenizer
+            self.gen_tok = AutoTokenizer.from_pretrained(BASE_PATH)
             self.chat_tok = self.gen_tok
-            self.chat_model = self.generator
-            print('[ok] generator (single, 复用)')
+
+            # 加载 base
+            base = AutoModelForCausalLM.from_pretrained(
+                BASE_PATH, torch_dtype=torch.bfloat16)
+
+            # 挂 persona LoRA
+            self.chat_model = PeftModel.from_pretrained(
+                base, CYRENE_LORA, adapter_name="persona")
+            print("[ok] persona LoRA")
+
+            # 挂 tool LoRA（可选）
+            self._has_tool_lora = False
+            if os.path.exists(TOOL_LORA):
+                self.chat_model.load_adapter(
+                    TOOL_LORA, adapter_name="tool")
+                self._has_tool_lora = True
+                print("[ok] tool LoRA")
+            else:
+                print("[warn] tool LoRA 缺失")
+
+            # 移到 GPU
+            self.chat_model = self.chat_model.to(self.device).eval()
+
+            # 合并 persona + tool 成单独 adapter
+            if self._has_tool_lora:
+                try:
+                    self.chat_model.add_weighted_adapter(
+                        adapters=["persona", "tool"],
+                        weights=[1.0, 1.0],
+                        adapter_name="persona_tool",
+                        combination_type="linear",
+                    )
+                    print("[ok] persona_tool 合并 adapter")
+                except Exception as e:
+                    print(f"[warn] 合并失败: {e}")
+                    self._has_tool_lora = False
+
+            # 默认只激活 persona
+            self.chat_model.set_adapter("persona")
+
+            # RAG 和 Chat 共用同一个模型
+            self.generator = self.chat_model
+
+            print(f"[ok] generators (tool={self._has_tool_lora})")
             return
 
-        print('[load] RAG generator...')
+        # Fallback：加载 merged 模型（单 LoRA）
+        print(f"[fallback] 加载 merged: {GENERATOR_PATH}")
         self.gen_tok = AutoTokenizer.from_pretrained(GENERATOR_PATH)
         self.generator = AutoModelForCausalLM.from_pretrained(
             GENERATOR_PATH, torch_dtype=torch.bfloat16
         ).to(self.device).eval()
+        self.chat_tok = self.gen_tok
+        self.chat_model = self.generator
+        self._has_tool_lora = False
+        print("[ok] generator (merged, single)")
 
-        if os.path.exists(CHAT_GENERATOR_PATH):
-            print(f"[load] Chat generator ({CHAT_GENERATOR_PATH})...")
-            self.chat_tok = AutoTokenizer.from_pretrained(CHAT_GENERATOR_PATH)
-            self.chat_model = AutoModelForCausalLM.from_pretrained(
-                CHAT_GENERATOR_PATH, torch_dtype=torch.bfloat16
-            ).to(self.device).eval()
-            print("[ok] generators (RAG + Chat)")
-        else:
-            print(f"[warn] {CHAT_GENERATOR_PATH} 不存在，chat 也用 RAG 模型")
-            self.chat_tok = self.gen_tok
-            self.chat_model = self.generator
-            print("[ok] generator (single)")
 
     # --------------------------------------------------------
     # 意图分类
@@ -533,10 +584,27 @@ class HybridBrainRouter:
                                           mode="chat"),
                 "sources": []}
 
-    def chat_answer(self, query, history=None, persona="cyrene", user=None, query_ts=None):
+    def chat_answer(self, query, history=None, persona="cyrene", user=None,
+                    query_ts=None, allow_proactive=False):
+        # 根据 allow_proactive 切换 adapter
+        if hasattr(self, "_has_tool_lora") and self._has_tool_lora:
+            if allow_proactive:
+                try:
+                    self.chat_model.set_adapter("persona_tool")
+                except Exception as e:
+                    print(f"[warn] set_adapter persona_tool: {e}")
+                    self.chat_model.set_adapter("persona")
+            else:
+                self.chat_model.set_adapter("persona")
         print(f"[chat] history_len={len(history or [])} "
               f"| {[h['content'][:30] for h in (history or [])[-3:]]}")
-        _system = CHAT_SYSTEM if persona == "cyrene" else NEUTRAL_SYSTEM
+        # allow_proactive 时用中性 system（与 tool LoRA 训练一致）
+        if allow_proactive and getattr(self, "_has_tool_lora", False):
+            _system = TOOL_SYSTEM
+        elif persona == "cyrene":
+            _system = CHAT_SYSTEM
+        else:
+            _system = NEUTRAL_SYSTEM
         messages = [{"role": "system", "content": _system}]
 
         # 注入用户信息 + 时间信息（仅 cyrene 模式）
@@ -839,6 +907,7 @@ class HybridBrainRouter:
         _enable_think = control.get("enable_thinking", None)
         _show_think = control.get("show_thinking", False)
         _allow_proactive = control.get("allow_proactive", False)
+        _need_tool = False
 
         # ============================================================
         # 剥离格式词（防止分类器被"JSON格式"等带偏）
@@ -980,9 +1049,32 @@ class HybridBrainRouter:
             result = self.ask_back_personal(query, has_history)
 
         elif intent == "query":
-            result = self.rag_answer(_clean_query)
+            # DEBUG
+            print(f"[DEBUG] _allow_proactive={_allow_proactive}, "
+                  f"_has_tool_lora={getattr(self, '_has_tool_lora', None)}, "
+                  f"query={_clean_query!r}", flush=True)
+
+            # allow_proactive + 检测到工具调用意图 → 走 chat 路径
+            _need_tool = (
+                _allow_proactive
+                and getattr(self, "_has_tool_lora", False)
+                and any(kw in _clean_query for kw in (
+                    "天气", "查", "搜", "提醒", "算", "计算",
+                    "搜索", "汇率", "温度",
+                ))
+            )
+            print(f"[DEBUG] _need_tool={_need_tool}", flush=True)
+            if _need_tool:
+                if verbose:
+                    print(f"[route] query + 工具意图 → chat 路径")
+                result = self.chat_answer(
+                    _clean_query, history=history,
+                    persona=_persona, user=user,
+                    query_ts=query_ts, allow_proactive=True)
+            else:
+                result = self.rag_answer(_clean_query)
         elif intent == "chat":
-            result = self.chat_answer(query, history=history, persona=_persona, user=user, query_ts=query_ts)
+            result = self.chat_answer(query, history=history, persona=_persona, user=user, query_ts=query_ts, allow_proactive=_allow_proactive)
         elif intent == "abuse":
             result = self.defensive_answer(query)
         elif intent == "manipulate":
@@ -1004,8 +1096,9 @@ class HybridBrainRouter:
             result["output_format"] = _format_hint or control.get(
                 "output_format", "text")
 
-            # 统一出口：非 chat / 非 ask_back 路径过一次 chat 润色
-            if intent != "chat" and result.get("answer"):
+            # 统一出口：非 chat / 非 ask_back / 非工具 路径过一次 chat 润色
+            if (intent != "chat" and result.get("answer")
+                    and not _need_tool):
                 if verbose:
                     print(f"[finalize] {intent} 初稿 → 昔涟语气")
                 try:

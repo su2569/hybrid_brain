@@ -37,3 +37,4 @@ _archive/
 # 备份文件
 *.old
 app.py.old
+nohup.out

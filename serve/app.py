@@ -145,7 +145,11 @@ def _call_router(internal: dict, verbose=True):
             user=internal.get("user"),
             query_ts=internal.get("query_ts"),
         )
-    except TypeError:
+    except TypeError as _e:
+        # DEBUG: 打印真实错误，不静默兜底
+        import traceback
+        print(f"[CALL-ROUTER-ERROR] TypeError: {_e}", flush=True)
+        traceback.print_exc()
         # 老 router 不支持 control 参数 → 退回
         result = r.route(internal["query"], history=internal.get("history"))
         control = internal.get("control") or {}

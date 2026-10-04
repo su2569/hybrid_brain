@@ -1,28 +1,19 @@
-"""用 cyrene 数据做 LoRA 微调。"""
-import os
-import sys
-import json
-import argparse
-
-import torch
-from torch.utils.data import Dataset
-from transformers import (
-    AutoTokenizer, AutoModelForCausalLM,
-    TrainingArguments, Trainer, DataCollatorForLanguageModeling,
-)
-from peft import LoraConfig, get_peft_model, TaskType
-
+"""训练 tool LoRA（工具调用能力）。"""
+import os, sys, json, argparse
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM, \
+    TrainingArguments, Trainer
+from peft import LoraConfig, get_peft_model, TaskType
 
-MODEL_PATH = ("/mnt/workspace/models/models/"
-              "Qwen--Qwen3-1.7B/snapshots/master")
-TRAIN_PATH = "/mnt/workspace/hybrid_brain/data/cyrene_lora/train.jsonl"
-VAL_PATH = "/mnt/workspace/hybrid_brain/data/cyrene_lora/val.jsonl"
-OUTPUT_DIR = "/mnt/workspace/checkpoints/qwen_cyrene_lora_v6"
+MODEL_PATH = "/mnt/workspace/models/models/Qwen--Qwen3-1.7B/snapshots/master"
+TRAIN_PATH = "/mnt/workspace/data/tool_lora/train.jsonl"
+VAL_PATH = "/mnt/workspace/data/tool_lora/val.jsonl"
+OUTPUT_DIR = "/mnt/workspace/checkpoints/qwen_tool_lora"
 
 
-class ChatDataset(Dataset):
+class ChatDataset(torch.utils.data.Dataset):
     def __init__(self, path, tok, max_len=512):
         self.tok = tok
         self.max_len = max_len
@@ -39,10 +30,8 @@ class ChatDataset(Dataset):
 
     def __getitem__(self, i):
         messages = self.items[i]["messages"]
-        # 完整对话（含 assistant 回答）
         full_text = self.tok.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=False)
-        # 只有 user + system 部分（用来计算 label mask）
         prompt_text = self.tok.apply_chat_template(
             messages[:-1], tokenize=False, add_generation_prompt=True)
 
@@ -54,7 +43,6 @@ class ChatDataset(Dataset):
                               add_special_tokens=False)["input_ids"]
 
         labels = list(full_ids)
-        # prompt 部分不参与 loss
         for j in range(min(len(prompt_ids), len(labels))):
             labels[j] = -100
 
@@ -70,30 +58,31 @@ class PadCollator:
 
     def __call__(self, batch):
         max_len = max(len(x["input_ids"]) for x in batch)
-        input_ids = torch.full(
-            (len(batch), max_len), self.pad_id, dtype=torch.long)
-        labels = torch.full(
-            (len(batch), max_len), -100, dtype=torch.long)
+        input_ids = torch.full((len(batch), max_len), self.pad_id,
+                               dtype=torch.long)
+        labels = torch.full((len(batch), max_len), -100, dtype=torch.long)
         attn = torch.zeros(len(batch), max_len, dtype=torch.long)
         for i, x in enumerate(batch):
             L = len(x["input_ids"])
             input_ids[i, :L] = x["input_ids"]
             labels[i, :L] = x["labels"]
             attn[i, :L] = 1
-        return {"input_ids": input_ids,
-                "labels": labels,
+        return {"input_ids": input_ids, "labels": labels,
                 "attention_mask": attn}
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--epochs", type=int, default=3)
-    ap.add_argument("--lr", type=float, default=1e-4)
+    ap.add_argument("--epochs", type=int, default=5)
+    ap.add_argument("--lr", type=float, default=1.5e-4)
     ap.add_argument("--batch", type=int, default=2)
-    ap.add_argument("--grad_accum", type=int, default=4)
-    ap.add_argument("--lora_r", type=int, default=8)
-    ap.add_argument("--lora_alpha", type=int, default=16)
+    ap.add_argument("--grad_accum", type=int, default=2)
+    ap.add_argument("--lora_r", type=int, default=16)
+    ap.add_argument("--lora_alpha", type=int, default=32)
     args = ap.parse_args()
+
+    if not os.path.exists(TRAIN_PATH):
+        raise SystemExit(f"[ERR] 缺 {TRAIN_PATH}")
 
     print(f"[load] {MODEL_PATH}")
     tok = AutoTokenizer.from_pretrained(MODEL_PATH)
@@ -103,7 +92,6 @@ def main():
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_PATH, torch_dtype=torch.bfloat16)
 
-    # LoRA 配置
     lora_cfg = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
         r=args.lora_r,
@@ -116,26 +104,21 @@ def main():
     model.print_trainable_parameters()
 
     train_ds = ChatDataset(TRAIN_PATH, tok)
-    val_ds = ChatDataset(VAL_PATH, tok)
-
-    collator = PadCollator(tok.pad_token_id)
+    val_ds = ChatDataset(VAL_PATH, tok) if os.path.exists(VAL_PATH) else None
 
     training_args = TrainingArguments(
         output_dir=OUTPUT_DIR,
         num_train_epochs=args.epochs,
         per_device_train_batch_size=args.batch,
-        per_device_eval_batch_size=args.batch,
         gradient_accumulation_steps=args.grad_accum,
         learning_rate=args.lr,
         warmup_steps=10,
         logging_steps=10,
-        eval_strategy="epoch",
+        eval_strategy="epoch" if val_ds else "no",
         save_strategy="epoch",
         save_total_limit=2,
         bf16=True,
         report_to="none",
-        remove_unused_columns=False,
-        gradient_checkpointing=False,
     )
 
     trainer = Trainer(
@@ -143,7 +126,7 @@ def main():
         args=training_args,
         train_dataset=train_ds,
         eval_dataset=val_ds,
-        data_collator=collator,
+        data_collator=PadCollator(tok.pad_token_id),
     )
 
     trainer.train()
