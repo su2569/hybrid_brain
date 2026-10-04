@@ -221,13 +221,15 @@ def legacy_chat(req: ChatRequest):
     if r is None:
         raise HTTPException(503, "模型未加载")
 
-    result = r.route(req.query, history=req.history)
+    result = r.route(req.query, history=req.history, control=req.control, user=req.user)
     sources = [
         Source(passage=s["passage"][:500], score=s["score"])
         for s in (result.get("sources") or [])[:3]
     ]
+    # /chat 内部私有协议：返回含 <call> 的原始 answer
+    answer = result.get("answer_with_calls") or result["answer"]
     return ChatResponse(
-        answer=result["answer"],
+        answer=answer,
         intent=result["intent"],
         intent_conf=result["intent_conf"],
         sources=sources,

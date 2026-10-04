@@ -190,7 +190,7 @@ class HybridBrainRouter:
         from peft import PeftModel
 
         BASE_PATH = "/mnt/workspace/models/models/Qwen--Qwen3-1.7B/snapshots/master"
-        CYRENE_LORA = "/mnt/workspace/checkpoints/qwen_cyrene_lora_v6"
+        CYRENE_LORA = "/mnt/workspace/checkpoints/qwen_cyrene_lora_v9"
         TOOL_LORA = "/mnt/workspace/checkpoints/qwen_tool_lora"
 
         if os.path.exists(BASE_PATH) and os.path.exists(CYRENE_LORA):
@@ -212,31 +212,56 @@ class HybridBrainRouter:
                 base, CYRENE_LORA, adapter_name="persona")
             print("[ok] persona LoRA")
 
-            # 挂 tool LoRA（可选）
+            # 挂 tool LoRA（可选，加载两份：一份原样，一份用于 NP-LoRA 投影）
             self._has_tool_lora = False
             if os.path.exists(TOOL_LORA):
                 self.chat_model.load_adapter(
                     TOOL_LORA, adapter_name="tool")
+                self.chat_model.load_adapter(
+                    TOOL_LORA, adapter_name="np_tool")
                 self._has_tool_lora = True
-                print("[ok] tool LoRA")
+                print("[ok] tool LoRA (tool + np_tool)")
             else:
                 print("[warn] tool LoRA 缺失")
 
             # 移到 GPU
             self.chat_model = self.chat_model.to(self.device).eval()
 
-            # 合并 persona + tool 成单独 adapter
+            # === NP-LoRA 投影 + cat 合并 ===
+            # 把 np_tool 的 lora_B 投影到 persona 风格子空间的零空间，
+            # 保护 persona 语气不被 tool 覆盖；再与 persona cat 合并。
             if self._has_tool_lora:
                 try:
+                    from peft.tuners.lora import LoraLayer
+                    MU = 0.5
+                    n_mod = 0
+                    for name, module in self.chat_model.named_modules():
+                        if not isinstance(module, LoraLayer):
+                            continue
+                        if ("np_tool" not in module.lora_A
+                                or "persona" not in module.lora_A):
+                            continue
+                        B_s = module.lora_B["persona"].weight.data.float()
+                        B_c = module.lora_B["np_tool"].weight.data.float()
+                        if B_s.abs().max() < 1e-8 or B_c.abs().max() < 1e-8:
+                            continue
+                        U, S, Vh = torch.linalg.svd(B_s, full_matrices=False)
+                        proj = U @ (U.T @ B_c)
+                        B_c_new = B_c - (MU / (1.0 + MU)) * proj
+                        module.lora_B["np_tool"].weight.data.copy_(
+                            B_c_new.to(module.lora_B["np_tool"].weight.dtype))
+                        n_mod += 1
+                    print(f"[ok] NP-LoRA 投影: {n_mod} 层 (mu={MU})")
+
                     self.chat_model.add_weighted_adapter(
-                        adapters=["persona", "tool"],
+                        adapters=["persona", "np_tool"],
                         weights=[1.0, 1.0],
                         adapter_name="persona_tool",
-                        combination_type="linear",
+                        combination_type="cat",
                     )
-                    print("[ok] persona_tool 合并 adapter")
+                    print("[ok] persona_tool = persona + np_tool (cat)")
                 except Exception as e:
-                    print(f"[warn] 合并失败: {e}")
+                    print(f"[warn] NP-LoRA 合并失败: {e}")
                     self._has_tool_lora = False
 
             # 默认只激活 persona
@@ -362,6 +387,31 @@ class HybridBrainRouter:
             enable_thinking: False → 不生成 <think> 块
             show_thinking:   True  → text 保留原始 <think>
         """
+        if mode == "tool":
+            # tool 专用路径：和 diag.py 完全一致
+            tok = self.chat_tok
+            model = self.chat_model
+            enc = tok.apply_chat_template(
+                messages, return_tensors="pt",
+                add_generation_prompt=True,
+                enable_thinking=False)
+            ids = enc["input_ids"] if hasattr(enc, "keys") else enc
+            ids = ids.to(self.device)
+            with torch.no_grad():
+                out = model.generate(
+                    ids,
+                    max_new_tokens=max_new_tokens,
+                    do_sample=False,
+                    repetition_penalty=1.05,
+                )
+            raw = tok.decode(
+                out[0][ids.shape[1]:], skip_special_tokens=True)
+            print(f"[RAW_TOOL] {raw!r}", flush=True)
+            return {"text": raw.strip(),
+                    "thinking": None,
+                    "answer": raw.strip(),
+                    "enable_thinking": False}
+
         if mode == "chat":
             tok, model = self.chat_tok, self.chat_model
             gen_kwargs = dict(
@@ -372,6 +422,15 @@ class HybridBrainRouter:
                 top_k=40,
                 repetition_penalty=1.1,
             )
+        elif mode == "tool":
+            # tool 模式：确定性输出 + 关 thinking
+            tok, model = self.chat_tok, self.chat_model
+            gen_kwargs = dict(
+                max_new_tokens=max_new_tokens,
+                do_sample=False,
+                repetition_penalty=1.05,
+            )
+            enable_thinking = False
         else:
             tok, model = self.gen_tok, self.generator
             gen_kwargs = dict(
@@ -619,8 +678,15 @@ class HybridBrainRouter:
         for h in ctx:
             messages.append({"role": h["role"], "content": h["content"]})
         messages.append({"role": "user", "content": query})
+        print(f"[CHAT_ANSWER] allow_proactive={allow_proactive}", flush=True)
+        print(f"[CHAT_ANSWER] adapter={self.chat_model.active_adapter}", flush=True)
+        for i, m in enumerate(messages):
+            print(f"  [{i}] {m['role']}: {m['content'][:80]!r}", flush=True)
+        _mode = "tool" if allow_proactive else "chat"
+        print(f"[CHAT_ANSWER] allow_proactive={allow_proactive} mode={_mode}",
+              flush=True)
         return {"answer": self._generate(messages, max_new_tokens=2048,
-                                          mode="chat"),
+                                          mode=_mode),
                 "sources": []}
 
     def _finalize(self, query, draft_answer, intent, persona="cyrene"):
@@ -1118,7 +1184,9 @@ class HybridBrainRouter:
                     result["answer"])
                 if text_calls:
                     result["proactive_calls"] = text_calls
-                    # 剥掉 <call> 标记
+                    # 备份原始 answer（含 <call>），供 /chat 端点返回
+                    result["answer_with_calls"] = result["answer"]
+                    # 剥掉 <call> 标记（内部 HBP 端点用）
                     import re as _re
                     result["answer"] = _re.sub(
                         r'<call[^>]*(?:/>|>.*?</call>)', '',
