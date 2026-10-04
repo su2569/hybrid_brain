@@ -38,3 +38,4 @@ _archive/
 *.old
 app.py.old
 nohup.out
+diag.py
