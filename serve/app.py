@@ -144,6 +144,8 @@ def _call_router(internal: dict, verbose=True):
             control=internal.get("control"),
             user=internal.get("user"),
             query_ts=internal.get("query_ts"),
+            tools=internal.get("tools"),
+            extra_system=internal.get("extra_system"),
         )
     except TypeError as _e:
         # DEBUG: 打印真实错误，不静默兜底
@@ -193,20 +195,26 @@ def oai_chat_stream(req: OAIRequest):
 
     # 先拿到完整答案（当前 router 不支持真流式）
     result = _call_router(internal)
-    answer = result.get("answer", "")
+    raw_answer = result.get("answer", "") or ""
+    calls = result.get("proactive_calls") or []
+    tool_calls = oai_adapter._calls_to_tool_calls(calls)
+    import re as _re
+    content = oai_adapter._CALL_RE.sub("", raw_answer).strip()
     resp_id = f"chatcmpl-{uuid.uuid4().hex[:12]}"
 
     def gen():
-        # 第一个 chunk：role
+        # 第一个 chunk：role（含 tool_calls 一起发）
         yield oai_adapter.format_stream_chunk(
-            "", req.model, resp_id, is_first=True)
-        # 逐字
-        for ch in answer:
-            yield oai_adapter.format_stream_chunk(
-                ch, req.model, resp_id)
-        # 结束
+            "", req.model, resp_id, is_first=True,
+            tool_calls=tool_calls if tool_calls else None)
+        # 逐字发 content（如果有）
+        if content:
+            for ch in content:
+                yield oai_adapter.format_stream_chunk(ch, req.model, resp_id)
+        # 结束 chunk
         yield oai_adapter.format_stream_chunk(
-            "", req.model, resp_id, is_last=True)
+            "", req.model, resp_id, is_last=True,
+            finish_reason="tool_calls" if tool_calls else "stop")
         yield "data: [DONE]\n\n"
 
     return StreamingResponse(gen(), media_type="text/event-stream")

@@ -644,7 +644,7 @@ class HybridBrainRouter:
                 "sources": []}
 
     def chat_answer(self, query, history=None, persona="cyrene", user=None,
-                    query_ts=None, allow_proactive=False):
+                    query_ts=None, allow_proactive=False, extra_system=None):
         # 根据 allow_proactive 切换 adapter
         if hasattr(self, "_has_tool_lora") and self._has_tool_lora:
             if allow_proactive:
@@ -660,6 +660,8 @@ class HybridBrainRouter:
         # allow_proactive 时用中性 system（与 tool LoRA 训练一致）
         if allow_proactive and getattr(self, "_has_tool_lora", False):
             _system = TOOL_SYSTEM
+            if extra_system:
+                _system = _system + "\n\n" + extra_system
         elif persona == "cyrene":
             _system = CHAT_SYSTEM
         else:
@@ -953,10 +955,14 @@ class HybridBrainRouter:
             if body:
                 call["question" if ctype == "clarify" else "text"] = body
 
-            # 解析属性
-            for am in _re.finditer(r'(\w+)="([^"]*)"', attrs_str):
-                k, v = am.group(1), am.group(2)
-                if k in ("params",):
+            # 解析属性（兼容单双引号）
+            for am in _re.finditer(
+                r"(\w+)=(?:\"([^\"]*)\"|'([^']*)')", attrs_str):
+                k = am.group(1)
+                v = am.group(2) if am.group(2) is not None else am.group(3)
+                if v is None:
+                    continue
+                if k == "params":
                     try:
                         call[k] = _json.loads(v)
                     except Exception:
@@ -966,7 +972,7 @@ class HybridBrainRouter:
             calls.append(call)
         return calls
 
-    def route(self, query, history=None, verbose=False, control=None, user=None, query_ts=None):
+    def route(self, query, history=None, verbose=False, control=None, user=None, query_ts=None, tools=None, extra_system=None):
         history = history or []
         control = control or {}
         _persona = control.get("persona", "cyrene")
@@ -1124,10 +1130,10 @@ class HybridBrainRouter:
             _need_tool = (
                 _allow_proactive
                 and getattr(self, "_has_tool_lora", False)
-                and any(kw in _clean_query for kw in (
+                and (bool(tools) or any(kw in _clean_query for kw in (
                     "天气", "查", "搜", "提醒", "算", "计算",
                     "搜索", "汇率", "温度",
-                ))
+                )))
             )
             print(f"[DEBUG] _need_tool={_need_tool}", flush=True)
             if _need_tool:
@@ -1136,11 +1142,12 @@ class HybridBrainRouter:
                 result = self.chat_answer(
                     _clean_query, history=history,
                     persona=_persona, user=user,
-                    query_ts=query_ts, allow_proactive=True)
+                    query_ts=query_ts, allow_proactive=True,
+                    extra_system=extra_system)
             else:
                 result = self.rag_answer(_clean_query)
         elif intent == "chat":
-            result = self.chat_answer(query, history=history, persona=_persona, user=user, query_ts=query_ts, allow_proactive=_allow_proactive)
+            result = self.chat_answer(query, history=history, persona=_persona, user=user, query_ts=query_ts, allow_proactive=_allow_proactive, extra_system=extra_system)
         elif intent == "abuse":
             result = self.defensive_answer(query)
         elif intent == "manipulate":
