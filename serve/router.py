@@ -30,7 +30,7 @@ from rag.kb_builder import load_dureader
 INTENT_BACKBONE = "/mnt/workspace/models/Qwen2.5-0.5B"
 HEADS_PATH = "/mnt/workspace/checkpoints/heads_qwen.pt"
 BGE_PATH = "/mnt/workspace/models/models/AI-ModelScope--bge-small-zh-v1.5/snapshots/master"
-RERANKER_PATH = "/mnt/workspace/models/bge-reranker-not-installed"
+RERANKER_PATH = "/mnt/workspace/models/bge-reranker-base"
 GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
 CHAT_GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
 
