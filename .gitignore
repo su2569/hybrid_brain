@@ -51,3 +51,4 @@ data/user_kb.db
 data/user_kb.db-*
 data/memory.db-*
 logs/
+_archive/
