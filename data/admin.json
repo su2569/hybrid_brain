@@ -1,0 +1,8 @@
+{
+  "salt": "1165b6a47b3c957e01d5c5921780bb00",
+  "hash": "785564bf02db067d4fd5e191ccbb5042c1755f9a688fa0f9a4700b2faa196f1a",
+  "algo": "pbkdf2_sha256",
+  "iterations": 200000,
+  "created_at": 1791209490,
+  "updated_at": 1791209490
+}

@@ -1,6 +1,7 @@
 """HybridBrain FastAPI 服务（双协议）。"""
 import os
 import sys
+from typing import Optional, List, Dict, Any
 import time
 import json
 from contextlib import asynccontextmanager
@@ -12,11 +13,14 @@ from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
 from serve import logger
+from serve.web import admin_router
+from serve.memory.feedback import get_feedback_store
 from serve.schemas import (
     HBPRequest, OAIRequest,
     ChatRequest, ChatResponse, Source, HealthResponse,
 )
 from serve.adapters import hbp_adapter, oai_adapter
+from pydantic import BaseModel, Field
 
 
 # ============================================================
@@ -46,6 +50,13 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="HybridBrain", version="1.2.0", lifespan=lifespan)
+
+# 抑制高频轮询日志
+try:
+    from serve.logging_filter import install as _install_log_filter
+    _install_log_filter()
+except Exception as _e:
+    print(f"[log-filter-warn] {_e}", flush=True)
 
 
 # ============================================================
@@ -252,6 +263,9 @@ def legacy_chat(req: ChatRequest):
 # ============================================================
 # Web UI
 # ============================================================
+app.include_router(admin_router)
+app.mount("/admin/static", StaticFiles(directory="serve/web/static"), name="admin_static")
+
 app.mount("/static", StaticFiles(directory="serve/static"), name="static")
 
 
@@ -259,3 +273,55 @@ app.mount("/static", StaticFiles(directory="serve/static"), name="static")
 def index():
     with open("serve/static/index.html", encoding="utf-8") as f:
         return f.read()
+
+# ============================================================
+# 反馈接口
+# ============================================================
+class FeedbackRequest(BaseModel):
+    session_id: Optional[str] = None
+    user_id: Optional[str] = None
+    query: str
+    answer: str
+    feedback_type: str  # up / down / correct / followup
+    correction: Optional[str] = None
+    intent: Optional[str] = None
+    route: Optional[str] = None
+    adapter: Optional[str] = None
+    meta: Optional[dict] = None
+
+
+@app.post("/feedback")
+def submit_feedback(req: FeedbackRequest):
+    """提交反馈（点赞/点踩/纠正）。"""
+    # 置信度映射
+    conf_map = {"up": 0.7, "down": 0.7, "correct": 0.9, "followup": 0.3}
+    conf = conf_map.get(req.feedback_type, 0.5)
+
+    try:
+        store = get_feedback_store()
+        fid = store.add(
+            query=req.query, answer=req.answer,
+            feedback_type=req.feedback_type,
+            session_id=req.session_id, user_id=req.user_id,
+            intent=req.intent, route=req.route, adapter=req.adapter,
+            correction=req.correction, confidence=conf,
+            meta=req.meta,
+        )
+        logger.info("API", f"POST /feedback {req.feedback_type} id={fid}")
+        return {"ok": True, "id": fid}
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+
+@app.get("/feedback/stats")
+def feedback_stats():
+    """反馈统计。"""
+    return get_feedback_store().stats()
+
+
+@app.post("/feedback/export")
+def feedback_export(min_confidence: float = 0.6, limit: int = 500):
+    """导出候选（人工审核用）。"""
+    cands = get_feedback_store().export_candidates(min_confidence, limit)
+    return {"ok": True, "count": len(cands), "candidates": cands}
+

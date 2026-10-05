@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>HybridBrain · 修改密码</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+<header class="bg-slate-800 border-b border-slate-700 px-6 py-3 flex items-center justify-between">
+  <a href="/admin/dashboard" class="text-xl font-bold hover:text-blue-400">← HybridBrain</a>
+  <span class="text-sm text-slate-400">修改密码</span>
+</header>
+<div class="max-w-md mx-auto mt-12 p-8 bg-slate-800 rounded-lg">
+  <h1 class="text-xl font-bold mb-6">修改密码</h1>
+  <form id="cpForm" class="space-y-4">
+    <input type="password" name="old_password" placeholder="旧密码"
+           class="w-full px-4 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none">
+    <input type="password" name="new_password" placeholder="新密码（≥8 位）"
+           class="w-full px-4 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none">
+    <input type="password" name="new_password2" placeholder="确认新密码"
+           class="w-full px-4 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none">
+    <button type="submit"
+            class="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded font-medium">
+      提交
+    </button>
+    <div id="msg" class="text-sm hidden"></div>
+  </form>
+</div>
+<script>
+document.getElementById('cpForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('msg');
+  msg.classList.add('hidden');
+  const fd = new FormData(e.target);
+  if (fd.get('new_password').length < 8) {
+    msg.textContent = '新密码至少 8 位'; msg.className = 'text-sm text-red-400'; msg.classList.remove('hidden'); return;
+  }
+  if (fd.get('new_password') !== fd.get('new_password2')) {
+    msg.textContent = '两次密码不一致'; msg.className = 'text-sm text-red-400'; msg.classList.remove('hidden'); return;
+  }
+  const r = await fetch('/admin/change_password', {method:'POST', body:fd});
+  if (r.ok) {
+    msg.textContent = '已修改，请重新登录'; msg.className = 'text-sm text-green-400'; msg.classList.remove('hidden');
+    setTimeout(() => location.href = '/admin/login', 1500);
+  } else {
+    const d = await r.json().catch(() => ({}));
+    msg.textContent = d.detail || '失败'; msg.className = 'text-sm text-red-400'; msg.classList.remove('hidden');
+  }
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>HybridBrain · 初始化</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center">
+<div class="w-full max-w-md p-8 bg-slate-800 rounded-lg shadow-xl">
+  <h1 class="text-2xl font-bold mb-2">首次设置密码</h1>
+  <p class="text-slate-400 mb-6 text-sm">
+    请填入启动日志中打印的 <code class="text-yellow-400">SETUP TOKEN</code> 并设置管理密码
+  </p>
+  <form id="setupForm" class="space-y-4">
+    <div>
+      <label class="block text-sm mb-1 text-slate-300">Setup Token</label>
+      <input type="text" name="setup_token" placeholder="从启动日志复制"
+             class="w-full px-4 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none font-mono text-sm">
+    </div>
+    <div>
+      <label class="block text-sm mb-1 text-slate-300">新密码（≥8 位）</label>
+      <input type="password" name="password" placeholder="至少 8 位"
+             class="w-full px-4 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none">
+    </div>
+    <div>
+      <label class="block text-sm mb-1 text-slate-300">确认密码</label>
+      <input type="password" name="password2" placeholder="再次输入"
+             class="w-full px-4 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none">
+    </div>
+    <button type="submit"
+            class="w-full py-2 bg-blue-600 hover:bg-blue-700 rounded font-medium">
+      设置密码并进入
+    </button>
+    <div id="err" class="text-red-400 text-sm hidden"></div>
+  </form>
+</div>
+<script>
+document.getElementById('setupForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const err = document.getElementById('err');
+  err.classList.add('hidden');
+  const fd = new FormData(e.target);
+  if (fd.get('password').length < 8) {
+    err.textContent = '密码至少 8 位'; err.classList.remove('hidden'); return;
+  }
+  if (fd.get('password') !== fd.get('password2')) {
+    err.textContent = '两次密码不一致'; err.classList.remove('hidden'); return;
+  }
+  const r = await fetch('/admin/setup', {method:'POST', body:fd});
+  if (r.ok) {
+    location.href = '/admin/dashboard';
+  } else {
+    const d = await r.json().catch(() => ({}));
+    err.textContent = d.detail || '设置失败';
+    err.classList.remove('hidden');
+  }
+};
+</script>
+</body>
+</html>

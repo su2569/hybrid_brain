@@ -1581,6 +1581,46 @@ class HybridBrainRouter:
             except Exception as _e:
                 print(f"[proactive-error] {_e}")
 
+        # L3: 自动检测反馈（对上一轮的纠正/追问）
+        # 不依赖 session_id / memory 实例，直接看 history
+        try:
+            from serve.feedback_detector import detect_feedback
+            from serve.memory.feedback import get_feedback_store
+
+            sig = detect_feedback(query)
+            if sig and history and len(history) >= 2:
+                # 智能找：最后一条 assistant + 它前面最近的 user
+                prev_assistant = None
+                prev_user = None
+                for m in reversed(history):
+                    r = m.get("role")
+                    c = m.get("content", "")
+                    if r == "assistant" and prev_assistant is None:
+                        prev_assistant = c
+                    elif r == "user" and prev_assistant is not None:
+                        prev_user = c
+                        break
+
+                if prev_user and prev_assistant:
+                    store = get_feedback_store()
+                    store.add(
+                        query=prev_user,
+                        answer=prev_assistant,
+                        feedback_type=sig["type"],
+                        session_id=session_id,
+                        user_id=_user_id,
+                        correction=sig.get("correction"),
+                        confidence=sig["confidence"],
+                    )
+                    logger.mem(
+                        f"自动反馈 {sig['type']} "
+                        f"(conf={sig['confidence']})")
+                else:
+                    print(f"[feedback-skip] no prev pair "
+                          f"(hist_len={len(history)})", flush=True)
+        except Exception as _e:
+            print(f"[feedback-detect-error] {_e}", flush=True)
+
         # L2: user_kb 保存（"记住"指令 + 长陈述）
         if getattr(self, "user_kb", None) and _user_id != "anon":
             try:

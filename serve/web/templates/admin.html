@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>HybridBrain 管理后台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .tab-active { border-bottom: 2px solid #3b82f6; color: #3b82f6; }
+  /* 库/表选中态 */
+  .db-item-active { background: #1e40af !important; color: white; }
+  .table-btn { transition: all 0.15s; }
+  .table-btn-active { background: #2563eb !important; color: white; }
+  /* 模态 */
+  .modal-bg { background: rgba(0,0,0,0.7); }
+</style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+<header class="bg-slate-800 border-b border-slate-700 px-6 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-4">
+    <h1 class="text-xl font-bold">HybridBrain 管理</h1>
+    <span class="text-xs text-slate-400" id="status">加载中...</span>
+  </div>
+  <div class="flex gap-2">
+    <a href="/admin/profile" class="text-sm px-3 py-1 bg-slate-700 rounded hover:bg-slate-600">修改密码</a>
+    <button onclick="logout()" class="text-sm px-3 py-1 bg-slate-700 rounded hover:bg-slate-600">登出</button>
+  </div>
+</header>
+
+<nav class="bg-slate-800 border-b border-slate-700 px-6 flex gap-6 text-sm">
+  <button class="tab py-3 tab-active" data-tab="dashboard">概览</button>
+  <button class="tab py-3" data-tab="users">用户</button>
+  <button class="tab py-3" data-tab="kb">知识库</button>
+  <button class="tab py-3" data-tab="db">数据库</button>
+  <button class="tab py-3" data-tab="memory">记忆库</button>
+  <button class="tab py-3" data-tab="graph">图谱</button>
+</nav>
+
+<main class="p-6">
+
+  <!-- 概览 -->
+  <div id="tab-dashboard" class="tab-content">
+    <div class="grid grid-cols-4 gap-4 mb-6" id="statCards"></div>
+    <div class="bg-slate-800 rounded p-4">
+      <h3 class="font-semibold mb-3">系统信息</h3>
+      <pre class="text-sm text-slate-300" id="sysInfo"></pre>
+    </div>
+  </div>
+
+  <!-- 用户 -->
+  <div id="tab-users" class="tab-content hidden">
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex gap-2">
+        <button onclick="showAddUser()" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">+ 新建用户</button>
+        <button onclick="autoRegister()" class="px-4 py-2 bg-slate-700 rounded hover:bg-slate-600">自动注册未登记</button>
+      </div>
+      <div class="text-sm text-slate-400" id="userCount"></div>
+    </div>
+    <div class="bg-slate-800 rounded overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-slate-700/50 text-slate-300">
+          <tr>
+            <th class="p-3 text-left">user_id</th>
+            <th class="p-3 text-left">显示名</th>
+            <th class="p-3 text-left">系统编号</th>
+            <th class="p-3 text-left">备注</th>
+            <th class="p-3 text-left w-32">操作</th>
+          </tr>
+        </thead>
+        <tbody id="userBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 知识库 -->
+  <div id="tab-kb" class="tab-content hidden">
+    <div class="flex gap-3 mb-4">
+      <input id="kbSearch" placeholder="搜索..." class="px-3 py-2 bg-slate-800 rounded border border-slate-600 flex-1">
+      <button onclick="loadKB()" class="px-4 py-2 bg-blue-600 rounded">搜索</button>
+    </div>
+    <div class="bg-slate-800 rounded">
+      <table class="w-full text-sm">
+        <thead class="border-b border-slate-700 text-slate-400">
+          <tr><th class="p-3 text-left w-20">ID</th><th class="p-3 text-left">内容</th></tr>
+        </thead>
+        <tbody id="kbBody"></tbody>
+      </table>
+    </div>
+    <div class="flex justify-between items-center mt-4">
+      <div id="kbMeta" class="text-sm text-slate-400"></div>
+      <div class="flex gap-2">
+        <button onclick="kbPage(-1)" class="px-3 py-1 bg-slate-700 rounded">上一页</button>
+        <button onclick="kbPage(1)" class="px-3 py-1 bg-slate-700 rounded">下一页</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 数据库：两栏 + 面包屑 -->
+  <div id="tab-db" class="tab-content hidden">
+    <div class="grid grid-cols-12 gap-4">
+
+      <!-- 左：库列表 -->
+      <div class="col-span-2 bg-slate-800 rounded p-3">
+        <h3 class="font-semibold mb-3 text-sm text-slate-400">数据库</h3>
+        <ul id="dbList" class="space-y-1 text-sm"></ul>
+      </div>
+
+      <!-- 中：表列表 -->
+      <div class="col-span-3 bg-slate-800 rounded p-3">
+        <h3 class="font-semibold mb-3 text-sm text-slate-400">表</h3>
+        <ul id="tableList" class="space-y-1 text-sm"></ul>
+      </div>
+
+      <!-- 右：数据 -->
+      <div class="col-span-7 bg-slate-800 rounded p-3">
+        <div class="flex items-center justify-between mb-3">
+          <div class="text-sm">
+            <span class="text-slate-500">路径：</span>
+            <span id="crumbDb" class="text-blue-400"></span>
+            <span class="text-slate-500 mx-1">/</span>
+            <span id="crumbTable" class="text-yellow-400"></span>
+          </div>
+          <div class="text-xs text-slate-500" id="tableMeta"></div>
+        </div>
+        <div class="overflow-auto" style="max-height: 65vh">
+          <table class="w-full text-xs">
+            <thead class="border-b border-slate-700 text-slate-400 sticky top-0 bg-slate-800"></thead>
+            <tbody id="dbBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 记忆库 -->
+  <div id="tab-memory" class="tab-content hidden">
+    <div class="grid grid-cols-3 gap-4">
+      <div class="bg-slate-800 rounded p-3">
+        <h3 class="font-semibold mb-3 text-sm">L1 Facts 用户</h3>
+        <ul id="l1Users" class="space-y-1 text-sm"></ul>
+      </div>
+      <div class="bg-slate-800 rounded p-3">
+        <h3 class="font-semibold mb-3 text-sm">L1 Facts</h3>
+        <div class="overflow-auto" style="max-height: 70vh">
+          <table class="w-full text-xs">
+            <thead class="border-b border-slate-700 text-slate-400">
+              <tr><th class="p-2 text-left">key</th><th class="p-2 text-left">value</th></tr>
+            </thead>
+            <tbody id="l1Facts"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="bg-slate-800 rounded p-3">
+        <h3 class="font-semibold mb-3 text-sm">L2 用户知识</h3>
+        <ul id="l2Items" class="space-y-2 text-sm"></ul>
+      </div>
+    </div>
+    <div class="bg-slate-800 rounded p-3 mt-4">
+      <h3 class="font-semibold mb-3 text-sm">最近会话</h3>
+      <div class="grid grid-cols-4 gap-2 text-sm" id="sessions"></div>
+    </div>
+  </div>
+
+  <!-- 图谱 -->
+  <div id="tab-graph" class="tab-content hidden">
+    <div class="flex gap-3 mb-4">
+      <select id="graphScope" class="px-3 py-2 bg-slate-800 rounded border border-slate-600">
+        <option value="all">全部</option>
+        <option value="l1">L1 Facts</option>
+        <option value="l2">L2 用户知识</option>
+        <option value="session">会话</option>
+      </select>
+      <input id="graphUser" placeholder="用户 ID（可选）" class="px-3 py-2 bg-slate-800 rounded border border-slate-600">
+      <button onclick="loadGraph()" class="px-4 py-2 bg-blue-600 rounded">刷新</button>
+      <div class="flex-1"></div>
+      <div class="text-sm text-slate-400 self-center" id="graphStats"></div>
+    </div>
+    <div id="graphCanvas" class="bg-slate-800 rounded" style="height: 70vh"></div>
+    <div id="graphLegend"></div>
+  </div>
+
+</main>
+
+<!-- 用户编辑模态 -->
+<div id="userModal" class="fixed inset-0 modal-bg hidden items-center justify-center z-50">
+  <div class="bg-slate-800 rounded-lg p-6 w-96">
+    <h3 class="text-lg font-bold mb-4" id="userModalTitle">新建用户</h3>
+    <div class="space-y-3">
+      <div>
+        <label class="block text-xs text-slate-400 mb-1">user_id</label>
+        <input id="mUserId" class="w-full px-3 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none" placeholder="字母数字-_">
+      </div>
+      <div>
+        <label class="block text-xs text-slate-400 mb-1">显示名</label>
+        <input id="mDisplayName" class="w-full px-3 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none">
+      </div>
+      <div>
+        <label class="block text-xs text-slate-400 mb-1">系统编号（留空自动生成）</label>
+        <input id="mSystemId" class="w-full px-3 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none" placeholder="SYS-...">
+      </div>
+      <div>
+        <label class="block text-xs text-slate-400 mb-1">备注</label>
+        <input id="mNote" class="w-full px-3 py-2 bg-slate-700 rounded border border-slate-600 focus:border-blue-500 focus:outline-none">
+      </div>
+    </div>
+    <div class="flex justify-end gap-2 mt-6">
+      <button onclick="closeUserModal()" class="px-4 py-2 bg-slate-700 rounded">取消</button>
+      <button onclick="saveUser()" class="px-4 py-2 bg-blue-600 rounded">保存</button>
+    </div>
+  </div>
+</div>
+
+<script src="/admin/static/admin.js"></script>
+</body>
+</html>
