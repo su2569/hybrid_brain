@@ -101,6 +101,7 @@ class OAIMessage(BaseModel):
 
 class OAIRequest(BaseModel):
     model: str = "hybrid-brain"
+    session_id: Optional[str] = Field(None, max_length=64)
     messages: List[OAIMessage]
     temperature: float = 0.7
     max_tokens: int = 4096
@@ -123,6 +124,7 @@ class Source(BaseModel):
 class ChatRequest(BaseModel):
     """旧 /chat 端点兼容。"""
     query: str = Field(..., min_length=1, max_length=2000)
+    session_id: Optional[str] = Field(None, max_length=64)
     history: List[dict] = []
     user: Optional[dict] = None
     control: Optional[dict] = None
@@ -134,6 +136,7 @@ class ChatResponse(BaseModel):
     intent: str
     intent_conf: float
     sources: List[Source] = []
+    session_id: Optional[str] = None
 
 
 class HealthResponse(BaseModel):

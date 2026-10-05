@@ -146,6 +146,7 @@ def _call_router(internal: dict, verbose=True):
             query_ts=internal.get("query_ts"),
             tools=internal.get("tools"),
             extra_system=internal.get("extra_system"),
+            session_id=internal.get("session_id"),
         )
     except TypeError as _e:
         # DEBUG: 打印真实错误，不静默兜底
@@ -229,7 +230,9 @@ def legacy_chat(req: ChatRequest):
     if r is None:
         raise HTTPException(503, "模型未加载")
 
-    result = r.route(req.query, history=req.history, control=req.control, user=req.user)
+    result = r.route(req.query, history=req.history,
+                     control=req.control, user=req.user,
+                     session_id=req.session_id)
     sources = [
         Source(passage=s["passage"][:500], score=s["score"])
         for s in (result.get("sources") or [])[:3]
@@ -241,6 +244,7 @@ def legacy_chat(req: ChatRequest):
         intent=result["intent"],
         intent_conf=result["intent_conf"],
         sources=sources,
+        session_id=req.session_id,
     )
 
 
