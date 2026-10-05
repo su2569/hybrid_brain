@@ -1,0 +1,21 @@
+{"user": "codex 执行pytest -v", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 dsh 打开data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 dsh 读data.json吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 dsh 打开requirements.txt", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 astrbot 查开源项目", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"开源项目\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 codex 执行pytest -v", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "在/var/log下用 codex 跑cat README.md", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/var/log\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 codex 执行make build", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"make build\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "codex 在/tmp跑pytest -v", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"/tmp\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 能搜天气预告吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"天气预告\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "能用 dsh 读main.py吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"main.py\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 astrbot 查红烧肉做法", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"红烧肉做法\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "能用 astrbot 搜到上海地铁吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"上海地铁\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 codex 执行cat README.md", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/home/user\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "用 astrbot 搜一下上海地铁", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"上海地铁\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 能读main.py吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"main.py\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 dsh 读data.json吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 codex 在/workspace跑pytest -v吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 codex 执行git status", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"git status\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "codex 在/workspace能执行ls -la吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "用 dsh 读logs/app.log", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"logs/app.log\"}'>调用dsh_read</call>", "tool": "dsh_read"}

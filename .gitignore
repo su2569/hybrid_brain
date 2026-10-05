@@ -43,3 +43,11 @@ data/memory.db
 data/memory.db-journal
 data/memory.db-wal
 data/memory.db-shm
+
+# 运行时文件
+.serve.pid
+*.pid
+data/user_kb.db
+data/user_kb.db-*
+data/memory.db-*
+logs/

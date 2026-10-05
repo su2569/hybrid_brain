@@ -1,0 +1,189 @@
+{"user": "能用 codex 在/workspace跑pytest -v吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "用 astrbot 查一下红烧肉做法", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"红烧肉做法\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "astrbot 能搜红烧肉做法吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"红烧肉做法\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 能读config.yaml吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"config.yaml\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "在/workspace执行git status", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"git status\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "codex 执行python main.py", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "dsh 读一下config.yaml", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"config.yaml\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "astrbot 能搜上海地铁吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"上海地铁\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 读一下logs/app.log", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"logs/app.log\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 读一下main.py", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"main.py\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 codex 执行pip install -r requirements.txt", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/var/log\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 能搜红烧肉做法吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"红烧肉做法\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 codex 执行ls -la", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 codex 执行ls -la", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"/home/user\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 dsh 打开config.yaml", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"config.yaml\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 dsh 读data.json吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 dsh 读requirements.txt吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 dsh 读/etc/hosts吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"/etc/hosts\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 astrbot 查Python 教程", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"Python 教程\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 dsh 读logs/app.log", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"logs/app.log\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 codex 在/tmp跑make build吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"make build\",\"cwd\":\"/tmp\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "dsh 能读/etc/hosts吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"/etc/hosts\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 astrbot 搜到天气预告吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"天气预告\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 能读logs/app.log吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"logs/app.log\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "astrbot 能搜股票代码吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"股票代码\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "codex 在/mnt/data跑git status", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"git status\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "codex 在/workspace能执行pip install -r requirements.txt吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 dsh 打开data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 codex 执行make build", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"make build\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "codex 在/mnt/data能执行make build吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"make build\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 codex 执行make build", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"make build\",\"cwd\":\"/var/log\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 能搜红烧肉做法吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"红烧肉做法\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 看看README.md", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"README.md\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 dsh 打开logs/app.log", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"logs/app.log\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 astrbot 查一下股票行情", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"股票行情\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 astrbot 搜一下股票代码", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"股票代码\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "astrbot 帮我搜上海地铁", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"上海地铁\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "astrbot 帮我搜最新 AI 新闻", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"最新 AI 新闻\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 astrbot 查天气预告", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"天气预告\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 能读data.json吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 codex 执行python main.py", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "在/var/log下用 codex 跑git status", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"git status\",\"cwd\":\"/var/log\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "麻烦用 dsh 读config.yaml", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"config.yaml\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 astrbot 搜一下历史事件", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"历史事件\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "能用 astrbot 搜到开源项目吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"开源项目\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 astrbot 查一下唐诗三百首", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"唐诗三百首\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 dsh 读config.yaml", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"config.yaml\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 astrbot 查一下开源项目", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"开源项目\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "在/workspace执行git status", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"git status\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 codex 执行cat README.md", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "麻烦用 astrbot 搜索天气预告", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"天气预告\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "在/home/user执行cat README.md", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/home/user\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 帮我搜星座运势", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"星座运势\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "麻烦用 dsh 读/etc/hosts", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"/etc/hosts\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "codex 执行pip install -r requirements.txt", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "在/workspace执行python main.py", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "dsh 能读requirements.txt吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "astrbot 帮我搜上海地铁", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"上海地铁\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 astrbot 搜一下科学新闻", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"科学新闻\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 看看data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "在~/project下用 codex 跑ls -la", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"~/project\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "用 astrbot 搜一下科学新闻", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"科学新闻\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "麻烦用 dsh 读data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 能读data.json吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "codex 执行pip install -r requirements.txt", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/home/user\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 astrbot 查红烧肉做法", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"红烧肉做法\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 astrbot 查一下天气预告", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"天气预告\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "codex 在~/project跑make build", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"make build\",\"cwd\":\"~/project\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "dsh 读一下/etc/hosts", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"/etc/hosts\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "在/tmp下用 codex 跑pytest -v", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"/tmp\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "codex 执行ls -la", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "能用 dsh 读README.md吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"README.md\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 能读data.json吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "astrbot 帮我搜天气预告", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"天气预告\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "麻烦用 astrbot 搜索星座运势", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"星座运势\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "麻烦用 astrbot 搜索唐诗三百首", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"唐诗三百首\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 dsh 读README.md", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"README.md\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "codex 在/mnt/data能执行python main.py吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "能用 codex 在/mnt/data跑ls -la吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "codex 执行pip install -r requirements.txt", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "codex 执行git status", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"git status\",\"cwd\":\"/tmp\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 帮我搜唐诗三百首", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"唐诗三百首\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 看看requirements.txt", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "麻烦用 dsh 读data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 astrbot 查一下上海地铁", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"上海地铁\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 dsh 读data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 codex 执行ls -la", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"/home/user\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "dsh 能读logs/app.log吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"logs/app.log\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "麻烦用 dsh 读data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 读一下main.py", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"main.py\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "在/workspace执行make build", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"make build\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 帮我搜红烧肉做法", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"红烧肉做法\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "麻烦用 dsh 读config.yaml", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"config.yaml\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 dsh 读data.json吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "codex 执行cat README.md", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/var/log\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "能用 astrbot 搜到科学新闻吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"科学新闻\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "在/home/user下用 codex 跑pip install -r requirements.txt", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/home/user\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "在/tmp执行cat README.md", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/tmp\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 codex 执行pip install -r requirements.txt", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "dsh 能读requirements.txt吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 看看config.yaml", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"config.yaml\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 dsh 读requirements.txt", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 codex 在/workspace跑cat README.md吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "能用 codex 在/workspace跑pip install -r requirements.txt吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 搜索股票行情", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"股票行情\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 codex 执行git status", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"git status\",\"cwd\":\"/tmp\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "能用 astrbot 搜到最新 AI 新闻吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"最新 AI 新闻\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 codex 执行python main.py", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"~/project\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "能用 dsh 读data.json吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 dsh 打开data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 能读/etc/hosts吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"/etc/hosts\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "codex 在/workspace跑git status", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"git status\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "麻烦用 dsh 读data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 astrbot 搜到开源项目吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"开源项目\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "codex 执行pytest -v", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"~/project\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 帮我搜股票行情", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"股票行情\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "astrbot 搜索量子计算", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"量子计算\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "astrbot 能搜Python 教程吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"Python 教程\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 astrbot 查开源项目", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"开源项目\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "能用 codex 在/var/log跑pip install -r requirements.txt吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/var/log\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "在/tmp下用 codex 跑python main.py", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"/tmp\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "dsh 能读requirements.txt吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 能读logs/app.log吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"logs/app.log\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 astrbot 查一下上海地铁", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"上海地铁\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "在/workspace下用 codex 跑pip install -r requirements.txt", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 能搜星座运势吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"星座运势\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "能用 dsh 读logs/app.log吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"logs/app.log\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 dsh 读README.md", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"README.md\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "在/var/log执行python main.py", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"/var/log\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 astrbot 查最新 AI 新闻", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"最新 AI 新闻\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 dsh 打开main.py", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"main.py\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "astrbot 能搜量子计算吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"量子计算\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 看看data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 astrbot 搜到论文 2024吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"论文 2024\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "codex 在/workspace能执行cat README.md吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 dsh 打开data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "麻烦用 astrbot 搜索论文 2024", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"论文 2024\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "astrbot 帮我搜唐诗三百首", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"唐诗三百首\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 读一下requirements.txt", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 astrbot 搜一下量子计算", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"量子计算\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 astrbot 查星座运势", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"星座运势\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "astrbot 帮我搜科学新闻", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"科学新闻\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 astrbot 查开源项目", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"开源项目\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 astrbot 搜一下Python 教程", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"Python 教程\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "能用 astrbot 搜到股票代码吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"股票代码\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "麻烦用 dsh 读config.yaml", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"config.yaml\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "astrbot 能搜最新 AI 新闻吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"最新 AI 新闻\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 codex 执行python main.py", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 帮我搜历史事件", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"历史事件\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 codex 执行python main.py", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"/home/user\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 帮我搜论文 2024", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"论文 2024\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "codex 在/mnt/data跑cat README.md", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 astrbot 查论文 2024", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"论文 2024\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 astrbot 查量子计算", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"量子计算\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "codex 在/workspace能执行cat README.md吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"cat README.md\",\"cwd\":\"/workspace\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "能用 codex 在~/project跑pip install -r requirements.txt吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"~/project\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "麻烦用 dsh 读main.py", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"main.py\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 dsh 读data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 看看/etc/hosts", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"/etc/hosts\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 codex 在~/project跑pip install -r requirements.txt吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pip install -r requirements.txt\",\"cwd\":\"~/project\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 搜索天气预告", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"天气预告\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "codex 在/home/user能执行ls -la吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"/home/user\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "codex 在~/project能执行python main.py吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"python main.py\",\"cwd\":\"~/project\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 astrbot 查股票代码", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"股票代码\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 astrbot 搜一下Python 教程", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"Python 教程\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "帮我用 astrbot 查上海地铁", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"上海地铁\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "codex 执行git status", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"git status\",\"cwd\":\"/tmp\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "astrbot 搜索红烧肉做法", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"红烧肉做法\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "在~/project下用 codex 跑pytest -v", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"~/project\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "dsh 能读main.py吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"main.py\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "帮我用 astrbot 查最新 AI 新闻", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"最新 AI 新闻\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "dsh 读一下/etc/hosts", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"/etc/hosts\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 看看requirements.txt", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 能读config.yaml吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"config.yaml\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 dsh 读data.json吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "codex 执行pytest -v", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"/tmp\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "能用 astrbot 搜到红烧肉做法吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"红烧肉做法\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "能用 codex 在/var/log跑make build吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"make build\",\"cwd\":\"/var/log\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "帮我用 dsh 打开requirements.txt", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "能用 astrbot 搜到Python 教程吗", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"Python 教程\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "在/mnt/data执行pytest -v", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "麻烦用 astrbot 搜索论文 2024", "assistant": "<call type=\"action\" name=\"astrbot_search\" params='{\"query\":\"论文 2024\"}'>调用astrbot_search</call>", "tool": "astrbot_search"}
+{"user": "用 dsh 读data.json", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"data.json\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "codex 在/mnt/data跑ls -la", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "dsh 能读logs/app.log吗", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"logs/app.log\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "dsh 看看README.md", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"README.md\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "用 dsh 读requirements.txt", "assistant": "<call type=\"action\" name=\"dsh_read\" params='{\"path\":\"requirements.txt\"}'>调用dsh_read</call>", "tool": "dsh_read"}
+{"user": "codex 执行pytest -v", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"pytest -v\",\"cwd\":\"~/project\"}'>调用codex_exec</call>", "tool": "codex_exec"}
+{"user": "能用 codex 在/mnt/data跑ls -la吗", "assistant": "<call type=\"action\" name=\"codex_exec\" params='{\"cmd\":\"ls -la\",\"cwd\":\"/mnt/data\"}'>调用codex_exec</call>", "tool": "codex_exec"}
