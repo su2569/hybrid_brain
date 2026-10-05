@@ -91,6 +91,7 @@ def parse(req) -> dict:
         "control": control,
         "tools": tools,
         "extra_system": _build_tools_block(tools),
+        "session_id": getattr(req, "session_id", None),
     }
 
 

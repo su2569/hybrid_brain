@@ -1,0 +1,27 @@
+{"text": "我比较内向", "label": "statement"}
+{"text": "我最近怎么样", "label": "query"}
+{"text": "我这个人的话，喜欢安静", "label": "statement"}
+{"text": "我习惯早起", "label": "statement"}
+{"text": "我记得我说过我喜欢咖啡", "label": "statement"}
+{"text": "我住在上海浦东", "label": "statement"}
+{"text": "你知道我的生日吗", "label": "query"}
+{"text": "推荐本书", "label": "irrelevant"}
+{"text": "在吗", "label": "irrelevant"}
+{"text": "月亮为什么圆", "label": "irrelevant"}
+{"text": "我住在杭州", "label": "statement"}
+{"text": "我有说过我喜欢什么吗", "label": "query"}
+{"text": "苹果多少钱", "label": "irrelevant"}
+{"text": "怎么学 Python", "label": "irrelevant"}
+{"text": "我平时怎么上班", "label": "query"}
+{"text": "讲个笑话", "label": "irrelevant"}
+{"text": "我要去北京玩", "label": "irrelevant"}
+{"text": "我单身", "label": "statement"}
+{"text": "我很少喝咖啡", "label": "statement"}
+{"text": "我在哪工作", "label": "query"}
+{"text": "我妈妈是老师", "label": "statement"}
+{"text": "明天几点日出", "label": "irrelevant"}
+{"text": "我最近在学画画", "label": "statement"}
+{"text": "我的手机是小米", "label": "statement"}
+{"text": "设置提醒", "label": "irrelevant"}
+{"text": "我养了什么", "label": "query"}
+{"text": "我不太会用 Excel", "label": "statement"}

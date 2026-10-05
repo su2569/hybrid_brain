@@ -39,3 +39,7 @@ _archive/
 app.py.old
 nohup.out
 diag.py
+data/memory.db
+data/memory.db-journal
+data/memory.db-wal
+data/memory.db-shm
