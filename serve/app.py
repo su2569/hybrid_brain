@@ -11,6 +11,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
+from serve import logger
 from serve.schemas import (
     HBPRequest, OAIRequest,
     ChatRequest, ChatResponse, Source, HealthResponse,

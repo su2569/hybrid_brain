@@ -35,6 +35,7 @@ CHAT_GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
 # ============================================================
 # Prompt
 # ============================================================
+from serve import logger
 from serve.prompts import (
     RAG_SYSTEM, CHAT_SYSTEM, PLAIN_SYSTEM, NEUTRAL_SYSTEM,
     TOOL_SYSTEM, PERSONAL_FRESH_SYSTEM, PERSONAL_FORGET_SYSTEM,
@@ -385,7 +386,7 @@ class HybridBrainRouter:
                 )
             raw = tok.decode(
                 out[0][ids.shape[1]:], skip_special_tokens=True)
-            print(f"[RAW_TOOL] {raw!r}", flush=True)
+            logger.tool(f"raw={raw[:100]!r}")
             return {"text": raw.strip(),
                     "thinking": None,
                     "answer": raw.strip(),
@@ -511,7 +512,7 @@ class HybridBrainRouter:
                        f"【问题】{query}",
         })
         ans = self._generate(messages, max_new_tokens=4096, mode="rag")
-        print(f"[RAG初稿] len={len(ans)} | {repr(ans[:200])}")
+        logger.rag(f"初稿 len={len(ans)} | {ans[:120]!r}")
 
         # ============================================================
         # RAG 后置校验：检测到"未提及"但 top1 高分 → 限次重试
@@ -658,8 +659,7 @@ class HybridBrainRouter:
                     self.chat_model.set_adapter("persona")
             else:
                 self.chat_model.set_adapter("persona")
-        print(f"[chat] history_len={len(history or [])} "
-              f"| {[h['content'][:30] for h in (history or [])[-3:]]}")
+        logger.chat(f"hist_len={len(history or [])}")
         # allow_proactive 时用中性 system（与 tool LoRA 训练一致）
         if allow_proactive and getattr(self, "_has_tool_lora", False):
             _system = TOOL_SYSTEM
@@ -704,8 +704,7 @@ class HybridBrainRouter:
             print(f"  [{i}] {m['role']} len={len(_c)}: {_head!r}"
                   + (f"...{_tail!r}" if _tail else ""), flush=True)
         _gen_mode = "tool" if allow_proactive else "chat"
-        print(f"[CHAT_ANSWER] allow_proactive={allow_proactive} "
-              f"gen={_gen_mode}", flush=True)
+        logger.debug("CHAT", f"proactive={allow_proactive} gen={_gen_mode}")
         return {"answer": self._generate(messages, max_new_tokens=2048,
                                           mode=_gen_mode),
                 "sources": []}
@@ -787,7 +786,7 @@ class HybridBrainRouter:
         # 空或太短 → 池子兜底
         if not ans or len(ans.strip()) < 10:
             ans = _random.choice(_DEFENSIVE_POOL)
-            print(f"[defensive-pool] 兜底", flush=True)
+            logger.abuse("池子兜底")
         return {"answer": ans, "sources": []}
 
     def refuse_answer(self, query):
@@ -807,7 +806,7 @@ class HybridBrainRouter:
         ans2 = _post_filter_refuse(ans)
         if ans2 is None:
             ans2 = _random.choice(_REFUSE_POOL)
-            print(f"[refuse-pool] 兜底", flush=True)
+            logger.refuse("池子兜底")
         return {"answer": ans2, "sources": []}
 
     # --------------------------------------------------------
@@ -1069,9 +1068,9 @@ class HybridBrainRouter:
         # L1: 会话历史优先从 memory 拉
         _user_id = (user or {}).get("id") or "anon"
         self._current_user_id = _user_id   # 供 user_kb 用
-        print(f"[L1-ROUTE] session_id={session_id!r} user_id={_user_id!r} "
-              f"memory={'ON' if getattr(self,'memory',None) else 'OFF'}",
-              flush=True)
+        logger.mem(
+            f"sid={session_id!r} uid={_user_id!r} "
+            f"mem={'ON' if getattr(self,'memory',None) else 'OFF'}")
         if session_id and getattr(self, "memory", None):
             try:
                 mem_hist = self.memory.load_history(session_id, limit=20)
@@ -1294,7 +1293,7 @@ class HybridBrainRouter:
                     if _l2_ctx:
                         _user_ctx = ((_user_ctx or "") + "\n\n"
                                      + _l2_ctx).strip()
-                        print(f"[L2-CTX] {len(_l2_ctx)} chars", flush=True)
+                        logger.l2(f"CTX {len(_l2_ctx)} chars")
                 except Exception as _e:
                     print(f"[user-kb-error] {_e}", flush=True)
 
@@ -1318,8 +1317,7 @@ class HybridBrainRouter:
                 _force_chat = True
             else:  # chat
                 intent = "chat"
-            print(f"[ROUTE-CLF] {_old_intent}→{intent} clf={_route_pred}",
-                  flush=True)
+            logger.route(f"{_old_intent}→{intent} clf={_route_pred}")
 
         # 个人化问题但无相关记忆 → 主动确认 / 说忘了
         if personal_path == "ask_back":
@@ -1336,9 +1334,7 @@ class HybridBrainRouter:
                 user_context=_user_ctx)
         elif intent == "query":
             # DEBUG
-            print(f"[DEBUG] _allow_proactive={_allow_proactive}, "
-                  f"_has_tool_lora={getattr(self, '_has_tool_lora', None)}, "
-                  f"query={_clean_query!r}", flush=True)
+            logger.debug("ROUTE", f"proactive={_allow_proactive} q={_clean_query[:30]!r}")
 
             # route_classifier 强制工具 or 原判定
             _need_tool = False
@@ -1356,7 +1352,7 @@ class HybridBrainRouter:
                         _need_tool = any(kw in _clean_query for kw in (
                             "天气", "查", "搜", "提醒", "算", "计算",
                             "搜索", "汇率", "温度"))
-            print(f"[DEBUG] _need_tool={_need_tool}", flush=True)
+            logger.debug("TOOL", f"_need_tool={_need_tool}")
             if _need_tool:
                 if verbose:
                     print(f"[route] query + 工具意图 → chat 路径")
@@ -1433,8 +1429,7 @@ class HybridBrainRouter:
             try:
                 _saved = self._maybe_save_user_kb(_user_id, query)
                 if _saved:
-                    print(f"[L2-SAVE] uid={_user_id} saved={_saved}",
-                          flush=True)
+                    logger.l2(f"SAVE uid={_user_id} saved={_saved}")
             except Exception as _e:
                 print(f"[user-kb-save-error] {_e}", flush=True)
 
@@ -1449,8 +1444,7 @@ class HybridBrainRouter:
 
         # 输出格式化
         _fmt = result.get("output_format", "text")
-        print(f"[format-check] output_format={_fmt} "
-              f"answer_len={len(result.get('answer', ''))}", flush=True)
+        logger.debug("API", f"fmt={_fmt} len={len(result.get('answer', ''))}")
         if _fmt == "json" and result.get("answer"):
             try:
                 result["answer"] = self._format_as_json(
