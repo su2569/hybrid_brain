@@ -26,8 +26,19 @@ from rag.kb_builder import load_dureader
 # 路径
 # ============================================================
 HEADS_PATH = "/mnt/workspace/checkpoints/heads_qwen.pt"
-BGE_PATH = "/mnt/workspace/models/models/AI-ModelScope--bge-small-zh-v1.5/snapshots/master"
-RERANKER_PATH = "/mnt/workspace/models/bge-reranker-base"
+# 优先用 /dev/shm 内存盘（若存在）
+_SHM = "/dev/shm/hb_models"
+def _prefer_shm(orig, shm_subpath):
+    import os as _os
+    p = _os.path.join(_SHM, shm_subpath)
+    return p if _os.path.exists(p) else orig
+
+BGE_PATH = _prefer_shm(
+    "/mnt/workspace/models/models/AI-ModelScope--bge-small-zh-v1.5/snapshots/master",
+    "bge-small-zh")
+RERANKER_PATH = _prefer_shm(
+    "/mnt/workspace/models/bge-reranker-base",
+    "bge-reranker")
 GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
 CHAT_GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
 
@@ -95,39 +106,185 @@ def _post_filter_refuse(text):
 
 class HybridBrainRouter:
     def __init__(self, device="cuda"):
-        self.device = torch.device(device)
-        self._referee_cache = {}   # query → intent
-        self._load_intent()
-        self._load_retriever()
-        self._load_generator()
-        print("[router] 初始化完成")
+        import os as _os
+        import time as _time
+        import threading as _th
+        from concurrent.futures import ThreadPoolExecutor, wait
 
-    def _load_intent(self):
-        logger.load("intent classifier (BGE + LR)...")
+        _t0 = _time.time()
+        self.device = torch.device(device)
+        self._referee_cache = {}
+
+        def _t():
+            return f"({_time.time()-_t0:.1f}s)"
+
+        # ========== 回退：串行 ==========
+        if _os.environ.get("HB_PARALLEL_LOAD", "1") == "0":
+            logger.warn("LOAD", f"串行加载模式 {_t()}")
+            self._shared_bge = SentenceTransformer(BGE_PATH)
+            self.bge = self._shared_bge
+            self._load_intent_lr()
+            self._load_kb_gpu()
+            self._load_reranker()
+            self._load_generator()
+            logger.ok("LOAD", f"初始化完成 {_t()}")
+            return
+
+        # ========== 同起跑线并行 ==========
+        # 6 个独立任务 t=0 同时启动
+        pool = ThreadPoolExecutor(max_workers=6)
+        bge_ready = _th.Event()
+
+        # ---- 任务 1: BGE（最先完成）----
+        def task_bge():
+            logger.load(f"[t0] BGE 启动 {_t()}")
+            self._shared_bge = SentenceTransformer(BGE_PATH)
+            self.bge = self._shared_bge
+            bge_ready.set()
+            logger.ok("LOAD", f"BGE 完成 {_t()}")
+
+        # ---- 任务 2: Qwen3 CPU（IO 密集）----
+        def task_qwen():
+            logger.load(f"[t0] Qwen3-CPU 启动 {_t()}")
+            self._load_qwen_cpu()
+            logger.ok("LOAD", f"Qwen3-CPU 完成 {_t()}")
+
+        # ---- 任务 3: reranker（独立）----
+        def task_reranker():
+            logger.load(f"[t0] reranker 启动 {_t()}")
+            self._load_reranker()
+            logger.ok("LOAD", f"reranker 完成 {_t()}")
+
+        # ---- 任务 4: L1 memory（独立）----
+        def task_l1():
+            logger.load(f"[t0] L1 启动 {_t()}")
+            try:
+                from serve.memory import SessionMemory
+                self.memory = SessionMemory()
+                logger.ok("LOAD", f"L1 完成 {_t()}")
+            except Exception as e:
+                self.memory = None
+                logger.warn("LOAD", f"L1 失败: {e}")
+
+        # ---- 任务 5: KB(GPU) + intent LR + classifiers ----
+        def task_bge_downstream():
+            bge_ready.wait()
+            logger.load(f"[BGE ready] KB+clf 启动 {_t()}")
+            # KB 编码走 GPU（与 LoRA 争抢但更快）
+            try:
+                self._load_kb_gpu()
+                logger.ok("LOAD", f"KB 完成 {_t()}")
+            except Exception as e:
+                logger.warn("LOAD", f"KB 失败: {e}")
+            try:
+                self._load_intent_lr()
+                logger.ok("LOAD", f"intent LR 完成 {_t()}")
+            except Exception as e:
+                logger.warn("LOAD", f"intent LR 失败: {e}")
+            try:
+                from serve.classifiers import get_classifiers
+                self.classifiers = get_classifiers()
+                logger.ok("LOAD", f"classifiers 完成 {_t()}")
+            except Exception as e:
+                self.classifiers = None
+                logger.warn("LOAD", f"classifiers 失败: {e}")
+
+        # ---- 任务 6: L2 user_kb（依赖 BGE）----
+        def task_user_kb():
+            bge_ready.wait()
+            logger.load(f"[BGE ready] user_kb 启动 {_t()}")
+            try:
+                from serve.memory import UserKB
+                self.user_kb = UserKB(self._shared_bge)
+                logger.ok("LOAD", f"user_kb 完成 {_t()}")
+            except Exception as e:
+                self.user_kb = None
+                logger.warn("LOAD", f"user_kb 失败: {e}")
+
+        # ===== t=0 同时启动所有独立任务 =====
+        logger.load(f"═══ 并行启动（同起跑线）{_t()} ═══")
+        f_bge      = pool.submit(task_bge)
+        f_qwen     = pool.submit(task_qwen)
+        f_reranker = pool.submit(task_reranker)
+        f_l1       = pool.submit(task_l1)
+        f_down     = pool.submit(task_bge_downstream)
+        f_user_kb  = pool.submit(task_user_kb)
+
+        # ===== 主线程：等 Qwen3 CPU → 做 GPU + LoRA（唯一串行节点）=====
+        try:
+            f_qwen.result()
+            logger.load(f"Qwen3 CPU 就绪 → GPU + LoRA {_t()}")
+            self._finalize_qwen_gpu()
+            logger.ok("LOAD", f"LoRA + NP-LoRA 完成 {_t()}")
+        except Exception as e:
+            logger.error("LOAD", f"Qwen3 GPU 阶段失败: {e}")
+            raise
+
+        # ===== 等非 GPU 任务收尾 =====
+        try:
+            wait([f_bge, f_down, f_user_kb, f_reranker, f_l1], timeout=180)
+        except Exception as e:
+            logger.warn("LOAD", f"部分任务超时: {e}")
+
+        pool.shutdown(wait=False)
+
+        # KB 编码已在并行链完成（CPU 模式）
+
+        logger.ok("LOAD", f"generators (tool={self._has_tool_lora})")
+        logger.ok("LOAD", f"初始化完成 {_t()}")
+    def _load_intent_lr(self):
+        """只加载 LR 分类器（BGE 已共享）。"""
+        logger.load("intent classifier (LR)...")
         p = "/mnt/workspace/checkpoints/intent_bge.joblib"
         if not os.path.exists(p):
-            raise FileNotFoundError(f"未找到 {p}，请先跑 train/train_intent_bge.py")
+            raise FileNotFoundError(f"未找到 {p}")
         data = joblib.load(p)
         self.intent_clf = data["clf"]
-        self.intent_bge = SentenceTransformer(data["bge_path"])
         self.intent_names = data["intent_names"]
+        # BGE 共享（已在外层加载）
+        # 无论路径是否相同，都用共享 BGE（省一份加载）
+        self.intent_bge = self._shared_bge
         logger.ok("LOAD", f"intent classifier ({len(self.intent_names)} 类)")
 
-    def _load_retriever(self):
-        logger.load("BGE retriever...")
-        self.bge = SentenceTransformer(BGE_PATH)
+
+    def _load_kb_gpu(self):
+        """KB 编码：首次 GPU 编码 → 存盘；后续读缓存（<1s）。"""
+        import hashlib
+        import numpy as np
 
         samples = load_dureader(max_n=20000)
         self.kb_passages = [s["passage"] for s in samples]
-        logger.load(f"KB {len(self.kb_passages)} 条，编码中...")
 
-        embs = self.bge.encode(
+        h = hashlib.md5(
+            "|".join(self.kb_passages).encode("utf-8")
+        ).hexdigest()[:12]
+        cache_path = f"data/kb_embs_{h}.npy"
+
+        if os.path.exists(cache_path):
+            logger.load(f"KB {len(self.kb_passages)} 条，读缓存...")
+            try:
+                arr = np.load(cache_path)
+                self.kb_embs = torch.from_numpy(arr).float()
+                logger.ok("LOAD", f"KB 缓存命中")
+                return
+            except Exception as e:
+                logger.warn("LOAD", f"KB 缓存读失败，重编码: {e}")
+
+        logger.load(f"KB {len(self.kb_passages)} 条，GPU 编码中...")
+        embs = self._shared_bge.encode(
             self.kb_passages, normalize_embeddings=True,
-            batch_size=64, show_progress_bar=False)
+            batch_size=64, show_progress_bar=False,
+            device=self.device)
         self.kb_embs = torch.from_numpy(embs).float()
-        logger.ok("LOAD", "KB 编码完成")
 
-        # 加载 reranker
+        try:
+            os.makedirs("data", exist_ok=True)
+            np.save(cache_path, embs)
+            logger.ok("LOAD", "KB 编码完成，缓存已存")
+        except Exception as e:
+            logger.warn("LOAD", f"KB 缓存写失败: {e}")
+
+    def _load_reranker(self):
         if os.path.exists(RERANKER_PATH):
             logger.load("BGE-reranker...")
             from sentence_transformers import CrossEncoder
@@ -137,133 +294,133 @@ class HybridBrainRouter:
             logger.warn("LOAD", f"{RERANKER_PATH} 不存在，跳过 reranker")
             self.reranker = None
 
-    def _load_generator(self):
-        """加载生成器：base + persona LoRA + tool LoRA（双 LoRA 架构）。"""
+    def _load_qwen_cpu(self):
+        """Qwen3 权重加载到 CPU（IO 密集，可与 KB 编码并行）。"""
         from peft import PeftModel
 
-        BASE_PATH = "/mnt/workspace/models/models/Qwen--Qwen3-1.7B/snapshots/master"
-        CYRENE_LORA = "/mnt/workspace/checkpoints/qwen_cyrene_lora_v9"
-        TOOL_LORA = "/mnt/workspace/checkpoints/qwen_tool_lora_v2"
+        BASE_PATH = _prefer_shm(
+            "/mnt/workspace/models/models/Qwen--Qwen3-1.7B/snapshots/master",
+            "qwen3-1.7b")
+        CYRENE_LORA = _prefer_shm(
+            "/mnt/workspace/checkpoints/qwen_cyrene_lora_v9",
+            "persona_lora")
+        TOOL_LORA = _prefer_shm(
+            "/mnt/workspace/checkpoints/qwen_tool_lora_v2",
+            "tool_lora")
 
-        if os.path.exists(BASE_PATH) and os.path.exists(CYRENE_LORA):
-            logger.load("双 LoRA 架构")
-            logger.info("LOAD", f"  base:   {BASE_PATH}")
-            logger.info("LOAD", f"  persona:{CYRENE_LORA}")
-            logger.info("LOAD", f"  tool:   {TOOL_LORA}")
+        self._pl_base_path = BASE_PATH
+        self._pl_cyrene_lora = CYRENE_LORA
+        self._pl_tool_lora = TOOL_LORA
 
-            # 统一 tokenizer
-            self.gen_tok = AutoTokenizer.from_pretrained(BASE_PATH)
-            self.chat_tok = self.gen_tok
+        logger.load("双 LoRA 架构（CPU 加载）")
+        logger.info("LOAD", f"  base:   {BASE_PATH}")
 
-            # 加载 base
-            base = AutoModelForCausalLM.from_pretrained(
-                BASE_PATH, torch_dtype=torch.bfloat16)
-
-            # 挂 persona LoRA
-            self.chat_model = PeftModel.from_pretrained(
-                base, CYRENE_LORA, adapter_name="persona")
-            logger.ok("LOAD", "persona LoRA")
-
-            # 挂 tool LoRA（可选，加载两份：一份原样，一份用于 NP-LoRA 投影）
-            self._has_tool_lora = False
-            if os.path.exists(TOOL_LORA):
-                self.chat_model.load_adapter(
-                    TOOL_LORA, adapter_name="tool")
-                self.chat_model.load_adapter(
-                    TOOL_LORA, adapter_name="np_tool")
-                self._has_tool_lora = True
-                logger.ok("LOAD", "tool LoRA (tool + np_tool)")
-            else:
-                logger.warn("LOAD", "tool LoRA 缺失")
-
-            # 移到 GPU
-            self.chat_model = self.chat_model.to(self.device).eval()
-
-            # === NP-LoRA 投影 + cat 合并 ===
-            # 把 np_tool 的 lora_B 投影到 persona 风格子空间的零空间，
-            # 保护 persona 语气不被 tool 覆盖；再与 persona cat 合并。
-            if self._has_tool_lora:
-                try:
-                    from peft.tuners.lora import LoraLayer
-                    MU = 0.5
-                    n_mod = 0
-                    for name, module in self.chat_model.named_modules():
-                        if not isinstance(module, LoraLayer):
-                            continue
-                        if ("np_tool" not in module.lora_A
-                                or "persona" not in module.lora_A):
-                            continue
-                        B_s = module.lora_B["persona"].weight.data.float()
-                        B_c = module.lora_B["np_tool"].weight.data.float()
-                        if B_s.abs().max() < 1e-8 or B_c.abs().max() < 1e-8:
-                            continue
-                        U, S, Vh = torch.linalg.svd(B_s, full_matrices=False)
-                        proj = U @ (U.T @ B_c)
-                        B_c_new = B_c - (MU / (1.0 + MU)) * proj
-                        module.lora_B["np_tool"].weight.data.copy_(
-                            B_c_new.to(module.lora_B["np_tool"].weight.dtype))
-                        n_mod += 1
-                    logger.ok("LOAD", f"NP-LoRA 投影: {n_mod} 层 (mu={MU})")
-
-                    self.chat_model.add_weighted_adapter(
-                        adapters=["persona", "np_tool"],
-                        weights=[1.0, 1.0],
-                        adapter_name="persona_tool",
-                        combination_type="cat",
-                    )
-                    logger.ok("LOAD", "persona_tool = persona + np_tool (cat)")
-                except Exception as e:
-                    logger.warn("LOAD", f"NP-LoRA 合并失败: {e}")
-                    self._has_tool_lora = False
-
-            # 默认只激活 persona
-            self.chat_model.set_adapter("persona")
-
-            # RAG 和 Chat 共用同一个模型
-            self.generator = self.chat_model
-
-            # L1 会话记忆
-            try:
-                from serve.memory import SessionMemory
-                self.memory = SessionMemory()
-                logger.ok("LOAD", "session memory (L1)")
-            except Exception as _e:
-                self.memory = None
-                logger.warn("LOAD", f"session memory disabled: {_e}")
-
-            # 统一分类器（user_ref 3 类 + output 关键词）
-            try:
-                from serve.classifiers import get_classifiers
-                self.classifiers = get_classifiers()
-            except Exception as _e:
-                self.classifiers = None
-                logger.warn("LOAD", f"classifiers disabled: {_e}")
-
-            # L2 用户 KB（复用 BGE）
-            try:
-                from serve.memory import UserKB
-                self.user_kb = UserKB(self.bge)
-                logger.ok("LOAD", "user_kb (L2)")
-            except Exception as _e:
-                self.user_kb = None
-                logger.warn("LOAD", f"user_kb disabled: {_e}")
-
-            logger.ok("LOAD", f"generators (tool={self._has_tool_lora})")
-            return
-
-        # Fallback：加载 merged 模型（单 LoRA）
-        logger.warn("LOAD", f"fallback 加载 merged: {GENERATOR_PATH}")
-        self.gen_tok = AutoTokenizer.from_pretrained(GENERATOR_PATH)
-        self.generator = AutoModelForCausalLM.from_pretrained(
-            GENERATOR_PATH, torch_dtype=torch.bfloat16
-        ).to(self.device).eval()
+        self.gen_tok = AutoTokenizer.from_pretrained(BASE_PATH)
         self.chat_tok = self.gen_tok
-        self.chat_model = self.generator
+
+        # 权重 → CPU（不占 GPU，与 KB 编码并行）
+        self._base_cpu = AutoModelForCausalLM.from_pretrained(
+            BASE_PATH, torch_dtype=torch.bfloat16,
+            device_map="cpu")
+        logger.ok("LOAD", "Qwen3-1.7B → CPU")
+
+    def _finalize_qwen_gpu(self):
+        """CPU → GPU + LoRA + NP-LoRA 投影。"""
+        from peft import PeftModel
+        BASE_PATH = self._pl_base_path
+        CYRENE_LORA = self._pl_cyrene_lora
+        TOOL_LORA = self._pl_tool_lora
+
+        # CPU → GPU
+        self._base_cpu = self._base_cpu.to(self.device)
+
+        # 挂 persona LoRA
+        self.chat_model = PeftModel.from_pretrained(
+            self._base_cpu, CYRENE_LORA, adapter_name="persona")
+        logger.ok("LOAD", "persona LoRA")
+
+        # 挂 tool LoRA
         self._has_tool_lora = False
-        logger.ok("LOAD", "generator (merged, single)")
+        if os.path.exists(TOOL_LORA):
+            self.chat_model.load_adapter(TOOL_LORA, adapter_name="tool")
+            self.chat_model.load_adapter(TOOL_LORA, adapter_name="np_tool")
+            self._has_tool_lora = True
+            logger.ok("LOAD", "tool LoRA (tool + np_tool)")
+        else:
+            logger.warn("LOAD", "tool LoRA 缺失")
 
+        self.chat_model = self.chat_model.eval()
 
+        # NP-LoRA 投影
+        if self._has_tool_lora:
+            try:
+                from peft.tuners.lora import LoraLayer
+                MU = 0.5
+                n_mod = 0
+                for name, module in self.chat_model.named_modules():
+                    if not isinstance(module, LoraLayer):
+                        continue
+                    if ("np_tool" not in module.lora_A
+                            or "persona" not in module.lora_A):
+                        continue
+                    B_s = module.lora_B["persona"].weight.data.float()
+                    B_c = module.lora_B["np_tool"].weight.data.float()
+                    if B_s.abs().max() < 1e-8 or B_c.abs().max() < 1e-8:
+                        continue
+                    U, S, Vh = torch.linalg.svd(B_s, full_matrices=False)
+                    proj = U @ (U.T @ B_c)
+                    B_c_new = B_c - (MU / (1.0 + MU)) * proj
+                    module.lora_B["np_tool"].weight.data.copy_(
+                        B_c_new.to(module.lora_B["np_tool"].weight.dtype))
+                    n_mod += 1
+                logger.ok("LOAD", f"NP-LoRA 投影: {n_mod} 层 (mu={MU})")
+                self.chat_model.add_weighted_adapter(
+                    adapters=["persona", "np_tool"],
+                    weights=[1.0, 1.0],
+                    adapter_name="persona_tool",
+                    combination_type="cat")
+                logger.ok("LOAD", "persona_tool = persona + np_tool (cat)")
+            except Exception as e:
+                logger.warn("LOAD", f"NP-LoRA 合并失败: {e}")
+                self._has_tool_lora = False
 
+        self.chat_model.set_adapter("persona")
+        self.generator = self.chat_model
+
+    def _load_memory_l2(self):
+        """L1 + L2 + classifiers（可并行）。"""
+        # L1
+        try:
+            from serve.memory import SessionMemory
+            self.memory = SessionMemory()
+            logger.ok("LOAD", "session memory (L1)")
+        except Exception as _e:
+            self.memory = None
+            logger.warn("LOAD", f"session memory disabled: {_e}")
+
+        # Classifiers
+        try:
+            from serve.classifiers import get_classifiers
+            self.classifiers = get_classifiers()
+        except Exception as _e:
+            self.classifiers = None
+            logger.warn("LOAD", f"classifiers disabled: {_e}")
+
+        # L2 user_kb
+        try:
+            from serve.memory import UserKB
+            self.user_kb = UserKB(self.bge)
+            logger.ok("LOAD", "user_kb (L2)")
+        except Exception as _e:
+            self.user_kb = None
+            logger.warn("LOAD", f"user_kb disabled: {_e}")
+
+    def _load_generator(self):
+        """旧接口保留：串行模式用（回退）。"""
+        self._load_qwen_cpu()
+        self._finalize_qwen_gpu()
+        self._load_memory_l2()
+        logger.ok("LOAD", f"generators (tool={self._has_tool_lora})")
 
     # --------------------------------------------------------
     # 意图分类

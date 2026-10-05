@@ -115,7 +115,7 @@ def check_all(strict=False, verbose=True):
 
     # 1. GPU
     if verbose:
-        logger.load(f"[\1/7] \2")
+        logger.load("[1/7] GPU")
     ok, detail = _check_gpu()
     _p("ok" if ok else "fail", "CUDA", detail)
     if not ok:
@@ -123,7 +123,7 @@ def check_all(strict=False, verbose=True):
 
     # 2. 三头
     if verbose:
-        logger.load(f"[\1/7] \2")
+        logger.load("[2/7] Checkpoints")
     for name in ["HEADS_PATH", "INTENT_BGE_JOBLIB"]:
         path = PATHS[name]
         ok, detail = _check_file(path)
@@ -133,7 +133,7 @@ def check_all(strict=False, verbose=True):
 
     # 3. BGE-small
     if verbose:
-        logger.load(f"[\1/7] \2")
+        logger.load("[3/7] BGE 检索器")
     bge_path = PATHS["BGE_PATH"]
     if not os.path.exists(bge_path):
         # 自动搜
@@ -152,7 +152,7 @@ def check_all(strict=False, verbose=True):
 
     # 4. Reranker（可选）
     if verbose:
-        logger.load(f"[\1/7] \2")
+        logger.load("[4/7] BGE-reranker（可选）")
     rr_path = PATHS["RERANKER_PATH"]
     if not os.path.exists(rr_path):
         _p("warn", "RERANKER_PATH", f"不存在（可选，跳过 rerank）")
@@ -165,7 +165,7 @@ def check_all(strict=False, verbose=True):
 
     # 5. Generator
     if verbose:
-        logger.load(f"[\1/7] \2")
+        logger.load("[5/7] RAG / Chat 生成器")
     gen_path = PATHS["GENERATOR_PATH"]
     if not os.path.exists(gen_path):
         found = _find_qwen3()
@@ -196,7 +196,7 @@ def check_all(strict=False, verbose=True):
 
     # 6. DuReader 数据
     if verbose:
-        logger.load(f"[\1/7] \2")
+        logger.load("[6/7] DuReader 数据")
     dr_path = PATHS["DUREDER_PATH"]
     if not os.path.exists(dr_path):
         _p("warn", "DUREDER_PATH", f"不存在（KB 会为空或从缓存加载）")
