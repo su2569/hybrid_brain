@@ -97,7 +97,7 @@ class HybridBrainRouter:
 
         BASE_PATH = "/mnt/workspace/models/models/Qwen--Qwen3-1.7B/snapshots/master"
         CYRENE_LORA = "/mnt/workspace/checkpoints/qwen_cyrene_lora_v9"
-        TOOL_LORA = "/mnt/workspace/checkpoints/qwen_tool_lora"
+        TOOL_LORA = "/mnt/workspace/checkpoints/qwen_tool_lora_v2"
 
         if os.path.exists(BASE_PATH) and os.path.exists(CYRENE_LORA):
             print(f"[load] 双 LoRA 架构")
@@ -192,6 +192,15 @@ class HybridBrainRouter:
             except Exception as _e:
                 self.classifiers = None
                 print(f"[warn] classifiers disabled: {_e}", flush=True)
+
+            # L2 用户 KB（复用 BGE）
+            try:
+                from serve.memory import UserKB
+                self.user_kb = UserKB(self.bge)
+                print("[ok] user_kb (L2)", flush=True)
+            except Exception as _e:
+                self.user_kb = None
+                print(f"[warn] user_kb disabled: {_e}", flush=True)
 
             print(f"[ok] generators (tool={self._has_tool_lora})")
             return
@@ -602,15 +611,16 @@ class HybridBrainRouter:
             _system = NEUTRAL_SYSTEM
         else:
             _system = CHAT_SYSTEM
-        # 用户长期信息拼进主 system（措辞对齐 CHAT_SYSTEM 第 6 条）
+        # 用户长期信息放到 system 最前（避免被长 CHAT_SYSTEM 淹没）
         if user_context and not allow_proactive:
             _system = (
-                _system
-                + "\n\n【对话历史里用户提过的事实】\n"
+                "【用户信息·最高优先级】\n"
                 + user_context
-                + "\n\n注意：以上这些是用户之前说过的事实，"
-                "当用户问及自己的信息（如'我喜欢什么'）时，"
-                "必须直接引用上面的具体内容回答，不要反问或说不记得。"
+                + "\n\n⚠️ 当用户问及自己的信息时（如'我有什么计划'、"
+                "'我喜欢什么'），必须直接引用上面的具体内容回答。"
+                "禁止反问、禁止说不知道。\n"
+                "─────────────────────\n\n"
+                + _system
             )
 
         messages = [{"role": "system", "content": _system}]
@@ -630,7 +640,11 @@ class HybridBrainRouter:
         print(f"[CHAT_ANSWER] allow_proactive={allow_proactive}", flush=True)
         print(f"[CHAT_ANSWER] adapter={self.chat_model.active_adapter}", flush=True)
         for i, m in enumerate(messages):
-            print(f"  [{i}] {m['role']}: {m['content'][:80]!r}", flush=True)
+            _c = m['content']
+            _head = _c[:60].replace(chr(10), '⏎')
+            _tail = _c[-60:].replace(chr(10), '⏎') if len(_c) > 120 else ""
+            print(f"  [{i}] {m['role']} len={len(_c)}: {_head!r}"
+                  + (f"...{_tail!r}" if _tail else ""), flush=True)
         _gen_mode = "tool" if allow_proactive else "chat"
         print(f"[CHAT_ANSWER] allow_proactive={allow_proactive} "
               f"gen={_gen_mode}", flush=True)
@@ -927,6 +941,47 @@ class HybridBrainRouter:
         except Exception:
             return None
 
+    def _maybe_save_user_kb(self, user_id, query):
+        """判断并保存到 user_kb。
+        规则：
+        - "记住xxx" / "记一下xxx" / "帮我记xxx" → 显式保存
+        - 长陈述句（>20 字且是陈述）→ 隐式保存
+        """
+        import re
+        if not query:
+            return 0
+        # 显式："记住..."
+        m = re.search(r"(?:请)?(?:记住|记一下|帮我记|帮我记住|你要记得)[:：]?\s*(.+)",
+                      query, re.DOTALL)
+        if m:
+            text = m.group(1).strip()
+            if 4 <= len(text) <= 200:
+                return self.user_kb.add(user_id, text, source="explicit")
+            return 0
+        # 隐式：长陈述
+        if len(query) >= 20:
+            # 用分类器判断是否陈述
+            try:
+                from serve.memory.session import _is_fact_statement
+                if _is_fact_statement(query):
+                    return self.user_kb.add(user_id, query, source="implicit")
+            except Exception:
+                pass
+        return 0
+
+    def _user_kb_ctx(self, query):
+        """查用户 KB，返回文本或空。"""
+        if getattr(self, "user_kb", None) is None:
+            return ""
+        uid = getattr(self, "_current_user_id", None)
+        if not uid or uid == "anon":
+            return ""
+        try:
+            return self.user_kb.build_context(uid, query, top_k=2)
+        except Exception as e:
+            print(f"[user-kb-error] {e}", flush=True)
+            return ""
+
     def route(self, query, history=None, verbose=False, control=None, user=None, query_ts=None, tools=None, extra_system=None, session_id=None):
         history = history or []
         control = control or {}
@@ -934,6 +989,7 @@ class HybridBrainRouter:
 
         # L1: 会话历史优先从 memory 拉
         _user_id = (user or {}).get("id") or "anon"
+        self._current_user_id = _user_id   # 供 user_kb 用
         print(f"[L1-ROUTE] session_id={session_id!r} user_id={_user_id!r} "
               f"memory={'ON' if getattr(self,'memory',None) else 'OFF'}",
               flush=True)
@@ -1023,12 +1079,14 @@ class HybridBrainRouter:
 
 
                               any(kw in query for kw in PERSONAL_KW))
+        # 陈述事实 → 强制走 chat
+        _force_chat = (_u_ref == "statement") if _u_ref else False
 
 
         if intent == "query" and _is_personal_q:
-            # L1: 先查 facts 表（跨 session 长期记忆）
+            # L1: 先查 facts 表
             _has_facts = False
-            if session_id and getattr(self, "memory", None):
+            if getattr(self, "memory", None):
                 try:
                     _facts = self.memory.query_facts(
                         _user_id, query, top_k=3)
@@ -1039,10 +1097,22 @@ class HybridBrainRouter:
                 except Exception as _e:
                     print(f"[personal-facts-error] {_e}", flush=True)
 
+            # L2: 查 user_kb（向量库）
+            _has_l2 = False
+            if getattr(self, "user_kb", None):
+                try:
+                    _hits = self.user_kb.query(_user_id, query, top_k=2)
+                    _has_l2 = bool(_hits)
+                    if _has_l2:
+                        print(f"[personal] L2 user_kb: {len(_hits)} 条 → chat",
+                              flush=True)
+                except Exception as _e:
+                    print(f"[personal-l2-error] {_e}", flush=True)
+
             user_msgs = [h["content"] for h in history
                          if h.get("role") == "user"] if history else []
 
-            if _has_facts:
+            if _has_facts or _has_l2:
                 personal_path = "chat"
             elif not user_msgs:
                 # 空历史 + 无 facts → 主动确认
@@ -1106,16 +1176,30 @@ class HybridBrainRouter:
                     print(f"[fallback] margin({margin:.3f})<0.2, 走 chat")
                 intent = "chat"
 
-        # L1: 用户上下文（chat/rag 共用）
+        # L1 + L2: 用户上下文（chat/rag 共用）
         _user_ctx = ""
-        if session_id and getattr(self, "memory", None):
-            try:
-                _user_ctx = self.memory.build_user_context(_user_id, query)
-                if _user_ctx:
-                    print(f"[L1-CTX] {len(_user_ctx)} chars for {_user_id}",
-                          flush=True)
-            except Exception as _e:
-                print(f"[memory-context-error] {_e}", flush=True)
+        if _user_id != "anon":
+            # L1: facts 表（键值对）
+            if getattr(self, "memory", None):
+                try:
+                    _l1_ctx = self.memory.build_user_context(_user_id, query)
+                    if _l1_ctx:
+                        _user_ctx = _l1_ctx
+                        print(f"[L1-CTX] {len(_l1_ctx)} chars for {_user_id}",
+                              flush=True)
+                except Exception as _e:
+                    print(f"[memory-context-error] {_e}", flush=True)
+            # L2: user_kb（向量检索）
+            if getattr(self, "user_kb", None):
+                try:
+                    _l2_ctx = self.user_kb.build_context(
+                        _user_id, query, top_k=2)
+                    if _l2_ctx:
+                        _user_ctx = ((_user_ctx or "") + "\n\n"
+                                     + _l2_ctx).strip()
+                        print(f"[L2-CTX] {len(_l2_ctx)} chars", flush=True)
+                except Exception as _e:
+                    print(f"[user-kb-error] {_e}", flush=True)
 
         # 个人化问题但无相关记忆 → 主动确认 / 说忘了
         if personal_path == "ask_back":
@@ -1123,6 +1207,13 @@ class HybridBrainRouter:
                 print(f"[answer] 走主动确认 / 说忘了")
             result = self.ask_back_personal(query, has_history)
 
+        elif intent == "query" and _force_chat:
+            # 陈述事实 → 走 chat（保持 L1/L2 存储 + 昔涟语气）
+            result = self.chat_answer(
+                query, history=history, persona=_persona,
+                user=user, query_ts=query_ts,
+                allow_proactive=False, extra_system=extra_system,
+                user_context=_user_ctx)
         elif intent == "query":
             # DEBUG
             print(f"[DEBUG] _allow_proactive={_allow_proactive}, "
@@ -1212,6 +1303,16 @@ class HybridBrainRouter:
                         result, query)
             except Exception as _e:
                 print(f"[proactive-error] {_e}")
+
+        # L2: user_kb 保存（"记住"指令 + 长陈述）
+        if getattr(self, "user_kb", None) and _user_id != "anon":
+            try:
+                _saved = self._maybe_save_user_kb(_user_id, query)
+                if _saved:
+                    print(f"[L2-SAVE] uid={_user_id} saved={_saved}",
+                          flush=True)
+            except Exception as _e:
+                print(f"[user-kb-save-error] {_e}", flush=True)
 
         # L1: 异步保存本轮对话
         if session_id and getattr(self, "memory", None):
