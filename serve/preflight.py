@@ -7,6 +7,7 @@
     check_all()  # 失败时 raise
 """
 import os
+from serve import logger
 import sys
 import glob
 
@@ -96,18 +97,25 @@ def check_all(strict=False, verbose=True):
     warnings = []
     
     def _p(status, name, detail):
-        if verbose:
-            icon = "✅" if status == "ok" else ("⚠️ " if status == "warn" else "❌")
-            print(f"  {icon} {name:25s} {detail}")
+        if not verbose:
+            return
+        if status == "ok":
+            logger.ok("CHECK", f"{name:25s} {detail}")
+        elif status == "warn":
+            logger.warn("CHECK", f"{name:25s} {detail}")
+        elif status == "fail":
+            logger.error("CHECK", f"{name:25s} {detail}")
+        else:
+            logger.info("CHECK", f"{name:25s} {detail}")
 
     if verbose:
-        print("=" * 60)
-        print("  HybridBrain 启动前自检")
-        print("=" * 60)
+        logger.load("═" * 55)
+        logger.load("  HybridBrain 启动前自检")
+        logger.load("═" * 55)
 
     # 1. GPU
     if verbose:
-        print("\n[1/7] GPU")
+        logger.load(f"[\1/7] \2")
     ok, detail = _check_gpu()
     _p("ok" if ok else "fail", "CUDA", detail)
     if not ok:
@@ -115,7 +123,7 @@ def check_all(strict=False, verbose=True):
 
     # 2. 三头
     if verbose:
-        print("\n[2/7] Checkpoints")
+        logger.load(f"[\1/7] \2")
     for name in ["HEADS_PATH", "INTENT_BGE_JOBLIB"]:
         path = PATHS[name]
         ok, detail = _check_file(path)
@@ -125,7 +133,7 @@ def check_all(strict=False, verbose=True):
 
     # 3. BGE-small
     if verbose:
-        print("\n[3/7] BGE 检索器")
+        logger.load(f"[\1/7] \2")
     bge_path = PATHS["BGE_PATH"]
     if not os.path.exists(bge_path):
         # 自动搜
@@ -144,7 +152,7 @@ def check_all(strict=False, verbose=True):
 
     # 4. Reranker（可选）
     if verbose:
-        print("\n[4/7] BGE-reranker（可选）")
+        logger.load(f"[\1/7] \2")
     rr_path = PATHS["RERANKER_PATH"]
     if not os.path.exists(rr_path):
         _p("warn", "RERANKER_PATH", f"不存在（可选，跳过 rerank）")
@@ -157,7 +165,7 @@ def check_all(strict=False, verbose=True):
 
     # 5. Generator
     if verbose:
-        print("\n[5/7] RAG / Chat 生成器")
+        logger.load(f"[\1/7] \2")
     gen_path = PATHS["GENERATOR_PATH"]
     if not os.path.exists(gen_path):
         found = _find_qwen3()
@@ -188,7 +196,7 @@ def check_all(strict=False, verbose=True):
 
     # 6. DuReader 数据
     if verbose:
-        print("\n[6/7] DuReader 数据")
+        logger.load(f"[\1/7] \2")
     dr_path = PATHS["DUREDER_PATH"]
     if not os.path.exists(dr_path):
         _p("warn", "DUREDER_PATH", f"不存在（KB 会为空或从缓存加载）")
@@ -199,20 +207,20 @@ def check_all(strict=False, verbose=True):
 
     # 7. 输出
     if verbose:
-        print("\n" + "=" * 60)
+        logger.load("═" * 55)
         if issues:
-            print(f"❌ 发现 {len(issues)} 个致命问题:")
+            logger.error("CHECK", f"发现 {len(issues)} 个致命问题:")
             for name, detail in issues:
-                print(f"   - {name}: {detail}")
+                logger.debug("CHECK", f"  - {name}: {detail}")
         if warnings:
-            print(f"⚠️  发现 {len(warnings)} 个警告（不阻塞）:")
+            logger.warn("CHECK", f"发现 {len(warnings)} 个警告（不阻塞）:")
             for name, detail in warnings:
-                print(f"   - {name}: {detail}")
+                logger.debug("CHECK", f"  - {name}: {detail}")
         if not issues and not warnings:
-            print("✅ 所有检查通过")
+            logger.ok("CHECK", "所有检查通过")
         elif not issues:
-            print("✅ 无致命问题，可以启动")
-        print("=" * 60)
+            logger.ok("CHECK", "无致命问题，可以启动")
+        logger.load("═" * 55)
 
     if strict and issues:
         raise RuntimeError(f"启动前自检失败，{len(issues)} 个问题")

@@ -103,7 +103,7 @@ class HybridBrainRouter:
         print("[router] 初始化完成")
 
     def _load_intent(self):
-        print("[load] intent classifier (BGE + LR)...")
+        logger.load("intent classifier (BGE + LR)...")
         p = "/mnt/workspace/checkpoints/intent_bge.joblib"
         if not os.path.exists(p):
             raise FileNotFoundError(f"未找到 {p}，请先跑 train/train_intent_bge.py")
@@ -111,30 +111,30 @@ class HybridBrainRouter:
         self.intent_clf = data["clf"]
         self.intent_bge = SentenceTransformer(data["bge_path"])
         self.intent_names = data["intent_names"]
-        print(f"[ok] intent classifier ({len(self.intent_names)} 类)")
+        logger.ok("LOAD", f"intent classifier ({len(self.intent_names)} 类)")
 
     def _load_retriever(self):
-        print("[load] BGE retriever...")
+        logger.load("BGE retriever...")
         self.bge = SentenceTransformer(BGE_PATH)
 
         samples = load_dureader(max_n=20000)
         self.kb_passages = [s["passage"] for s in samples]
-        print(f"[kb] {len(self.kb_passages)} 条，编码中...")
+        logger.load(f"KB {len(self.kb_passages)} 条，编码中...")
 
         embs = self.bge.encode(
             self.kb_passages, normalize_embeddings=True,
             batch_size=64, show_progress_bar=False)
         self.kb_embs = torch.from_numpy(embs).float()
-        print("[ok] KB 编码完成")
+        logger.ok("LOAD", "KB 编码完成")
 
         # 加载 reranker
         if os.path.exists(RERANKER_PATH):
-            print(f"[load] BGE-reranker...")
+            logger.load("BGE-reranker...")
             from sentence_transformers import CrossEncoder
             self.reranker = CrossEncoder(RERANKER_PATH, max_length=512)
-            print("[ok] reranker")
+            logger.ok("LOAD", "reranker")
         else:
-            print(f"[warn] {RERANKER_PATH} 不存在，跳过 reranker")
+            logger.warn("LOAD", f"{RERANKER_PATH} 不存在，跳过 reranker")
             self.reranker = None
 
     def _load_generator(self):
@@ -146,10 +146,10 @@ class HybridBrainRouter:
         TOOL_LORA = "/mnt/workspace/checkpoints/qwen_tool_lora_v2"
 
         if os.path.exists(BASE_PATH) and os.path.exists(CYRENE_LORA):
-            print(f"[load] 双 LoRA 架构")
-            print(f"  base:   {BASE_PATH}")
-            print(f"  persona:{CYRENE_LORA}")
-            print(f"  tool:   {TOOL_LORA}")
+            logger.load("双 LoRA 架构")
+            logger.info("LOAD", f"  base:   {BASE_PATH}")
+            logger.info("LOAD", f"  persona:{CYRENE_LORA}")
+            logger.info("LOAD", f"  tool:   {TOOL_LORA}")
 
             # 统一 tokenizer
             self.gen_tok = AutoTokenizer.from_pretrained(BASE_PATH)
@@ -162,7 +162,7 @@ class HybridBrainRouter:
             # 挂 persona LoRA
             self.chat_model = PeftModel.from_pretrained(
                 base, CYRENE_LORA, adapter_name="persona")
-            print("[ok] persona LoRA")
+            logger.ok("LOAD", "persona LoRA")
 
             # 挂 tool LoRA（可选，加载两份：一份原样，一份用于 NP-LoRA 投影）
             self._has_tool_lora = False
@@ -172,9 +172,9 @@ class HybridBrainRouter:
                 self.chat_model.load_adapter(
                     TOOL_LORA, adapter_name="np_tool")
                 self._has_tool_lora = True
-                print("[ok] tool LoRA (tool + np_tool)")
+                logger.ok("LOAD", "tool LoRA (tool + np_tool)")
             else:
-                print("[warn] tool LoRA 缺失")
+                logger.warn("LOAD", "tool LoRA 缺失")
 
             # 移到 GPU
             self.chat_model = self.chat_model.to(self.device).eval()
@@ -203,7 +203,7 @@ class HybridBrainRouter:
                         module.lora_B["np_tool"].weight.data.copy_(
                             B_c_new.to(module.lora_B["np_tool"].weight.dtype))
                         n_mod += 1
-                    print(f"[ok] NP-LoRA 投影: {n_mod} 层 (mu={MU})")
+                    logger.ok("LOAD", f"NP-LoRA 投影: {n_mod} 层 (mu={MU})")
 
                     self.chat_model.add_weighted_adapter(
                         adapters=["persona", "np_tool"],
@@ -211,9 +211,9 @@ class HybridBrainRouter:
                         adapter_name="persona_tool",
                         combination_type="cat",
                     )
-                    print("[ok] persona_tool = persona + np_tool (cat)")
+                    logger.ok("LOAD", "persona_tool = persona + np_tool (cat)")
                 except Exception as e:
-                    print(f"[warn] NP-LoRA 合并失败: {e}")
+                    logger.warn("LOAD", f"NP-LoRA 合并失败: {e}")
                     self._has_tool_lora = False
 
             # 默认只激活 persona
@@ -226,10 +226,10 @@ class HybridBrainRouter:
             try:
                 from serve.memory import SessionMemory
                 self.memory = SessionMemory()
-                print("[ok] session memory (L1)")
+                logger.ok("LOAD", "session memory (L1)")
             except Exception as _e:
                 self.memory = None
-                print(f"[warn] session memory disabled: {_e}")
+                logger.warn("LOAD", f"session memory disabled: {_e}")
 
             # 统一分类器（user_ref 3 类 + output 关键词）
             try:
@@ -237,22 +237,22 @@ class HybridBrainRouter:
                 self.classifiers = get_classifiers()
             except Exception as _e:
                 self.classifiers = None
-                print(f"[warn] classifiers disabled: {_e}", flush=True)
+                logger.warn("LOAD", f"classifiers disabled: {_e}")
 
             # L2 用户 KB（复用 BGE）
             try:
                 from serve.memory import UserKB
                 self.user_kb = UserKB(self.bge)
-                print("[ok] user_kb (L2)", flush=True)
+                logger.ok("LOAD", "user_kb (L2)")
             except Exception as _e:
                 self.user_kb = None
-                print(f"[warn] user_kb disabled: {_e}", flush=True)
+                logger.warn("LOAD", f"user_kb disabled: {_e}")
 
-            print(f"[ok] generators (tool={self._has_tool_lora})")
+            logger.ok("LOAD", f"generators (tool={self._has_tool_lora})")
             return
 
         # Fallback：加载 merged 模型（单 LoRA）
-        print(f"[fallback] 加载 merged: {GENERATOR_PATH}")
+        logger.warn("LOAD", f"fallback 加载 merged: {GENERATOR_PATH}")
         self.gen_tok = AutoTokenizer.from_pretrained(GENERATOR_PATH)
         self.generator = AutoModelForCausalLM.from_pretrained(
             GENERATOR_PATH, torch_dtype=torch.bfloat16
@@ -260,7 +260,7 @@ class HybridBrainRouter:
         self.chat_tok = self.gen_tok
         self.chat_model = self.generator
         self._has_tool_lora = False
-        print("[ok] generator (merged, single)")
+        logger.ok("LOAD", "generator (merged, single)")
 
 
 
@@ -587,7 +587,7 @@ class HybridBrainRouter:
 
         # 资料未提及 → 用 chat 模型温柔表达
         if "资料未提及" in ans or "未提及" in ans or "没有提到" in ans:
-            print(f"[RAG] 检测到'未提及'，触发 chat 转接")
+            logger.rag("检测到'未提及'，触发 chat 转接")
             chat_msgs = [
                 {"role": "system", "content": CHAT_SYSTEM},
                 {"role": "user",
@@ -655,7 +655,7 @@ class HybridBrainRouter:
                 try:
                     self.chat_model.set_adapter("persona_tool")
                 except Exception as e:
-                    print(f"[warn] set_adapter persona_tool: {e}")
+                    logger.warn("CHAT", f"set_adapter persona_tool: {e}")
                     self.chat_model.set_adapter("persona")
             else:
                 self.chat_model.set_adapter("persona")
@@ -757,7 +757,7 @@ class HybridBrainRouter:
         try:
             out = self._generate(messages, max_new_tokens=300, mode="chat")
             if not out or not out.strip():
-                print(f"[finalize] 输出空，返回初稿")
+                logger.finalize("输出空，返回初稿")
                 return draft_answer
             # 事实校验：初稿的关键数字必须出现在 finalize 结果里
             if facts:
@@ -767,7 +767,7 @@ class HybridBrainRouter:
                     return draft_answer
             return out
         except Exception as e:
-            print(f"[finalize-error] {e}")
+            logger.error("FINALIZE", str(e))
             return draft_answer
 
     def defensive_answer(self, query):
@@ -781,7 +781,7 @@ class HybridBrainRouter:
                 ans = self._generate(messages, max_new_tokens=150,
                                       mode="safe")
         except Exception as _e:
-            print(f"[defensive-warn] {_e}", flush=True)
+            logger.warn("ABUSE", str(_e))
 
         # 空或太短 → 池子兜底
         if not ans or len(ans.strip()) < 10:
@@ -800,7 +800,7 @@ class HybridBrainRouter:
                 ans = self._generate(messages, max_new_tokens=120,
                                       mode="safe")
         except Exception as _e:
-            print(f"[refuse-warn] {_e}", flush=True)
+            logger.warn("REFUSE", str(_e))
 
         # 后置校验
         ans2 = _post_filter_refuse(ans)
@@ -1057,7 +1057,7 @@ class HybridBrainRouter:
         try:
             return self.user_kb.build_context(uid, query, top_k=2)
         except Exception as e:
-            print(f"[user-kb-error] {e}", flush=True)
+            logger.error("USER_KB", str(e))
             return ""
 
     def route(self, query, history=None, verbose=False, control=None, user=None, query_ts=None, tools=None, extra_system=None, session_id=None):
@@ -1264,12 +1264,12 @@ class HybridBrainRouter:
         if intent in HIGH_RISK:
             if conf < 0.6:
                 if verbose:
-                    print(f"[fallback] {intent}(conf={conf:.3f})<0.6, 走 chat")
+                    logger.route(f"fallback {intent}(conf={conf:.3f})<0.6 → chat")
                 intent = "chat"
         else:
             if margin < 0.2:
                 if verbose:
-                    print(f"[fallback] margin({margin:.3f})<0.2, 走 chat")
+                    logger.route(f"fallback margin({margin:.3f})<0.2 → chat")
                 intent = "chat"
 
         # L1 + L2: 用户上下文（chat/rag 共用）
