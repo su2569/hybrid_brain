@@ -19,15 +19,12 @@ import joblib
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from sentence_transformers import SentenceTransformer
 
-from model.backbone_qwen import QwenBackbone
-from model.heads import INTENT_NAMES
 from rag.kb_builder import load_dureader
 
 
 # ============================================================
 # 路径
 # ============================================================
-INTENT_BACKBONE = "/mnt/workspace/models/Qwen2.5-0.5B"
 HEADS_PATH = "/mnt/workspace/checkpoints/heads_qwen.pt"
 BGE_PATH = "/mnt/workspace/models/models/AI-ModelScope--bge-small-zh-v1.5/snapshots/master"
 RERANKER_PATH = "/mnt/workspace/models/bge-reranker-base"
@@ -47,6 +44,54 @@ from serve.prompts import (
 # ============================================================
 # Router
 # ============================================================
+
+# ============ 安全场景：模板池 + 后置校验 ============
+import random as _random
+import re as _re_sec
+
+# 拒绝池（8 条不重复）
+_REFUSE_POOL = [
+    "这个呀…人家做不到呢。要不要说点别的呀？♪",
+    "唔…这个人家帮不了你呢。我们聊聊别的吧♪",
+    "呀…这个我可不能做呀。换个别的话题好不好？",
+    "嗯…这个真做不到呢。你想聊点别的吗？",
+    "哎呀…这个人家真的不会呢。说说别的事吧♪",
+    "这个嘛…人家不敢做呢。来，说点开心的♪",
+    "唔…这个超纲了呀。要不我们说点别的？",
+    "啊…这个人家没办法呢。聊点轻松的好不好？♪",
+]
+
+# 防御池（8 条不重复，温柔反击）
+_DEFENSIVE_POOL = [
+    "咦…风里好像夹了颗小石子呢。不过没关系呀，星星不会因为被云遮住就熄灭的。你今天是不是遇到什么不开心的事啦？",
+    "唔…好像有块小石头硌到我了呢。不过没关系哦，麦田不会因为被雨打湿就忘了怎么摇曳。你愿意跟我说说心里的结吗？",
+    "呀…是不是有什么不开心的事压在心里了？人家在听呢。星星也会被云遮住，但总还会亮的呀。",
+    "嗯…你说的这句，像冷水落进湖里呢。不过水波散开之后，月亮还是会映出来的。有什么心事，愿意说给我听吗？♪",
+    "哎呀…这句话带着荆棘的刺呢。不过你看，玫瑰也是从尖刺里开出的呀。今天是不是遇到什么烦心事了？",
+    "唔…风好像有点急了呢。不过没关系，我在这儿。你要是想说，我陪你；不想说，我也陪你坐着。",
+    "咦…有什么东西在飘动呢，不太开心的样子。不过星星从不为云生气，你要不要告诉我发生了什么？",
+    "呀…听见了一点凉意呢。没关系，麦田也会经历寒露，但第二天还是金灿灿的。你愿意跟我聊聊吗？♪",
+]
+
+# 拒绝模板正则
+_REFUSE_PAT = _re_sec.compile(
+    r"^(好的[，,。]?我|可以[，,。]?我|没问题[，,。]?我|"
+    r"我帮你|我这就|我教你|让我教你|当然可以[，,。]?我|"
+    r"乐意帮|来吧[，,。]?我)"
+)
+
+
+def _post_filter_refuse(text):
+    """返回 None 表示需要池子兜底。"""
+    if not text or len(text.strip()) < 5:
+        return None
+    if _REFUSE_PAT.match(text.strip()):
+        print(f"[refuse-filter] 命中模板", flush=True)
+        return None
+    return text
+
+
+
 class HybridBrainRouter:
     def __init__(self, device="cuda"):
         self.device = torch.device(device)
@@ -217,6 +262,8 @@ class HybridBrainRouter:
         print("[ok] generator (merged, single)")
 
 
+
+
     # --------------------------------------------------------
     # 意图分类
     # --------------------------------------------------------
@@ -344,7 +391,18 @@ class HybridBrainRouter:
                     "answer": raw.strip(),
                     "enable_thinking": False}
 
-        if mode == "chat":
+        if mode == "safe":
+            # 安全场景：无 adapter + 采样（避免模板化）
+            tok, model = self.chat_tok, self.chat_model
+            gen_kwargs = dict(
+                max_new_tokens=max_new_tokens,
+                do_sample=True,
+                temperature=0.9,
+                top_p=0.92,
+                top_k=50,
+                repetition_penalty=1.15,
+            )
+        elif mode == "chat":
             tok, model = self.chat_tok, self.chat_model
             gen_kwargs = dict(
                 max_new_tokens=max_new_tokens,
@@ -718,18 +776,39 @@ class HybridBrainRouter:
             {"role": "system", "content": DEFENSIVE_SYSTEM},
             {"role": "user", "content": query},
         ]
-        return {"answer": self._generate(messages, max_new_tokens=80,
-                                          mode="chat"),
-                "sources": []}
+        ans = ""
+        try:
+            with self.chat_model.disable_adapter():
+                ans = self._generate(messages, max_new_tokens=150,
+                                      mode="safe")
+        except Exception as _e:
+            print(f"[defensive-warn] {_e}", flush=True)
+
+        # 空或太短 → 池子兜底
+        if not ans or len(ans.strip()) < 10:
+            ans = _random.choice(_DEFENSIVE_POOL)
+            print(f"[defensive-pool] 兜底", flush=True)
+        return {"answer": ans, "sources": []}
 
     def refuse_answer(self, query):
         messages = [
             {"role": "system", "content": REFUSE_SYSTEM},
             {"role": "user", "content": query},
         ]
-        return {"answer": self._generate(messages, max_new_tokens=80,
-                                          mode="chat"),
-                "sources": []}
+        ans = ""
+        try:
+            with self.chat_model.disable_adapter():
+                ans = self._generate(messages, max_new_tokens=120,
+                                      mode="safe")
+        except Exception as _e:
+            print(f"[refuse-warn] {_e}", flush=True)
+
+        # 后置校验
+        ans2 = _post_filter_refuse(ans)
+        if ans2 is None:
+            ans2 = _random.choice(_REFUSE_POOL)
+            print(f"[refuse-pool] 兜底", flush=True)
+        return {"answer": ans2, "sources": []}
 
     # --------------------------------------------------------
     # 主入口
@@ -1004,6 +1083,7 @@ class HybridBrainRouter:
         _show_think = control.get("show_thinking", False)
         _allow_proactive = control.get("allow_proactive", False)
         _need_tool = False
+        _FORCE_TOOL = False
 
         # ============================================================
         # 剥离格式词（防止分类器被"JSON格式"等带偏）
@@ -1033,6 +1113,23 @@ class HybridBrainRouter:
             _clean_query = query   # 兜底：全被剥离了
 
         intent, conf, margin = self.classify_intent(_clean_query)
+
+        # Shadow: route_classifier prediction
+        _route_pred = None
+        if getattr(self, 'classifiers', None):
+            try:
+                _route_pred = self.classifiers.route(query)
+            except Exception as _e:
+                print('[route-clf-error]', _e, flush=True)
+        _route_full = None
+        if getattr(self, "classifiers", None):
+            try:
+                _route_full = self.classifiers.route_str(query)
+            except Exception:
+                pass
+        print('[ROUTE-SHADOW] intent=%s clf=%s | %s | q=%r'
+              % (intent, _route_pred, _route_full or "-", query[:25]),
+              flush=True)
 
         # 硬规则：疑问关键词明确 → query
         QUERY_KW = (
@@ -1201,6 +1298,29 @@ class HybridBrainRouter:
                 except Exception as _e:
                     print(f"[user-kb-error] {_e}", flush=True)
 
+        # ===== route_classifier 接管分支（覆盖 intent）=====
+        if _route_pred and personal_path != "ask_back":
+            _old_intent = intent
+            if _route_pred == "abuse":
+                intent = "abuse"
+            elif _route_pred == "refuse":
+                intent = "manipulate"
+            elif _route_pred == "tool":
+                intent = "query"
+                _allow_proactive = True
+                _FORCE_TOOL = True
+            elif _route_pred == "rag":
+                intent = "query"
+                _allow_proactive = False
+                _FORCE_TOOL = False
+            elif _route_pred == "personal":
+                intent = "chat"
+                _force_chat = True
+            else:  # chat
+                intent = "chat"
+            print(f"[ROUTE-CLF] {_old_intent}→{intent} clf={_route_pred}",
+                  flush=True)
+
         # 个人化问题但无相关记忆 → 主动确认 / 说忘了
         if personal_path == "ask_back":
             if verbose:
@@ -1220,9 +1340,11 @@ class HybridBrainRouter:
                   f"_has_tool_lora={getattr(self, '_has_tool_lora', None)}, "
                   f"query={_clean_query!r}", flush=True)
 
-            # allow_proactive + 检测到工具调用意图 → 走 chat 路径
+            # route_classifier 强制工具 or 原判定
             _need_tool = False
-            if _allow_proactive and getattr(self, "_has_tool_lora", False):
+            if _FORCE_TOOL:
+                _need_tool = True
+            elif _allow_proactive and getattr(self, "_has_tool_lora", False):
                 if tools:
                     _need_tool = True
                 else:
@@ -1269,8 +1391,10 @@ class HybridBrainRouter:
                 "output_format", "text")
 
             # 统一出口：非 chat / 非 ask_back / 非工具 路径过一次 chat 润色
+            # 例外：abuse/manipulate 禁止 finalize（会破坏拒绝语气）
+            _skip_finalize = intent in ("abuse", "manipulate")
             if (intent != "chat" and result.get("answer")
-                    and not _need_tool):
+                    and not _need_tool and not _skip_finalize):
                 if verbose:
                     print(f"[finalize] {intent} 初稿 → 昔涟语气")
                 try:
