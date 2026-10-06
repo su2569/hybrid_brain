@@ -1,5 +1,6 @@
 """统一分类器：user_ref (3类) + output 关键词检测。"""
 import os
+from paths import MODELS, CKPTS, DATA
 import pickle
 import re
 import threading
@@ -90,7 +91,7 @@ class Classifiers:
             return None
 
     def _load(self):
-        d = self._load_pkl("checkpoints/user_ref_classifier.pkl")
+        d = self._load_pkl(CKPTS["user_ref"])
         if d is None:
             print("[clf-warn] user_ref_classifier.pkl 不存在", flush=True)
             return
@@ -103,7 +104,7 @@ class Classifiers:
             print(f"[clf-warn] load fail: {e}", flush=True)
 
         # 6 类路由分类器
-        d_route = self._load_pkl("checkpoints/route_clf.pkl")
+        d_route = self._load_pkl(CKPTS["route_clf"])
         if d_route:
             self._route = d_route
             print("[ok] route classifier loaded", flush=True)

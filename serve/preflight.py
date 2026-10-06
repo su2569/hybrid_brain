@@ -7,6 +7,7 @@
     check_all()  # 失败时 raise
 """
 import os
+from paths import MODELS, CKPTS, DATA
 from serve import logger
 import sys
 import glob
@@ -18,12 +19,12 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # 配置（与 router.py 保持一致）
 # ============================================================
 PATHS = {
-    "HEADS_PATH": "/mnt/workspace/checkpoints/heads_qwen.pt",
-    "INTENT_BGE_JOBLIB": "/mnt/workspace/checkpoints/intent_bge.joblib",
-    "BGE_PATH": "/mnt/workspace/models/models/AI-ModelScope--bge-small-zh-v1.5/snapshots/master",
-    "RERANKER_PATH": "/mnt/workspace/models/models/BAAI--bge-reranker-base/snapshots/master",
-    "GENERATOR_PATH": "/mnt/workspace/models/qwen3_cyrene_merged",
-    "CHAT_GENERATOR_PATH": "/mnt/workspace/models/qwen3_cyrene_merged",
+    "HEADS_PATH": CKPTS["heads_qwen"],
+    "INTENT_BGE_JOBLIB": CKPTS["intent_bge"],
+    "BGE_PATH": MODELS["bge_small"],
+    "RERANKER_PATH": MODELS["bge_reranker"],
+    "GENERATOR_PATH": "/mnt/workspace/hb_models/_archive/qwen3_cyrene_merged",
+    "CHAT_GENERATOR_PATH": "/mnt/workspace/hb_models/_archive/qwen3_cyrene_merged",
     "DUREDER_PATH": "/mnt/workspace/data6/dureader_robust-data/train.json",
 }
 
@@ -67,6 +68,7 @@ def _check_gpu():
 def _find_bge_small():
     """自动搜 BGE-small。"""
     for pat in [
+        "/mnt/workspace/hb_models/base/bge-small-zh/config.json",
         "/mnt/workspace/models/**/bge-small-zh-v1.5/**/config.json",
         "/mnt/workspace/models/**/bge-small-zh-v1.5/config.json",
     ]:
@@ -79,6 +81,7 @@ def _find_bge_small():
 def _find_qwen3():
     """自动搜 Qwen3。"""
     for pat in [
+        "/mnt/workspace/hb_models/base/qwen3-1.7b/config.json",
         "/mnt/workspace/models/**/Qwen--Qwen3-1.7B/**/config.json",
         "/mnt/workspace/models/**/Qwen3-1.7B/**/config.json",
     ]:

@@ -1,4 +1,5 @@
 import time
+from paths import MODELS, CKPTS, DATA
 """HybridBrain 路由器：按意图分派到不同路径。
 
 四条路径：
@@ -25,7 +26,7 @@ from rag.kb_builder import load_dureader
 # ============================================================
 # 路径
 # ============================================================
-HEADS_PATH = "/mnt/workspace/checkpoints/heads_qwen.pt"
+HEADS_PATH = CKPTS["heads_qwen"]
 # 优先用 /dev/shm 内存盘（若存在）
 _SHM = "/dev/shm/hb_models"
 def _prefer_shm(orig, shm_subpath):
@@ -34,13 +35,13 @@ def _prefer_shm(orig, shm_subpath):
     return p if _os.path.exists(p) else orig
 
 BGE_PATH = _prefer_shm(
-    "/mnt/workspace/models/models/AI-ModelScope--bge-small-zh-v1.5/snapshots/master",
+    MODELS["bge_small"],
     "bge-small-zh")
 RERANKER_PATH = _prefer_shm(
-    "/mnt/workspace/models/bge-reranker-base",
+    MODELS["bge_reranker"],
     "bge-reranker")
-GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
-CHAT_GENERATOR_PATH = "/mnt/workspace/models/qwen3_cyrene_merged"
+GENERATOR_PATH = "/mnt/workspace/hb_models/_archive/qwen3_cyrene_merged"
+CHAT_GENERATOR_PATH = "/mnt/workspace/hb_models/_archive/qwen3_cyrene_merged"
 
 
 # ============================================================
@@ -235,7 +236,7 @@ class HybridBrainRouter:
     def _load_intent_lr(self):
         """只加载 LR 分类器（BGE 已共享）。"""
         logger.load("intent classifier (LR)...")
-        p = "/mnt/workspace/checkpoints/intent_bge.joblib"
+        p = CKPTS["intent_bge"]
         if not os.path.exists(p):
             raise FileNotFoundError(f"未找到 {p}")
         data = joblib.load(p)
@@ -299,13 +300,13 @@ class HybridBrainRouter:
         from peft import PeftModel
 
         BASE_PATH = _prefer_shm(
-            "/mnt/workspace/models/models/Qwen--Qwen3-1.7B/snapshots/master",
+            MODELS["qwen3"],
             "qwen3-1.7b")
         CYRENE_LORA = _prefer_shm(
-            "/mnt/workspace/checkpoints/qwen_cyrene_lora_v9",
+            CKPTS["persona"],
             "persona_lora")
         TOOL_LORA = _prefer_shm(
-            "/mnt/workspace/checkpoints/qwen_tool_lora_v2",
+            CKPTS["tool"],
             "tool_lora")
 
         self._pl_base_path = BASE_PATH
